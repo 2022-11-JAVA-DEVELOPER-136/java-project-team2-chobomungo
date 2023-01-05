@@ -5,14 +5,23 @@ insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_emai
 
 /**********************product insert************************/
 
-insert into product values(1, '1', 25000, 'default.jpg','상세 정보...', 0);
-insert into product values(2, '2', 20000, 'default.jpg','상세 정보...', 0);
-insert into product values(3, '3', 15000, 'default.jpg','상세 정보...', 0);
-insert into product values(4, '4', 21000, 'default.jpg','상세 정보...', 0);
-insert into product values(5, '5', 30000, 'default.jpg','상세 정보...', 0);
-insert into product values(6, '6', 26000, 'default.jpg','상세 정보...', 0);
-insert into product values(7, '7', 19000, 'default.jpg','상세 정보...', 0);
-insert into product values(8, '8', 28000, 'default.jpg','상세 정보...', 0);
+insert into product(p_no, p_title, p_price, p_image,p_desc,p_click_count) 
+values(product_p_no_SEQ.nextval, '1', 25000, 'default.jpg','상세 정보...', 0);
+insert into product(p_no, p_title, p_price, p_image,p_desc,p_click_count) 
+values(product_p_no_SEQ.nextval, '2', 20000, 'default.jpg','상세 정보...', 0);
+insert into product(p_no, p_title, p_price, p_image,p_desc,p_click_count) 
+values(product_p_no_SEQ.nextval, '3', 15000, 'default.jpg','상세 정보...', 0);
+insert into product(p_no, p_title, p_price, p_image,p_desc,p_click_count) 
+values(product_p_no_SEQ.nextval, '4', 21000, 'default.jpg','상세 정보...', 0);
+insert into product(p_no, p_title, p_price, p_image,p_desc,p_click_count) 
+values(product_p_no_SEQ.nextval, '5', 30000, 'default.jpg','상세 정보...', 0);
+insert into product(p_no, p_title, p_price, p_image,p_desc,p_click_count) 
+values(product_p_no_SEQ.nextval, '6', 26000, 'default.jpg','상세 정보...', 0);
+insert into product(p_no, p_title, p_price, p_image,p_desc,p_click_count) 
+values(product_p_no_SEQ.nextval, '7', 19000, 'default.jpg','상세 정보...', 0);
+insert into product(p_no, p_title, p_price, p_image,p_desc,p_click_count) 
+values(product_p_no_SEQ.nextval, '8', 28000, 'default.jpg','상세 정보...', 0);
+
 
 /**********************cart insert***************************/
 --book1
@@ -21,8 +30,7 @@ insert into cart(cart_no,cart_qty,user_id,p_no)
 insert into cart(cart_no,cart_qty,user_id,p_no) 
     values(cart_cart_no_SEQ.nextval,1,'book1',2);
 --book2    
-insert into cart(cart_no,cart_qty,user_id,p_no)
-    values(cart_cart_no_SEQ.nextval,1,'book2',4);
+insert into cart(cart_no,cart_qty,user_id,p_no) values(cart_cart_no_SEQ.nextval,1,'book2',4);
 insert into cart(cart_no,cart_qty,user_id,p_no)
     values(cart_cart_no_SEQ.nextval,2,'book2',5);
     
