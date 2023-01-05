@@ -15,12 +15,12 @@ CREATE TABLE userinfo(
 
 
 CREATE TABLE product(
-		p_no                          		VARCHAR2(20)		 NULL ,
+		p_no                          		NUMBER(20)		 NULL ,
 		p_title                       		VARCHAR2(50)		 NULL ,
-		p_price                       		NUMBER(10)		 NULL ,
+		p_price                       		NUMBER(10)		 		NULL ,
 		p_image                       		VARCHAR2(50)		 DEFAULT 'default.jpg'		 NULL ,
 		p_desc                        		VARCHAR2(800)		 NULL ,
-		p_click_count                 		NUMBER(10)		 NULL 
+		p_click_count                 		NUMBER(10)			 NULL 
 );
 
 

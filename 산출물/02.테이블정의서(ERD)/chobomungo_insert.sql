@@ -23,7 +23,7 @@ insert into cart(cart_no,cart_qty,user_id,p_no)
 --book2    
 insert into cart(cart_no,cart_qty,user_id,p_no)
     values(cart_cart_no_SEQ.nextval,1,'book2',4);
-insert into cart(cart_no,cart_qty,userid,p_no)
+insert into cart(cart_no,cart_qty,user_id,p_no)
     values(cart_cart_no_SEQ.nextval,2,'book2',5);
     
 /*********************order insert***********************/
