@@ -1,5 +1,9 @@
 package com.itwill.chobomungo.cart;
 
 public class CartSQL {
-
+	private static final String INSERT_CART_SQL ="insert into cart values(cart_cart_no_seq.nextval,?,?,?)";
+	private static final String DELETE_CART_SQL ="delete cart where user_id = ? and p_no = ?";
+	private static final String UPDATE_CART_SQL ="update cart set cart_qty= ? where user_id= ? and p_no = ?";
+	private static final String FIND_BY_P_NO_CART_SQL = "select * from cart where user_id = ? and p_no = ?"; // 선택한 물건 카트에서 지우기
+	private static final String FIND_BY_USER_ID_CART_SQL = "select * from cart where user_id = ?"; // 카트 전체 비우기
 }
