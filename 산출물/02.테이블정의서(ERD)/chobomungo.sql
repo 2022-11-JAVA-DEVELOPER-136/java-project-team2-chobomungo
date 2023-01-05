@@ -30,7 +30,7 @@ insert into cart(cart_no,cart_qty,userid,p_no)
 --book1
 --1.orders insert
 insert into orders(o_no,o_desc,o_date,o_price,userid)
-    values(orders_o_no_SEQ.nextval,'',sysdate,41000,'book1');
+    values(orders_o_no_SEQ.nextval,'...',sysdate,41000,'book1');
 
 --2.order item insert
 --제품번호 3번 1권
@@ -43,7 +43,7 @@ insert into order_item(oi_no,oi_qty,o_no,p_no)
 --book2
 --1.orders insert
 insert into orders(o_no,o_desc,o_date,o_price,userid)
-    values(orders_o_no_SEQ.nextval,'',sysdate,47000,'book2');
+    values(orders_o_no_SEQ.nextval,'...',sysdate,47000,'book2');
 
 --2.order item insert
 --제품번호 7번 1권

@@ -48,7 +48,7 @@ DROP SEQUENCE orders_o_no_SEQ;
 CREATE SEQUENCE orders_o_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 CREATE TABLE order_item(
-		oi_no                         		INTEGER(10)		 NULL ,
+		oi_no                         		NUMBER(10)		 NULL ,
 		oi_qty                        		NUMBER(10)		 NULL ,
 		p_no                          		VARCHAR2(20)		 NULL ,
 		o_no                          		NUMBER(10)		 NULL 
