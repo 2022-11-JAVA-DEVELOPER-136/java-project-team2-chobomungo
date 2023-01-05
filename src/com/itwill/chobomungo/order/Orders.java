@@ -10,5 +10,5 @@ public class Orders {
 	private Date o_date;
 	private String user_id;
 	
-	
+	List<OrderItem> orderItemList;
 }
