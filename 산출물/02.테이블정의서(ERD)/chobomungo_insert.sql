@@ -1,7 +1,7 @@
 /**********************member insert************************/
-insert into userinfo(userid,password,name,email) values('book1','1111','정약용','010-1111-1111','서울시 중구','book1@korea.com');
-insert into userinfo(userid,password,name,email) values('book2','2222','이순신','010-2222-2222','서울시 관악구','book2@korea.com');
-insert into userinfo(userid,password,name,email) values('book3','3333','이방원','010-3333-3333','서울시 종로구','book3@korea.com');
+insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_email) values('book1','1111','정약용','010-1111-1111','서울시 중구','book1@korea.com');
+insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_email) values('book2','2222','이순신','010-2222-2222','서울시 관악구','book2@korea.com');
+insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_email) values('book3','3333','이방원','010-3333-3333','서울시 종로구','book3@korea.com');
 
 /**********************product insert************************/
 
