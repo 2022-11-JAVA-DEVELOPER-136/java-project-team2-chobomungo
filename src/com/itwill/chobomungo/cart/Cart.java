@@ -27,6 +27,14 @@ public class Cart {
 		this.product = product;
 	}
 
+	public void setCart_no(int cart_no) {
+		this.cart_no = cart_no;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	public int getCart_qty() {
 		return cart_qty;
 	}
