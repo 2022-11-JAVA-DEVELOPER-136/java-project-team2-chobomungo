@@ -16,12 +16,12 @@ insert into product values(8, '8', 28000, 'default.jpg','상세 정보...', 0);
 
 /**********************cart insert***************************/
 --book1
-insert into cart(cart_no,cart_qty,userid,p_no) 
+insert into cart(cart_no,cart_qty,user_id,p_no) 
     values(cart_cart_no_SEQ.nextval,1,'book1',1);
-insert into cart(cart_no,cart_qty,userid,p_no) 
+insert into cart(cart_no,cart_qty,user_id,p_no) 
     values(cart_cart_no_SEQ.nextval,1,'book1',2);
 --book2    
-insert into cart(cart_no,cart_qty,userid,p_no)
+insert into cart(cart_no,cart_qty,user_id,p_no)
     values(cart_cart_no_SEQ.nextval,1,'book2',4);
 insert into cart(cart_no,cart_qty,userid,p_no)
     values(cart_cart_no_SEQ.nextval,2,'book2',5);
@@ -29,7 +29,7 @@ insert into cart(cart_no,cart_qty,userid,p_no)
 /*********************order insert***********************/
 --book1
 --1.orders insert
-insert into orders(o_no,o_desc,o_date,o_price,userid)
+insert into orders(o_no,o_desc,o_date,o_price,user_id)
     values(orders_o_no_SEQ.nextval,'...',sysdate,41000,'book1');
 
 --2.order item insert
@@ -42,7 +42,7 @@ insert into order_item(oi_no,oi_qty,o_no,p_no)
     
 --book2
 --1.orders insert
-insert into orders(o_no,o_desc,o_date,o_price,userid)
+insert into orders(o_no,o_desc,o_date,o_price,user_id)
     values(orders_o_no_SEQ.nextval,'...',sysdate,47000,'book2');
 
 --2.order item insert
