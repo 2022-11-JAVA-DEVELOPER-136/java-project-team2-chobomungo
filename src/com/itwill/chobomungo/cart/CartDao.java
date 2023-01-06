@@ -64,11 +64,11 @@ public class CartDao {
 	/*
 	 * 
 	 */
-	public int updateByProductNo(Cart cart) throws Exception {
+	public int updateByCartNo(Cart cart) throws Exception {
 		Connection con =dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.CART_COUNT_BY_USERID_PRODUCT_NO);
 		pstmt.setInt(1, cart.getCart_qty());
-		pstmt.setInt(2, cart.getProduct().getP_no());
+		pstmt.setInt(2, cart.getCart_no());
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
