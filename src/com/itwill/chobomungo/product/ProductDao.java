@@ -77,7 +77,7 @@ public class ProductDao {
 	public Product findByNo(int p_no) throws Exception {
 		Product newProduct = null;
 		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NAME);
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NUMBER);
 		pstmt.setInt(1, p_no);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
@@ -110,7 +110,7 @@ public class ProductDao {
 	public Product findByName(String p_title) throws Exception {
 		Product findNameProduct = null;
 		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NUMBER);
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NAME);
 		pstmt.setString(1, p_title);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
@@ -136,7 +136,7 @@ public class ProductDao {
 
 		List<Product> findBookNameList = new ArrayList<>();
 		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NUMBER);
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NAME);
 		pstmt.setString(1, p_title);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
@@ -178,7 +178,6 @@ public class ProductDao {
 		}
 		return productList;
 	}
-
 
 
 
