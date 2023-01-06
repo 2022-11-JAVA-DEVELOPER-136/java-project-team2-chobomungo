@@ -19,7 +19,7 @@ CREATE TABLE product(
 		p_title                       		VARCHAR2(50)		 NULL ,
 		p_price                       		NUMBER(10)		 NULL ,
 		p_image                       		VARCHAR2(50)		 DEFAULT 'default.jpg'		 NULL ,
-		p_desc                        		VARCHAR2(800)		 NULL ,
+		p_desc                        		VARCHAR2(800)		 NULL 
 );
 
 DROP SEQUENCE product_p_no_SEQ;
