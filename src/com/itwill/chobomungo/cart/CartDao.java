@@ -16,12 +16,12 @@ public class CartDao {
 		dataSource = new DataSource();
 	}
 	
-	public int insertCart() throws Exception {
+	public int insertCart(int c_qty, String user_id, int p_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.INSERT_CART_SQL);
-		pstmt.setInt(1, 2);
-		pstmt.setString(2, "book3");
-		pstmt.setInt(3,2);
+		pstmt.setInt(1, c_qty);
+		pstmt.setString(2, user_id);
+		pstmt.setInt(3,p_no);
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
@@ -29,12 +29,12 @@ public class CartDao {
 		
 	}
 	
-	public int updateCart() throws Exception {
+	public int updateCart(int c_qty, String user_id, int p_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.UPDATE_CART_SQL);
-		pstmt.setInt(1, 3);
-		pstmt.setString(2, "book3");
-		pstmt.setInt(3, 2);
+		pstmt.setInt(1, c_qty);
+		pstmt.setString(2, user_id);
+		pstmt.setInt(3, p_no);
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
@@ -42,22 +42,32 @@ public class CartDao {
 		
 	}
 	
-	public int deleteCart() throws Exception {
+	public int deleteCart(String user_id,int p_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.DELETE_CART_SQL);
-		pstmt.setString(1, "book3");
-		pstmt.setInt(2, 2);
+		pstmt.setString(1, user_id);
+		pstmt.setInt(2, p_no);
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
 		return rowCount;
 	}
 	
-	public void findByP_NoCart() throws Exception {
+	public int deleteCartAll(String user_id) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(CartSQL.FIND_BY_USER_ID_CART_SQL);
+		pstmt.setString(1, user_id);
+		int rowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+		return rowCount;
+	}
+		
+	public Cart findByP_NoCart(String user_id, int p_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.FIND_BY_P_NO_CART_SQL);
-		pstmt.setString(1,"book1");
-		pstmt.setInt(2, 1);
+		pstmt.setString(1,user_id);
+		pstmt.setInt(2, p_no);
 		ResultSet rs = pstmt.executeQuery();
 		Cart tempCart = null;
 		if(rs.next()) {
@@ -67,5 +77,6 @@ public class CartDao {
 			tempCart.setProduct(new Product());
 		}
 		
+		return tempCart;
 	}
 }
