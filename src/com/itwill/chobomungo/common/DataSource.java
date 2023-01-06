@@ -1,10 +1,8 @@
 package com.itwill.chobomungo.common;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
 
 /*
@@ -19,7 +17,7 @@ public class DataSource {
 	private String user;
 	private String password;
 	/**********************************************/
-	public DataSource() throws IOException {
+	public DataSource() throws Exception {
 		/**********jdbc.properties를 읽어서 데이터베이스접속정보를 필드에 저장 ***********/
 		Properties properties = new Properties();
 		InputStream propertiesInput = DataSource.class.getResourceAsStream("/jdbc.properties");

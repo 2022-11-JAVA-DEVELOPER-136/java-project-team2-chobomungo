@@ -4,10 +4,10 @@ package com.itwill.chobomungo.product;
  * --insert
 insert into product values(p_no,p_title,p_price,p_image,p_desc,p_click_count)
 (product_p_no_SEQ.nextval, 
-'AA', 10000, 'default.jpg','추천도서', 3);
+'소설1', 10000, 'default.jpg','추천도서', 1);
 
 --update PK
-update product set p_title='소설',p_price=20000,p_image='image.jpg',
+update product set p_title='소설2',p_price=20000,p_image='image.jpg',
 p_desc='책정보상세보기', P_click_count=2 where p_no=1;
 
 --delete PK
