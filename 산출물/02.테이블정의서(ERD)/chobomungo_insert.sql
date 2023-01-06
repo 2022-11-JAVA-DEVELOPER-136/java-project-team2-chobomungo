@@ -5,14 +5,14 @@ insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_emai
 
 /**********************product insert************************/
 
-insert into product values(product_p_no_SEQ.nextval, '1', 25000, 'default.jpg','상세 정보...', 0);
-insert into product values(product_p_no_SEQ.nextval, '2', 25000, 'default.jpg','상세 정보...', 0);
-insert into product values(product_p_no_SEQ.nextval, '3', 25000, 'default.jpg','상세 정보...', 0);
-insert into product values(product_p_no_SEQ.nextval, '4', 25000, 'default.jpg','상세 정보...', 0);
-insert into product values(product_p_no_SEQ.nextval, '5', 25000, 'default.jpg','상세 정보...', 0);
-insert into product values(product_p_no_SEQ.nextval, '6', 25000, 'default.jpg','상세 정보...', 0);
-insert into product values(product_p_no_SEQ.nextval, '7', 25000, 'default.jpg','상세 정보...', 0);
-insert into product values(product_p_no_SEQ.nextval, '8', 25000, 'default.jpg','상세 정보...', 0);
+insert into product values(product_p_no_SEQ.nextval, '1', 25000, 'default.jpg','상세 정보...');
+insert into product values(product_p_no_SEQ.nextval, '2', 25000, 'default.jpg','상세 정보...';
+insert into product values(product_p_no_SEQ.nextval, '3', 25000, 'default.jpg','상세 정보...');
+insert into product values(product_p_no_SEQ.nextval, '4', 25000, 'default.jpg','상세 정보...');
+insert into product values(product_p_no_SEQ.nextval, '5', 25000, 'default.jpg','상세 정보...');
+insert into product values(product_p_no_SEQ.nextval, '6', 25000, 'default.jpg','상세 정보...';
+insert into product values(product_p_no_SEQ.nextval, '7', 25000, 'default.jpg','상세 정보...');
+insert into product values(product_p_no_SEQ.nextval, '8', 25000, 'default.jpg','상세 정보...');
 
 
 
