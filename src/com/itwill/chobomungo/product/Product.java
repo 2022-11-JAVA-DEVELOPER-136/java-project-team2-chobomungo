@@ -18,6 +18,9 @@ public class Product {
 	private String p_image;
 	private String p_desc;
 	private int p_click_count;
+	public Product() {
+		
+	}
 	
 	public Product(int p_no, String p_title, int p_price, String p_image, String p_desc, int p_click_count) {
 		super();
