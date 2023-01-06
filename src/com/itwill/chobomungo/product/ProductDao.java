@@ -74,26 +74,26 @@ public class ProductDao {
 
 
 	public Product findByNo(int p_no) throws Exception {
-		Product newProduct = null;
+		Product findNoProduct = null;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NUMBER);
 		pstmt.setInt(1, p_no);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
-			int p_no1 = rs.getInt("p_no");
-			String p_title = rs.getString("p_title");
-			int p_price = rs.getInt("p_price");
-			String p_image = rs.getString("p_image");
-			String p_desc = rs.getString("p_desc");
 
-			newProduct = new Product(p_no1,p_title,p_price,p_image,p_desc);
+			do {
+				findNoProduct = new Product (rs.getInt("p_no"),
+											 rs.getString("p_title"),
+											 rs.getInt("p_price"),
+											 rs.getString("p_image"),
+											 rs.getString("p_desc"));
+			} while(rs.next());
+
+
+			pstmt.close();
+			dataSource.close(con);
 		}
-
-		pstmt.close();
-		dataSource.close(con);
-
-		return newProduct;
-
+		return findNoProduct;
 	}
 
 	/*
@@ -107,33 +107,8 @@ public class ProductDao {
 	 */
 
 	public Product findByName(String p_title) throws Exception {
+
 		Product findNameProduct = null;
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NAME);
-		pstmt.setString(1, p_title);
-		ResultSet rs = pstmt.executeQuery();
-		if(rs.next()) {
-			int p_no = rs.getInt("p_no");
-			String p_title1 = rs.getString("p_title");
-			int p_price = rs.getInt("p_price");
-			String p_image = rs.getString("p_image");
-			String p_desc = rs.getString("p_desc");
-
-			findNameProduct = new Product(p_no,p_title1,p_price,p_image,p_desc);
-		}
-
-		pstmt.close();
-		dataSource.close(con);
-
-		return findNameProduct;
-
-
-	}
-
-
-	public List <Product> findByNameList (String p_title) throws Exception {
-
-		List<Product> findBookNameList = new ArrayList<>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NAME);
 		pstmt.setString(1, p_title);
@@ -141,21 +116,17 @@ public class ProductDao {
 		if(rs.next()) {
 
 			do {
-				Product product = new Product (
-						rs.getInt("p_no"),
-						rs.getString("p_title"),
-						rs.getInt("p_price"),
-						rs.getString("p_image"),
-						rs.getString("p_desc"));
+				findNameProduct = new Product (rs.getInt("p_no"),
+											   rs.getString("p_title"),
+											   rs.getInt("p_price"),
+											   rs.getString("p_image"),
+											   rs.getString("p_desc"));
+			} while(rs.next());
 
-				findBookNameList.add(product);
-
-			} 	while(rs.next());
-
+			pstmt.close();
+			dataSource.close(con);
 		}
-		return findBookNameList;
-
-
+		return findNameProduct;
 	}
 
 	public List <Product> productList() throws Exception {
@@ -166,19 +137,19 @@ public class ProductDao {
 		ResultSet rs = pstmt.executeQuery();
 
 		if(rs.next()) {
-			Product product 
-			= new Product (rs.getInt("p_no"), 
-					rs.getString("p_title"), 
-					rs.getInt("p_price"), 
-					rs.getString("p_image"),
-					rs.getString("p_desc"));
+			do {
+				Product product 
+				= new Product (rs.getInt("p_no"), 
+							   rs.getString("p_title"), 
+						       rs.getInt("p_price"), 
+						       rs.getString("p_image"),
+						       rs.getString("p_desc"));
 
-			productList.add(product);
+				productList.add(product);
+				
+			} while(rs.next());
 		}
 		return productList;
 	}
-
-
-
 
 }
