@@ -20,6 +20,7 @@ public class CartDao {
 	}
 	
 	public int countByProductNo(Cart cart) throws Exception {
+		
 		int count = 0;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.CART_COUNT_BY_USERID_PRODUCT_NO);

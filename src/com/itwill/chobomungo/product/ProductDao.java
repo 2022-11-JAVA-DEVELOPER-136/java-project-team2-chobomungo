@@ -11,7 +11,7 @@ import com.itwill.chobomungo.common.DataSource;
 
 public class ProductDao {
 
-	//data 객체생성
+	
 	private DataSource dataSource;
 
 
@@ -20,7 +20,6 @@ public class ProductDao {
 		dataSource = new DataSource();
 	}	
 
-	//insert 
 	public int insert (Product product) throws Exception {
 
 	
