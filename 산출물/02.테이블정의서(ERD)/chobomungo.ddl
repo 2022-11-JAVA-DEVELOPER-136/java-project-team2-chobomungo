@@ -35,6 +35,10 @@ CREATE TABLE cart(
 		p_no                          		NUMBER(20)		 NULL 
 );
 
+DROP SEQUENCE cart_cart_no_SEQ;
+
+CREATE SEQUENCE cart_cart_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 
 
