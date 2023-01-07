@@ -78,7 +78,7 @@ public class OrderDao {
 		return rowCount;
 	}
 	//cart_no로 주문 1개 삭제
-	public int deleteByCartNo(Orders orders) throws Exception {
+	public int deleteByOrderNo(Orders orders) throws Exception {
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
