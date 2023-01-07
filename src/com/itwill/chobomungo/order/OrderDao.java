@@ -48,9 +48,11 @@ public class OrderDao {
 			con.rollback();
 			throw e;
 		}finally {
-			if(con!=null)
-				con.close();
-
+			if(con!=null){
+				pstmt1.close();
+				pstmt2.close();
+				dataSource.close(con);
+			}
 		}
 		return 0;
 	}
@@ -72,8 +74,10 @@ public class OrderDao {
 			con.rollback();
 			throw e;
 		}finally {
-			if(con!=null)
-				con.close();
+			if(con!=null){
+				pstmt.close();
+				dataSource.close(con);
+			}
 		}
 		return rowCount;
 	}
@@ -94,8 +98,10 @@ public class OrderDao {
 			con.rollback();
 			throw e;
 		} finally {
-			if(con!=null)
-				con.close();
+			if(con!=null){
+				pstmt.close();
+				dataSource.close(con);
+			}
 		}
 		return rowCount;
 	}
@@ -125,8 +131,11 @@ public class OrderDao {
 			}
 			
 		} finally {
-			if(con!=null)
-				con.close();
+			if(con!=null){
+				rs.close();
+				pstmt.close();
+				dataSource.close(con);
+			}
 		}
 		return orderList;
 	}
@@ -167,8 +176,11 @@ public class OrderDao {
 				} while (rs.next());
 			}
 		}finally {
-			if(con!=null)
-				con.close();
+			if(con!=null){
+				rs.close();
+				pstmt.close();
+				dataSource.close(con);
+			}
 		}
 		return order;
 	}

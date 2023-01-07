@@ -31,7 +31,7 @@ public class CartDao {
 			count=rs.getInt(1);
 		}
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return count;
 	}
 	
@@ -43,7 +43,7 @@ public class CartDao {
 		pstmt.setInt(3, cart.getProduct().getP_no());
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return rowCount;	
 	}
 	/*
@@ -56,7 +56,7 @@ public class CartDao {
 		pstmt.setInt(2, cart.getCart_no());
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return rowCount;
 		
 	}
@@ -81,7 +81,7 @@ public class CartDao {
 		pstmt.setInt(1, cart.getCart_no());
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return rowCount;
 	}
 	
@@ -91,7 +91,7 @@ public class CartDao {
 		pstmt.setString(1, cart.getUser_id());
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return rowCount;
 	}
 	
@@ -115,7 +115,9 @@ public class CartDao {
 						);
 			} while (rs.next());
 		}
-		
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
 		return cartList;
 	}
 	
@@ -137,6 +139,9 @@ public class CartDao {
 											rs.getString("p_desc"))
 								);
 		}
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
 		return tempCart;
 	}
 	

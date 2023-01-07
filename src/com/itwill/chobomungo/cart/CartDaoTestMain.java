@@ -9,7 +9,7 @@ public class CartDaoTestMain {
 	
 	public static void main(String[] args) throws Exception {
 		CartDao cartDao=new CartDao();
-		
+		/*
 		System.out.println("1.add(insert)");
 		Cart addCart=new Cart(0,1,"book3",new Product(8, null, 0, null, null));
 		int rowCount=-999;
@@ -27,6 +27,7 @@ public class CartDaoTestMain {
 		System.out.println("3.delete");
 		rowCount=cartDao.deleteByCartNo(new Cart(9,0,null,null));
 		System.out.println(">> "+rowCount);
+		*/
 		System.out.println("4.cartList[select]");
 		List<Cart> cartList1=cartDao.findByUserId(new Cart(0,0,"book1",null));
 		System.out.println("guard1-->"+cartList1);
