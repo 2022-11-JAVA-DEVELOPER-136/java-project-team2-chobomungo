@@ -1,5 +1,7 @@
 package com.itwill.chobomungo.product.test;
 
+import java.util.List;
+
 import com.itwill.chobomungo.product.Product;
 import com.itwill.chobomungo.product.ProductDao;
 
@@ -27,7 +29,7 @@ public class ProductDaoTestMain {
 		System.out.println(productDao.update(findProduct));
 		
 		System.out.println("상품 이름으로 찾기");
-		Product findProduct1 =productDao.findByName("자바");
+		List <Product> findProduct1 =productDao.findByName("자바");
 		System.out.println(findProduct1);
 		
 	}

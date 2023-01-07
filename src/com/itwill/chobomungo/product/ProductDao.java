@@ -106,27 +106,28 @@ public class ProductDao {
 			P_DESC                 VARCHAR2(800) 
 	 */
 
-	public Product findByName(String p_title) throws Exception {
+	public List <Product> findByName(String p_title) throws Exception {
 
-		Product findNameProduct = null;
+		List <Product> productList = new ArrayList<>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NAME);
 		pstmt.setString(1, p_title);
 		ResultSet rs = pstmt.executeQuery();
+
 		if(rs.next()) {
-
 			do {
-				findNameProduct = new Product (rs.getInt("p_no"),
-											   rs.getString("p_title"),
-											   rs.getInt("p_price"),
-											   rs.getString("p_image"),
-											   rs.getString("p_desc"));
-			} while(rs.next());
+				Product product 
+				= new Product (rs.getInt("p_no"), 
+						rs.getString("p_title"), 
+						rs.getInt("p_price"), 
+						rs.getString("p_image"),
+						rs.getString("p_desc"));
 
-			pstmt.close();
-			dataSource.close(con);
+				productList.add(product);
+
+			} while(rs.next());
 		}
-		return findNameProduct;
+		return productList;
 	}
 
 	public List <Product> productList() throws Exception {
