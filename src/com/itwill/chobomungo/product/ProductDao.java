@@ -11,15 +11,15 @@ import com.itwill.chobomungo.common.DataSource;
 
 public class ProductDao {
 	
-	private DataSource datasource;
+	private DataSource dataSource;
 	public ProductDao() throws Exception {
-		datasource=new DataSource();
+		dataSource=new DataSource();
 	}
 	
 //1. insert
 	
 	public int insert(Product newProduct) throws Exception {
-		Connection con=datasource.getConnection();
+		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_INSERT);
 		pstmt.setInt(1, newProduct.getP_no());
 		pstmt.setString(2, newProduct.getP_title());
@@ -29,13 +29,15 @@ public class ProductDao {
 		pstmt.setInt(6, newProduct.getP_click_count());
 		int insertRowCount=pstmt.executeUpdate();
 		
+		pstmt.close();
+		dataSource.close(con);
 		return insertRowCount;
 	}
 	
 	
 //2. update	
 	public int update(Product updateProduct) throws Exception {
-		Connection con=datasource.getConnection();
+		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE);
 		pstmt.setInt(1, updateProduct.getP_no());
 		pstmt.setString(2, updateProduct.getP_title());
@@ -45,6 +47,8 @@ public class ProductDao {
 		pstmt.setInt(6, updateProduct.getP_click_count());
 		int updateRowCount=pstmt.executeUpdate();
 		
+		pstmt.close();
+		dataSource.close(con);
 		return updateRowCount;
 	}
 	
@@ -52,17 +56,19 @@ public class ProductDao {
 	
 //3. delete	
 	public int delete(int p_no) throws Exception {
-		Connection con=datasource.getConnection();
+		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_DELETE);
 		pstmt.setInt(1,p_no);
 		int deleteRowCount=pstmt.executeUpdate();
+		pstmt.close();
+		dataSource.close(con);
 		return deleteRowCount;
 	}
 	
 	
 //4. findByPrimaryKey
 	public Product findByPrimaryKey(int p_no) throws Exception {
-		Connection con=datasource.getConnection();
+		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_FIND_BY_KEY);
 		pstmt.setInt(2, p_no);
 		ResultSet rs=pstmt.executeQuery();
@@ -78,13 +84,15 @@ public class ProductDao {
 					rs.getString("p_image"),
 					rs.getInt("p_click_count"));
 		}
+		pstmt.close();
+		dataSource.close(con);
 		return findProduct;
 	}
 
 	
 //5. findAll	
 	public ArrayList<Product> findAll() throws Exception {
-		Connection con=datasource.getConnection();
+		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_FIND_ALL);
 		ResultSet rs=pstmt.executeQuery();
 		
@@ -99,6 +107,8 @@ public class ProductDao {
 					rs.getInt("p_click_count")));
 		}
 		
+		pstmt.close();
+		dataSource.close(con);
 		return productList;
 		
 		
