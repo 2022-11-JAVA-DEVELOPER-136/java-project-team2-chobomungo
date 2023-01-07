@@ -148,6 +148,9 @@ public class ProductDao {
 				productList.add(product);
 				
 			} while(rs.next());
+			
+			pstmt.close();
+			dataSource.close(con);
 		}
 		return productList;
 	}
