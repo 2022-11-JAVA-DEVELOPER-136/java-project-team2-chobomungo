@@ -25,7 +25,7 @@ public class Cart {
 		this.cart_no = cart_no;
 		this.cart_qty = cart_qty;
 		this.user_id = user_id;
-		this.product = new Product();
+		this.product = product;
 	}
 
 	public void setCart_no(int cart_no) {
