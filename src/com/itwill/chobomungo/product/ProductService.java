@@ -37,6 +37,11 @@ public class ProductService {
 
 		return productDao.findByName(p_title);
 	}
-
+	
+	//상품리스트 보기
+	public List<Product> productList()throws Exception {
+		return productDao.productList();
+	}
+	
 }
 
