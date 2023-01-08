@@ -15,6 +15,20 @@ insert into product values(product_p_no_SEQ.nextval, '7', 25000, 'default.jpg','
 insert into product values(product_p_no_SEQ.nextval, '8', 25000, 'default.jpg','상세 정보...', 0);
 
 
+/**********************product update************************/
+update product set p_title='안녕' ,p_price=12500, p_image='sample.jpg',p_desc='반값세일중' where p_no=3;
+
+/**********************product delete***********************/
+delete from product where p_no=7;
+
+/**********************product select_by_no************************/
+select p_no,p_title,p_price,p_image,p_desc,p_click_count from product where p_no=3;
+
+/**********************product select_all************************/
+select p_no,p_title,p_price,p_image,p_desc,p_click_count from product;
+
+
+
 
 /**********************cart insert***************************/
 --book1
