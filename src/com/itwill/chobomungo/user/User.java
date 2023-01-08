@@ -12,96 +12,71 @@ package com.itwill.chobomungo.user;
  */
 public class User {
 	
-	private String user_id;
-	private String user_pw;
-	private String user_name;
-	private String user_phone;
-	private String user_address;
-	private String user_email;
+	private String userId;
+	private String userPw;
+	private String userName;
+	private String userPhone;
+	private String userAddress;
+	private String userEmail;
 	
 	
-	public User() {
-
-	}
-
-
-	public User(String user_id, String user_pw, String user_name, String user_phone, String user_address,
-			String user_email) {
+	
+	
+	public User(String userId, String userPw, String userName, String userPhone, String userAddress, String userEmail) {
 		super();
-		this.user_id = user_id;
-		this.user_pw = user_pw;
-		this.user_name = user_name;
-		this.user_phone = user_phone;
-		this.user_address = user_address;
-		this.user_email = user_email;
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userName = userName;
+		this.userPhone = userPhone;
+		this.userAddress = userAddress;
+		this.userEmail = userEmail;
 	}
-
-
-	public String getUser_id() {
-		return user_id;
+	
+	
+	public String getUserId() {
+		return userId;
 	}
-
-
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-
-
-	public String getUser_pw() {
-		return user_pw;
+	public String getUserPw() {
+		return userPw;
 	}
-
-
-	public void setUser_pw(String user_pw) {
-		this.user_pw = user_pw;
+	public void setUserPw(String userPw) {
+		this.userPw = userPw;
 	}
-
-
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
-
-
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
-
-	public String getUser_phone() {
-		return user_phone;
+	public String getUserPhone() {
+		return userPhone;
 	}
-
-
-	public void setUser_phone(String user_phone) {
-		this.user_phone = user_phone;
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
-
-
-	public String getUser_address() {
-		return user_address;
+	public String getUserAddress() {
+		return userAddress;
 	}
-
-
-	public void setUser_address(String user_address) {
-		this.user_address = user_address;
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
-
-
-	public String getUser_email() {
-		return user_email;
+	public String getUserEmail() {
+		return userEmail;
 	}
-
-
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_phone="
-				+ user_phone + ", user_address=" + user_address + ", user_email=" + user_email + "]\n";
+		return "User [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userPhone=" + userPhone
+				+ ", userAddress=" + userAddress + ", userEmail=" + userEmail + "]";
 	}
+	
 	
 	
 	

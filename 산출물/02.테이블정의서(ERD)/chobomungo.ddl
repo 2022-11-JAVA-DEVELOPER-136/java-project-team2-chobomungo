@@ -12,6 +12,8 @@ CREATE TABLE userinfo(
 		user_address                  		VARCHAR2(50)		 NULL ,
 		user_email                    		VARCHAR2(100)		 NULL 
 );
+commit;
+
 
 
 CREATE TABLE product(
@@ -74,4 +76,6 @@ ALTER TABLE orders ADD CONSTRAINT IDX_orders_FK0 FOREIGN KEY (user_id) REFERENCE
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_PK PRIMARY KEY (oi_no);
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK0 FOREIGN KEY (p_no) REFERENCES product (p_no);
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK1 FOREIGN KEY (o_no) REFERENCES orders (o_no) on delete cascade;
+
+commit;
 
