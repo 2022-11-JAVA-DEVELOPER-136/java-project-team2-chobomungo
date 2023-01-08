@@ -30,14 +30,14 @@ public class OrderDao {
 			pstmt1.setString(1,orders.getO_desc());
 			pstmt1.setInt(2,orders.getO_price());
 			pstmt1.setString(3,orders.getUser().getUser_id());
-			pstmt1.executeQuery();
+			pstmt1.executeUpdate();
 			
 			// "insert into order_item(oi.no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ_nextval,?,orders_o_no_SEQ_nextval,?)"
 			pstmt2 = con.prepareStatement(OrderSQL.ORDERITEM_INSERT);
 			for(OrderItem orderItem : orders.getOrderItemList()) {
 				pstmt2.setInt(1, orderItem.getOi_qty());
 				pstmt2.setInt(2, orderItem.getProduct().getP_no());
-				pstmt2.executeQuery();
+				pstmt2.executeUpdate();
 			}
 			con.commit();
 			
@@ -88,7 +88,8 @@ public class OrderDao {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(OrderSQL.ORDER_DELETE_ORDER_NO);
-			pstmt.setInt(1,orders.getO_no());
+			pstmt.setString(1,orders.getUser().getUser_id());
+			pstmt.setInt(2,orders.getO_no());
 			rowCount = pstmt.executeUpdate();
 			con.commit();			
 		}catch (Exception e) {
