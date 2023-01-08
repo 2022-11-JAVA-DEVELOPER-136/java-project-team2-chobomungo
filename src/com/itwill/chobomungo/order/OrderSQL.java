@@ -17,16 +17,11 @@ public class OrderSQL {
 	public static final String ORDER_DELETE_ORDER_NO = "delete orders where user_id = ? and o_no = ?"; // user_id 주문목록 1개 삭제 
 	
 	// SQL 수정
-	public static final String ORDER_SELECT_USERID = "select o_no, o_desc, o_price, o_date, o.user_id, "
-													+ "user_pw, user_name, user_phone, user_address, user_email from orders o "
-													+ "join userinfo u "
-													+ "on o.user_id = u.user_id "
-													+ "where o.user_id = ?";// user_id 전체 주문목록
+	public static final String ORDER_SELECT_USERID = "select * from orders o join userinfo u on o.user_id = u.user_id where o.user_id = ?";// user_id 전체 주문목록
 	/*
 	 * o_no 의 주문상세, SQL 수정 
 	 */
-	public static final String ORDER_SELECT_WITH_PRODUCT_USERID ="select o.o_no, o_desc, o_price, o_date, o.user_id, user_pw, user_name, user_phone, user_address, user_email, oi_no, oi_qty, oi.p_no, p_title, p_price, p_image, p_desc "
-																+ "from orders o "
+	public static final String ORDER_SELECT_WITH_PRODUCT_USERID ="select * from orders o "
 																+ "join userinfo u on  o.user_id = u.user_id "
 																+ "join order_item oi on o.o_no = oi.o_no "
 																+ "join product p on p.p_no = oi.p_no "
