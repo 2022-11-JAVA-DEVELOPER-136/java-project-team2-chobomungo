@@ -29,12 +29,12 @@ public class CartDaoTestMain {
 		System.out.println(">> "+rowCount);
 		*/
 		System.out.println("4.cartList[select]");
-		List<Cart> cartList1=cartDao.findByUserId(new Cart(0,0,"book1",null));
-		System.out.println("guard1-->"+cartList1);
-		List<Cart> cartList2=cartDao.findByUserId(new Cart(0,0,"book2",null));
-		System.out.println("guard2-->"+cartList2);
+		List<Cart> cartList1=cartDao.findByUserId("book1");
+		System.out.println("book1-->"+cartList1);
+		List<Cart> cartList2=cartDao.findByUserId("book2");
+		System.out.println("book2-->"+cartList2);
 		System.out.println("5.selectProductCount");
-		int productCount1=cartDao.countByProductNo(new Cart(0,0,"book1",new Product(2,null,0,null,null)));
+		int productCount1=cartDao.countByProductNo("book2",2);
 		System.out.println(">> "+productCount1);
 		
 	}

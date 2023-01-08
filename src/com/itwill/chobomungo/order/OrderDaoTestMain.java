@@ -38,10 +38,10 @@ public class OrderDaoTestMain {
 		 */
 		int o_price = 0;
 		String o_desc=null;
-		Cart tempCart = new Cart(0,2,"book2",null);
+		String user_id = "book2";
 		CartDao cartDao	= new CartDao();
 		List<Cart> cartList = new ArrayList<Cart>();
-		cartList = cartDao.findByUserId(tempCart);
+		cartList = cartDao.findByUserId(user_id);
 		
 		orderItemList = new ArrayList<OrderItem>();
 		for (Cart cart : cartList) {
