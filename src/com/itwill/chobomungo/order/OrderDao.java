@@ -1,10 +1,8 @@
 package com.itwill.chobomungo.order;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,7 +104,7 @@ public class OrderDao {
 		return rowCount;
 	}
 	//User_ID의 주문리스트
-	public List<Orders> findByUserID(Orders orders) throws Exception {
+	public List<Orders> findByUserID(String sUserId) throws Exception {
 		List<Orders> orderList = new ArrayList<Orders>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -114,27 +112,25 @@ public class OrderDao {
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_USERID);
-			pstmt.setString(1,orders.getUser().getUser_id());
+			pstmt.setString(1,sUserId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				rs.getInt("o_no");
-				rs.getString("o_desc");
-				rs.getInt("o_price");
-				rs.getDate("o_date");
+				orderList.add(new Orders(rs.getInt("o_no"),
+				rs.getString("o_desc"),
+				rs.getInt("o_price"),
+				rs.getDate("o_date"),
 				new User(rs.getString("user_id"),
 						rs.getString("user_pw"),
 						rs.getString("user_name"),
 						rs.getString("user_phone"),
 						rs.getString("user_address"),
 						rs.getString("user_email")
-						);
-			}
+						)));
+			} 
 			
 		} finally {
 			if(con!=null){
-				rs.close();
-				pstmt.close();
-				dataSource.close(con);
+				con.close();
 			}
 		}
 		return orderList;
@@ -152,16 +148,17 @@ public class OrderDao {
 			pstmt.setInt(2, orders.getO_no());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				rs.getInt("o_no");
-				rs.getString("o_desc");
-				rs.getInt("o_price");
-				rs.getDate("o_date");
-				new User(rs.getString("user_id"),
-						rs.getString("user_pw"),
-						rs.getString("user_name"),
-						rs.getString("user_phone"),
-						rs.getString("user_address"),
-						rs.getString("user_email"));
+				order = new Orders(rs.getInt("o_no"),
+								   rs.getString("o_desc"),
+								   rs.getInt("o_price"),
+								   rs.getDate("o_date"),
+									new User(rs.getString("user_id"),
+											rs.getString("user_pw"),
+											rs.getString("user_name"),
+											rs.getString("user_phone"),
+											rs.getString("user_address"),
+											rs.getString("user_email")));
+				
 				do {
 					order.getOrderItemList().
 						add(new OrderItem(rs.getInt("oi_no"),
@@ -177,9 +174,8 @@ public class OrderDao {
 			}
 		}finally {
 			if(con!=null){
-				rs.close();
-				pstmt.close();
-				dataSource.close(con);
+				
+				con.close();
 			}
 		}
 		return order;
