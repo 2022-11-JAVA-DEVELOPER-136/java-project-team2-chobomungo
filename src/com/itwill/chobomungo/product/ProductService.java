@@ -51,19 +51,21 @@ public class ProductService {
 	//4. 상품 수정
 	public int productUpdate(Product product) throws Exception{
 		return productDao.update(product);
-		
-	//5. 상품 삭제
-//	public int productDelete(int p_no)throws Exception {
-//			return productDao.delete(p_no);
-//		}
-//		
 	}
-
+	
+	//5. 상품 삭제
+	public int productDelete(int p_no) throws Exception {
+		return productDao.delete(p_no);
+		
+	}
 
 	//중복체크 시 필요한 메소드
 	public static boolean addProduct(Product product) {
 		return false;
 	}
+
+
+
 
 
 

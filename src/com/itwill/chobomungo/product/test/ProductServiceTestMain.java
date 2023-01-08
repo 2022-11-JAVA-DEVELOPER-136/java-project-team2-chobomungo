@@ -1,5 +1,6 @@
 package com.itwill.chobomungo.product.test;
 
+
 import javax.swing.JOptionPane;
 
 import com.itwill.chobomungo.product.Product;
@@ -15,10 +16,10 @@ public class ProductServiceTestMain {
 		//1. 전체 상품 보기
 		System.out.println("findAll >>"+productDao.findAll());
 		
-		//2. 상품번호 1번으로 찾기
+		//2. 상품번호로 상품 1개 찾기
 		System.out.println("findByPrimaryKey >>"+productDao.findByPrimaryKey(1));
 		
-		//3. 상품 추가-중복 체크하면서..다시보기
+		//3. 상품 추가-중복 체크 시
 		System.out.println("상품 추가하기");
 		boolean addSuccess1 = 
 				ProductService.addProduct(new Product(1, "소설3", 15000,"image.jpg", "상세페이지",5));
@@ -41,13 +42,10 @@ public class ProductServiceTestMain {
 		System.out.println(">> "+productService.productWrite(newProduct));
 		
 		//4. 상품 수정
-	
-//		findProduct.("333-3333");
-//		System.out.println(">> "+productService.productUpdate(product));
-//		System.out.println(">> "+productService.productDetail(3));
-//		
-//		
-//		//5. 상품 삭제
-//		System.out.println(">>"+productService.productDelete(2));
+		newProduct.setP_title("소설이름 수정");
+		System.out.println(">>"+ productService.productUpdate(newProduct));
+		
+		//5. 상품 삭제
+		System.out.println(">>"+productService.productDelete(2));
 	}
 }
