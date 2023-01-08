@@ -14,7 +14,7 @@ public class OrderSQL {
 	public static final String ORDER_INSERT="insert into orders(o_no,o_desc,o_price,o_date,user_id) values(orders_o_no_SEQ_nextval,?,?,sysdate,?)";
 	
 	public static final String ORDER_DELETE_USERID="delete orders where user_id = ?"; // user_id의 주문목록 전체 삭제
-	public static final String ORDER_DELETE_ORDER_NO="delete orders where user_id and o_no = ?"; // user_id 주문목록 1개 삭제 
+	public static final String ORDER_DELETE_ORDER_NO="delete orders where user_id = ? and o_no = ?"; // user_id 주문목록 1개 삭제 
 	
 	public static final String ORDER_SELECT_USERID="select * from orders where user_id = ?";// user_id 전체 주문목록
 	/*
