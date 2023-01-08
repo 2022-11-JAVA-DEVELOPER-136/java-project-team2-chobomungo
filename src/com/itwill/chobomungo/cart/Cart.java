@@ -17,7 +17,7 @@ public class Cart {
 	private Product product;
 	
 	public Cart() {
-		product = new Product();
+		
 	}
 
 	public Cart(int cart_no, int cart_qty, String user_id, Product product) {
