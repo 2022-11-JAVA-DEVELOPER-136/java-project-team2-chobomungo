@@ -20,7 +20,7 @@ public class OrderDaoTestMain {
 		/*
 		 * 1.상품에서직접주문
 		 */
-		
+		/*
 		int p_qty=1;
 		int p_no=1;
 		ProductDao productDao=new ProductDao();
@@ -32,7 +32,7 @@ public class OrderDaoTestMain {
 		Orders newOrder=new Orders(0,product.getP_title()+"외 0종" ,  product.getP_price(), new Date(), new User("book1",null,null,null,null,null));
 		newOrder.setOrderItemList(orderItemList);
 		orderDao.insert(newOrder);
-		
+		*/
 		/*
 		 * 2.cart에서 주문
 		 */
@@ -43,7 +43,7 @@ public class OrderDaoTestMain {
 		List<Cart> cartList = new ArrayList<Cart>();
 		cartList = cartDao.findByUserId(user_id);
 		
-		orderItemList = new ArrayList<OrderItem>();
+		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		for (Cart cart : cartList) {
 			orderItemList.add(new OrderItem(0,cart.getCart_qty(),cart.getProduct().getP_no(),cart.getProduct()));
 			int tempPrice = cart.getCart_qty()*cart.getProduct().getP_price();
@@ -55,13 +55,14 @@ public class OrderDaoTestMain {
 		newOrder2.setOrderItemList(orderItemList);
 		orderDao.insert(newOrder2);
 		
+		System.out.println();
 		// UserId 주문 전체 삭제
-		int count = orderDao.deleteByUserId(newOrder2);
-		System.out.println(">> 주문삭제 : "+count);
+		//int count = orderDao.deleteByUserId(newOrder2);
+		//System.out.println(">> 주문삭제 : "+count);
 		
 		//orderno로 주문 1개삭제
-		count = orderDao.deleteByOrderNo(newOrder);
-		System.out.println(">> 주문삭제 : "+count);
+		//count = orderDao.deleteByOrderNo(newOrder2);
+		//System.out.println(">> 주문삭제 : "+count);
 		
 		//주문목록
 		orderDao.findByOrderNo(newOrder2);
