@@ -11,22 +11,21 @@ public class Orders {
 	private String o_desc;
 	private int o_price;
 	private Date o_date;
-	private User user;
+	private String userId;
 	
-	List<OrderItem> orderItemList;
+	private List<OrderItem> orderItemList;
 	
 	public Orders() {
-
 		orderItemList = new ArrayList<OrderItem>();
 	}
 
-	public Orders(int o_no, String o_desc, int o_price, Date o_date, User user) {
+	public Orders(int o_no, String o_desc, int o_price, Date o_date, String userId) {
 		super();
 		this.o_no = o_no;
 		this.o_desc = o_desc;
 		this.o_price = o_price;
 		this.o_date = o_date;
-		this.user = user;
+		this.userId = userId;
 		this.orderItemList = new ArrayList<OrderItem>();
 	}
 
@@ -62,12 +61,12 @@ public class Orders {
 		this.o_date = o_date;
 	}
 
-	public User getUser() {
-		return user;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(String userId) {
+		this.userId = userId;
 	}
 
 	public List<OrderItem> getOrderItemList() {
@@ -81,7 +80,7 @@ public class Orders {
 	@Override
 	public String toString() {
 		return "Orders [o_no=" + o_no + ", o_desc=" + o_desc + ", o_price=" + o_price + ", o_date=" + o_date + ", user="
-				+ user + ", orderItemList=" + orderItemList + "]";
+				+ userId + ", orderItemList=" + orderItemList + "]";
 	}
 
 	

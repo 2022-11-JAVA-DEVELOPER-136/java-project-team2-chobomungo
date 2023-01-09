@@ -11,15 +11,14 @@ import com.itwill.chobomungo.product.ProductDao;
 import com.itwill.chobomungo.user.User;
 
 public class OrderDaoTestMain {
+	
 	public static void main(String[] args) throws Exception{
 		OrderDao orderDao=new OrderDao();
-		
+		/*
 		System.out.println(orderDao.findByUserID("book1"));
 		System.out.println(orderDao.findByOrderNo(new Orders(1,null,0,null,new User("book1",null,null,null,null,null))));
 		
-		/*
-		 * 1.상품에서직접주문
-		 */
+		
 		
 		int p_qty=1;
 		int p_no=3;
@@ -34,9 +33,7 @@ public class OrderDaoTestMain {
 		newOrder.setOrderItemList(orderItemList);
 		orderDao.insert(newOrder);
 		
-		/*
-		 * 2.cart에서 주문
-		 */
+	
 		int o_price = 0;
 		String o_desc=null;
 		String user_id = "book2";
@@ -59,17 +56,16 @@ public class OrderDaoTestMain {
 		System.out.println("----------------------------");
 		System.out.println(newOrder2);
 		orderDao.insert(newOrder2);
-		
-		// UserId 주문 전체 삭제
+
 		int count = orderDao.deleteByUserId(newOrder2);
 		System.out.println(">> 주문삭제 : "+count);
-		
-		//orderno로 주문 1개삭제
+
 		count = orderDao.deleteByOrderNo(newOrder);
 		System.out.println(">> 주문삭제 : "+count);
 		
-		//주문목록
+	
 		orderDao.findByOrderNo(newOrder2);
-		
+		*/
 	}
+
 }
