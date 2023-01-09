@@ -66,6 +66,18 @@ public class OrderPanel extends JPanel {
 		orderDeliveryPanel.add(orderDeliveryInfoLB);
 		
 		orderDeliveryCKB = new JCheckBox("기본 배송지");
+		orderDeliveryCKB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(orderDeliveryCKB.isSelected()) {
+					orderDeliveryAddressTF.setText(loginUser.getUserAddress());
+					orderDeliveryNameTF.setText(loginUser.getUserName());
+				}else {
+					orderDeliveryAddressTF.setText("");
+					orderDeliveryNameTF.setText("");
+					orderDeliveryAddressTF.requestFocus();
+				}
+			}
+		});
 		orderDeliveryCKB.setHorizontalTextPosition(SwingConstants.LEADING);
 		orderDeliveryCKB.setHorizontalAlignment(SwingConstants.CENTER);
 		orderDeliveryCKB.setFont(new Font("D2Coding", Font.PLAIN, 14));
