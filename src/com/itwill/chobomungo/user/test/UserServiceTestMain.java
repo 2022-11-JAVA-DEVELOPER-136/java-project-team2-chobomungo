@@ -55,11 +55,17 @@ public class UserServiceTestMain {
 		
 		// 회원정보수정
 		User updateUser = new User("book23","1234","손동필","01050596610","서울시","sdhjko@naver");
-		int i = userService.update(updateUser);
-		if(i==1) {
-			System.out.println("회원정보 수정완료"+updateUser);
-		}else {
-			System.out.println("아이디를 다시 입력하세요.");
+		int updateCheck = userService.update(updateUser);
+		if (updateCheck == -1) {
+			System.out.println("존재하지 않는 아이디 입니다");
+		} else if (updateCheck == -2) {
+			System.out.println("비밀번호 8~16 길이로 사용하세요");
+		} else if (updateCheck == -3) {
+			System.out.println("대소문자 각 하나 이상 사용하세요.");
+		} else if (updateCheck == -4) {
+			System.out.println("특수문자 !,~,@,#,$,*,^ 사용하세요");
+		} else {
+			System.out.println("회원정보 수정완료" + updateUser);
 		}
 
 		
