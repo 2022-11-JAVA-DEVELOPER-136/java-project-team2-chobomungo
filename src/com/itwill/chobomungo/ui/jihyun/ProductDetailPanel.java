@@ -25,6 +25,8 @@ import javax.swing.DefaultComboBoxModel;
 
 public class ProductDetailPanel extends JPanel {
 	
+	private ProductService productService;
+	
 	private JLabel productTitleLB;
 	private JLabel productImg;
 	private JLabel productPriceLB;
@@ -37,8 +39,9 @@ public class ProductDetailPanel extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public ProductDetailPanel() {
+	public ProductDetailPanel() throws Exception {
 		setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane productDetailScrollPane = new JScrollPane();
@@ -77,10 +80,14 @@ public class ProductDetailPanel extends JPanel {
 		productImg.setBounds(44, 58, 180, 230);
 		productDetailPanel.add(productImg);
 		
+		
 		productTitleLB = new JLabel("상품명");
 		productTitleLB.setFont(new Font("D2Coding", Font.BOLD, 20));
 		productTitleLB.setBounds(48, 23, 309, 29);
 		productDetailPanel.add(productTitleLB);
+		productTitleLB.setText(productService.bookSearchNumber(1).getP_title());
+		
+		
 		
 		JLabel productPriceMainLB = new JLabel("판매가격");
 		productPriceMainLB.setBounds(250, 64, 61, 16);
@@ -116,6 +123,7 @@ public class ProductDetailPanel extends JPanel {
 	}
 	
 	/******* Product 값 불러오기 *********/
+
 
 	
 }
