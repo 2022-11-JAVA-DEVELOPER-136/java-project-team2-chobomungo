@@ -20,27 +20,32 @@ import javax.swing.border.LineBorder;
 
 import com.itwill.chobomungo.order.OrderService;
 import com.itwill.chobomungo.order.Orders;
+import com.itwill.chobomungo.ui.ChobomungoMainFrame;
+import com.itwill.chobomungo.user.User;
 
 import javax.swing.JScrollPane;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class OrderPanel extends JPanel {
 	private JTextField orderDeliveryAddressTF;
 	private JTextField orderDeliveryNameTF;
 	private JPanel orderDetailPanel;
 	private JPanel orderListPanel;
-
+	private JCheckBox orderDeliveryCKB;
+	private JButton orderBTN;
+	private JLabel orderTotalPriceLB;
+	private JPanel orderTotalPricePanel;
+	
 	/**
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public OrderPanel() throws Exception {
+	public OrderPanel(User loginUser) throws Exception {
 		setPreferredSize(new Dimension(400, 620));
-		/*********/
-		OrderService orderService = new OrderService(); 
-		
-		/************/
+
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel orderPanel = new JPanel();
@@ -60,14 +65,14 @@ public class OrderPanel extends JPanel {
 		orderDeliveryInfoLB.setBounds(12, 10, 68, 15);
 		orderDeliveryPanel.add(orderDeliveryInfoLB);
 		
-		JCheckBox orderDeliveryCB = new JCheckBox("기본 배송지");
-		orderDeliveryCB.setHorizontalTextPosition(SwingConstants.LEADING);
-		orderDeliveryCB.setHorizontalAlignment(SwingConstants.CENTER);
-		orderDeliveryCB.setFont(new Font("D2Coding", Font.PLAIN, 14));
-		orderDeliveryCB.setBorder(null);
-		orderDeliveryCB.setBackground(new Color(226, 226, 226));
-		orderDeliveryCB.setBounds(238, 6, 102, 23);
-		orderDeliveryPanel.add(orderDeliveryCB);
+		orderDeliveryCKB = new JCheckBox("기본 배송지");
+		orderDeliveryCKB.setHorizontalTextPosition(SwingConstants.LEADING);
+		orderDeliveryCKB.setHorizontalAlignment(SwingConstants.CENTER);
+		orderDeliveryCKB.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		orderDeliveryCKB.setBorder(null);
+		orderDeliveryCKB.setBackground(new Color(226, 226, 226));
+		orderDeliveryCKB.setBounds(238, 6, 102, 23);
+		orderDeliveryPanel.add(orderDeliveryCKB);
 		
 		orderDeliveryAddressTF = new JTextField();
 		orderDeliveryAddressTF.setColumns(10);
@@ -91,22 +96,26 @@ public class OrderPanel extends JPanel {
 		
 		JPanel orderNumberOfItemPanel = new JPanel();
 		orderNumberOfItemPanel.setLayout(null);
-		orderNumberOfItemPanel.setBounds(12, 148, 348, 30);
+		orderNumberOfItemPanel.setBounds(12, 116, 348, 30);
 		orderPanel.add(orderNumberOfItemPanel);
 		
 		JLabel orderNumberOfItemtLB = new JLabel("");
 		orderNumberOfItemtLB.setBounds(12, 0, 75, 30);
 		orderNumberOfItemPanel.add(orderNumberOfItemtLB);
 		
-		JButton orderBTN = new JButton("주문 하기");
-		orderBTN.setBounds(12, 429, 348, 43);
+		orderBTN = new JButton("주문 하기");
+		orderBTN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		orderBTN.setBounds(12, 376, 348, 43);
 		orderPanel.add(orderBTN);
 		
-		JPanel orderTotalPricePanel = new JPanel();
+		orderTotalPricePanel = new JPanel();
 		orderTotalPricePanel.setLayout(null);
 		orderTotalPricePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		orderTotalPricePanel.setBackground(Color.WHITE);
-		orderTotalPricePanel.setBounds(12, 376, 348, 30);
+		orderTotalPricePanel.setBounds(12, 339, 348, 30);
 		orderPanel.add(orderTotalPricePanel);
 		
 		JLabel orderTotalNameLB = new JLabel("최종 결제 금액");
@@ -114,19 +123,19 @@ public class OrderPanel extends JPanel {
 		orderTotalNameLB.setBounds(12, 0, 99, 26);
 		orderTotalPricePanel.add(orderTotalNameLB);
 		
-		JLabel orderTotalPriceLB = new JLabel("200,000원");
+		orderTotalPriceLB = new JLabel("200,000원");
 		orderTotalPriceLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderTotalPriceLB.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 		orderTotalPriceLB.setBounds(237, 0, 99, 26);
 		orderTotalPricePanel.add(orderTotalPriceLB);
 		
 		JScrollPane orderListScrollPane = new JScrollPane();
-		orderListScrollPane.setBounds(12, 178, 348, 188);
+		orderListScrollPane.setBounds(12, 146, 348, 188);
 		orderPanel.add(orderListScrollPane);
 		
 		orderListPanel = new JPanel();
 		orderListPanel.setBackground(Color.WHITE);
-		orderListPanel.setPreferredSize(new Dimension(320, 400));
+		orderListPanel.setPreferredSize(new Dimension(320, 500));
 		orderListScrollPane.setViewportView(orderListPanel);
 		orderListPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -151,16 +160,17 @@ public class OrderPanel extends JPanel {
 		orderDetailDeleteBTN.setBounds(274, 9, 39, 23);
 		orderDetailPanel.add(orderDetailDeleteBTN);
 	
-		displayOrderList();
+		displayOrderList(loginUser);
+		
 	}
-
-	public void displayOrderList() throws Exception {
-		OrderService orderService = new OrderService(); 
-		String user = "book1";
+	public void displayOrderList(User loginUser) throws Exception {
+		OrderService orderService = new OrderService();
 		orderListPanel.removeAll();
-		List<Orders> orderList = orderService.orderList(user);
-		System.out.println(orderList);
+		orderTotalPricePanel.removeAll();
+		List<Orders> orderList = orderService.orderList(loginUser.getUserId());
+		int totPrice = 0;
 		for(Orders order : orderList) {
+			totPrice += order.getO_price();
 			orderDetailPanel = new JPanel();
 			orderDetailPanel.setLayout(null);
 			orderDetailPanel.setPreferredSize(new Dimension(320, 80));
@@ -181,16 +191,30 @@ public class OrderPanel extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					// 오더리스트 1개 삭제
 					try {
-						int deleteOrderListCount = orderService.deleteOrderNo(user, o.getO_no());
+						int deleteOrderListCount = orderService.deleteOrderNo(loginUser.getUserId(), o.getO_no());
 						JOptionPane.showMessageDialog(null, deleteOrderListCount + "개의 주문이 삭제되었습니다.");
-						displayOrderList();
+						displayOrderList(loginUser);
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
 				}
 			});
+			
+			JLabel orderTotalNameLB = new JLabel("최종 결제 금액");
+			orderTotalNameLB.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+			orderTotalNameLB.setBounds(12, 0, 99, 26);
+			orderTotalPricePanel.add(orderTotalNameLB);
+			
+			orderTotalPriceLB = new JLabel(new DecimalFormat("#,###원").format(totPrice));
+			orderTotalPriceLB.setHorizontalAlignment(SwingConstants.RIGHT);
+			orderTotalPriceLB.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+			orderTotalPriceLB.setBounds(237, 0, 99, 26);
+			orderTotalPricePanel.add(orderTotalPriceLB);
+			
 			orderListPanel.add(orderDetailPanel);
 			
 		}
 	}
+
+
 }
