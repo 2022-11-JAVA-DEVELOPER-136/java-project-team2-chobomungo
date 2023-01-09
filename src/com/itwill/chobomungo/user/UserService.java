@@ -90,9 +90,9 @@ public class UserService {
 	}
 
 	// 이메일 중복체크
-	public boolean emailDuplicateCheck(User user) throws Exception {
+	public boolean emailDuplicateCheck(String email) throws Exception {
 		boolean duplicateCheck = false;
-		if (userDao.countByUserEmail(user.getUserEmail()) >= 1) {
+		if (userDao.countByUserEmail(email) >= 1) {
 			duplicateCheck = true;
 			return duplicateCheck;
 		}
