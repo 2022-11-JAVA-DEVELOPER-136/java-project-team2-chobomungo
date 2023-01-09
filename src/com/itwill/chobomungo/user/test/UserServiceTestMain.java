@@ -12,7 +12,7 @@ public class UserServiceTestMain {
 		UserService userService = new UserService();
 
 		System.out.println("1.회원가입 중복체크");
-		User user = new User("book20", "12345678SSs!", "손동필", "010-5059", "서울", "naver");
+		User user = new User("book21", "12345678SSs!", "손흥민", "010-5059", "서울", "naver");
 		int add1 = userService.create(user);
 		if (add1 == -1) {
 			JOptionPane.showMessageDialog(null, "이미 사용중이거나 탈퇴한 아이디입니다.");
@@ -72,16 +72,16 @@ public class UserServiceTestMain {
 		
 		
 		//  회원탈퇴
-		 int delete = userService.remove("book17");
+		 int delete = userService.remove("book20","12345678SSs!");
 		 if(delete == 1) {
 			 System.out.println("아이디가 삭제되었습니다");
 		 }
 		 else {
-			 System.out.println("존재하지않는 아이디입니다");
+			 System.out.println("아이디와 비밀번호를 다시 입력해주세요");
 		 }
 
 		// 이름과 전화번호로 아이디찾기
-		String findUserID = userService.FindId("손동필", "010-5059");
+		String findUserID = userService.findId("손동필", "010-5059");
 		if(findUserID==null) {
 			System.out.println("아이디를 찾을 수 없습니다");
 		}else {
@@ -89,12 +89,19 @@ public class UserServiceTestMain {
 		}
 
 		// 아이디와 이름으로 비밀번호 찾기
-		String findUserPw = userService.FindPw("book1", "정약용");
+		String findUserPw = userService.findPw("book1", "정약용");
 		if(findUserPw==null) {
 			System.out.println("비밀번호를 찾을 수 없습니다");
 		}else {
 			System.out.println("비밀번호 : "+findUserPw);
 		}
+		//아이디 중복체크
+		boolean idCheck = userService.idCheck("book2");
+		System.out.println(idCheck);
+		
+		//이메일 중복체크
+		boolean emailCheck = userService.emailDuplicateCheck("book3@korea.com");
+		System.out.println(emailCheck);
 
 	}
 
