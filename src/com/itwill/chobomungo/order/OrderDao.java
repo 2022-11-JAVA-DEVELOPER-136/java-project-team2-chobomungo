@@ -29,7 +29,7 @@ public class OrderDao {
 			pstmt1 = con.prepareStatement(OrderSQL.ORDER_INSERT);
 			pstmt1.setString(1,orders.getO_desc());
 			pstmt1.setInt(2,orders.getO_price());
-			pstmt1.setString(3,orders.getUser().getUser_id());
+			pstmt1.setString(3,orders.getUser().getUserId());
 			pstmt1.executeUpdate();
 			
 			// "insert into order_item(oi.no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ_nextval,?,orders_o_no_SEQ_nextval,?)"
@@ -63,7 +63,7 @@ public class OrderDao {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(OrderSQL.ORDER_DELETE_USERID);
-			pstmt.setString(1, orders.getUser().getUser_id());
+			pstmt.setString(1, orders.getUser().getUserId());
 			rowCount = pstmt.executeUpdate();
 			con.commit();
 			
@@ -88,7 +88,7 @@ public class OrderDao {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(OrderSQL.ORDER_DELETE_ORDER_NO);
-			pstmt.setString(1,orders.getUser().getUser_id());
+			pstmt.setString(1,orders.getUser().getUserId());
 			pstmt.setInt(2,orders.getO_no());
 			rowCount = pstmt.executeUpdate();
 			con.commit();			
@@ -145,7 +145,7 @@ public class OrderDao {
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_PRODUCT_USERID);
-			pstmt.setString(1,orders.getUser().getUser_id());
+			pstmt.setString(1,orders.getUser().getUserId());
 			pstmt.setInt(2, orders.getO_no());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
