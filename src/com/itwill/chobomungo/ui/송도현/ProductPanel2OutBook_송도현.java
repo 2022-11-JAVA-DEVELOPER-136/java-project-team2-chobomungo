@@ -1,4 +1,4 @@
-package com.itwill.chobomungo.송도현;
+package com.itwill.chobomungo.ui.송도현;
 
 import javax.swing.JPanel;
 import java.awt.FlowLayout;

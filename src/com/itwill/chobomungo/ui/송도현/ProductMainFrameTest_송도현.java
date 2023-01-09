@@ -1,10 +1,11 @@
-package com.itwill.chobomungo.송도현;
+package com.itwill.chobomungo.ui.송도현;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.BorderLayout;
 import javax.swing.JTabbedPane;
 import java.awt.Dimension;
