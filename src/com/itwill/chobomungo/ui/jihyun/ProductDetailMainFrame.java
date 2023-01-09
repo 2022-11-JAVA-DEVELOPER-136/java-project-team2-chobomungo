@@ -6,12 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
 
-public class ProductMainFrame extends JFrame {
+import com.itwill.chobomungo.product.Product;
+
+public class ProductDetailMainFrame extends JFrame {
 
 	private JPanel contentPane;
-
+	private Product product;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -19,7 +21,7 @@ public class ProductMainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProductMainFrame frame = new ProductMainFrame();
+					ProductDetailMainFrame frame = new ProductDetailMainFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,8 +32,9 @@ public class ProductMainFrame extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public ProductMainFrame() {
+	public ProductDetailMainFrame() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 620);
 		contentPane = new JPanel();
@@ -39,8 +42,11 @@ public class ProductMainFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		ProductDetailPanel productDatailPanel = new ProductDetailPanel();
+		contentPane.add(productDatailPanel, BorderLayout.CENTER);
+		
+		
+		product = new Product(1,"나는 바보다",1000,"eeee.gif","어떡하지 나는 아무것도 몰라..");		
 	}
 
 }
