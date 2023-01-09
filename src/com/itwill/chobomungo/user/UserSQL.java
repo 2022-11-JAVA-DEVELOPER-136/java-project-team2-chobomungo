@@ -18,7 +18,7 @@ public class UserSQL {
 
 	public static final String USERINFO_UPDATE = "update userinfo set user_pw = ?,user_name =?,user_phone = ?,user_address =?,user_email =? where user_id =?";
 
-	public static final String USERINFO_DELETE = "delete from userinfo where user_id =? ";
+	public static final String USERINFO_DELETE = "delete from userinfo where user_id =? and user_pw =? ";
 	
 	public static final String USERINFO_SELECT_BY_ID = "select * from userinfo where user_id =?";
 	
@@ -26,6 +26,9 @@ public class UserSQL {
 	
 	public static final String USER_SELECT_BY_ID_COUNT=
 			"select count(*) as cnt  from userinfo where user_id=?";
+	
+	public static final String USER_SELECT_BY_EMAIL_COUNT=
+			"select count(*) as cnt  from userinfo where user_email=?";
 	
 	public static final String USER_SELECT_BY_PW_COUNT=
 			"select count(*) as cnt  from userinfo where user_=?";
