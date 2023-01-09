@@ -3,6 +3,7 @@ insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_emai
 insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_email) values('book2','2222','이순신','010-2222-2222','서울시 관악구','book2@korea.com');
 insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_email) values('book3','3333','이방원','010-3333-3333','서울시 종로구','book3@korea.com');
 
+commit;
 /**********************product insert************************/
 
 insert into product values(product_p_no_SEQ.nextval, '1', 25000, 'default.jpg','상세 정보...');
@@ -13,6 +14,7 @@ insert into product values(product_p_no_SEQ.nextval, '5', 25000, 'default.jpg','
 insert into product values(product_p_no_SEQ.nextval, '6', 25000, 'default.jpg','상세 정보...');
 insert into product values(product_p_no_SEQ.nextval, '7', 25000, 'default.jpg','상세 정보...');
 insert into product values(product_p_no_SEQ.nextval, '8', 25000, 'default.jpg','상세 정보...');
+commit;
 
 
 /**********************product update************************/
@@ -32,10 +34,8 @@ select p_no,p_title,p_price,p_image,p_desc,p_click_count from product;
 
 /**********************cart insert***************************/
 --book1
-insert into cart(cart_no,cart_qty,user_id,p_no) 
-    values(cart_cart_no_SEQ.nextval,1,'book1',1);
-insert into cart(cart_no,cart_qty,user_id,p_no) 
-    values(cart_cart_no_SEQ.nextval,1,'book1',2);
+insert into cart values(cart_cart_no_SEQ.nextval,1,'book1',1);
+insert into cart(cart_no,cart_qty,user_id,p_no) values(cart_cart_no_SEQ.nextval,1,'book1',2);
 --book2    
 insert into cart(cart_no,cart_qty,user_id,p_no) values(cart_cart_no_SEQ.nextval,1,'book2',4);
 insert into cart(cart_no,cart_qty,user_id,p_no)
@@ -67,5 +67,7 @@ insert into order_item(oi_no,oi_qty,o_no,p_no)
 --제품번호 8번 1권
 insert into order_item(oi_no,oi_qty,o_no,p_no)
     values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,8);
+    
+    commit;
     
 
