@@ -1,72 +1,44 @@
 package com.itwill.chobomungo.ui.이원호;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
 import java.awt.Color;
-import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
-import javax.swing.JSeparator;
 import javax.swing.JButton;
+import javax.swing.border.LineBorder;
+import javax.swing.JScrollPane;
 import java.awt.Dimension;
 
-public class OrderPanel extends JFrame {
-
-	private JPanel contentPane;
-	private JTextField orderDeliveryAddressTF;
-	private JTextField orderDeliveryNameTF;
-	private JPanel orderListPanel;
+public class OrderPanel extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+	private JLabel orderNumberOfItemtLB;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OrderPanel frame = new OrderPanel();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
+	 * Create the panel.
 	 */
 	public OrderPanel() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 620);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JScrollPane orderScrollPane = new JScrollPane();
-		contentPane.add(orderScrollPane, BorderLayout.CENTER);
+		setLayout(new BorderLayout(0, 0));
 		
 		JPanel orderPanel = new JPanel();
-		orderPanel.setBackground(Color.WHITE);
-		orderScrollPane.setViewportView(orderPanel);
-		orderPanel.setLayout(null);
+		add(orderPanel, BorderLayout.CENTER);
+		orderPanel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel orderPanel_1 = new JPanel();
+		orderPanel_1.setLayout(null);
+		orderPanel_1.setBackground(Color.WHITE);
+		orderPanel.add(orderPanel_1, BorderLayout.CENTER);
 		
 		JPanel orderDeliveryPanel = new JPanel();
+		orderDeliveryPanel.setLayout(null);
 		orderDeliveryPanel.setBorder(null);
 		orderDeliveryPanel.setBackground(new Color(226, 226, 226));
 		orderDeliveryPanel.setBounds(12, 10, 348, 102);
-		orderPanel.add(orderDeliveryPanel);
-		orderDeliveryPanel.setLayout(null);
+		orderPanel_1.add(orderDeliveryPanel);
 		
 		JLabel orderDeliveryInfoLB = new JLabel("배송정보");
 		orderDeliveryInfoLB.setFont(new Font("D2Coding ligature", Font.PLAIN, 14));
@@ -74,23 +46,23 @@ public class OrderPanel extends JFrame {
 		orderDeliveryPanel.add(orderDeliveryInfoLB);
 		
 		JCheckBox orderDeliveryCB = new JCheckBox("기본 배송지");
-		orderDeliveryCB.setBorder(null);
-		orderDeliveryCB.setBackground(new Color(226, 226, 226));
-		orderDeliveryCB.setFont(new Font("D2Coding", Font.PLAIN, 14));
 		orderDeliveryCB.setHorizontalTextPosition(SwingConstants.LEADING);
 		orderDeliveryCB.setHorizontalAlignment(SwingConstants.CENTER);
+		orderDeliveryCB.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		orderDeliveryCB.setBorder(null);
+		orderDeliveryCB.setBackground(new Color(226, 226, 226));
 		orderDeliveryCB.setBounds(238, 6, 102, 23);
 		orderDeliveryPanel.add(orderDeliveryCB);
 		
-		orderDeliveryAddressTF = new JTextField();
-		orderDeliveryAddressTF.setBounds(92, 36, 229, 21);
-		orderDeliveryPanel.add(orderDeliveryAddressTF);
-		orderDeliveryAddressTF.setColumns(10);
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(92, 36, 229, 21);
+		orderDeliveryPanel.add(textField);
 		
-		orderDeliveryNameTF = new JTextField();
-		orderDeliveryNameTF.setColumns(10);
-		orderDeliveryNameTF.setBounds(92, 67, 229, 21);
-		orderDeliveryPanel.add(orderDeliveryNameTF);
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(92, 67, 229, 21);
+		orderDeliveryPanel.add(textField_1);
 		
 		JLabel orderDeliveryAddressLB = new JLabel("주소");
 		orderDeliveryAddressLB.setFont(new Font("D2Coding ligature", Font.PLAIN, 14));
@@ -103,62 +75,52 @@ public class OrderPanel extends JFrame {
 		orderDeliveryPanel.add(orderDeliveryNameLB);
 		
 		JPanel orderNumberOfItemPanel = new JPanel();
-		orderNumberOfItemPanel.setBounds(12, 138, 348, 30);
-		orderPanel.add(orderNumberOfItemPanel);
 		orderNumberOfItemPanel.setLayout(null);
+		orderNumberOfItemPanel.setBounds(12, 148, 348, 30);
+		orderPanel_1.add(orderNumberOfItemPanel);
 		
-		JLabel orderNumberOfItemtLB = new JLabel("");
+		orderNumberOfItemtLB = new JLabel("");
 		orderNumberOfItemtLB.setBounds(12, 0, 75, 30);
 		orderNumberOfItemPanel.add(orderNumberOfItemtLB);
 		
-		
-		
 		JButton orderBTN = new JButton("주문 하기");
 		orderBTN.setBounds(12, 429, 348, 43);
-		orderPanel.add(orderBTN);
+		orderPanel_1.add(orderBTN);
 		
 		JPanel orderTotalPricePanel = new JPanel();
+		orderTotalPricePanel.setLayout(null);
 		orderTotalPricePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		orderTotalPricePanel.setBackground(Color.WHITE);
 		orderTotalPricePanel.setBounds(12, 376, 348, 30);
-		orderPanel.add(orderTotalPricePanel);
-		orderTotalPricePanel.setLayout(null);
+		orderPanel_1.add(orderTotalPricePanel);
 		
-		JLabel lblNewLabel_2 = new JLabel("최종 결제 금액");
-		lblNewLabel_2.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(12, 0, 99, 26);
-		orderTotalPricePanel.add(lblNewLabel_2);
+		JLabel orderTotalNameLB = new JLabel("최종 결제 금액");
+		orderTotalNameLB.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+		orderTotalNameLB.setBounds(12, 0, 99, 26);
+		orderTotalPricePanel.add(orderTotalNameLB);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("원");
-		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_2_1.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-		lblNewLabel_2_1.setBounds(237, 0, 99, 26);
-		orderTotalPricePanel.add(lblNewLabel_2_1);
+		JLabel orderTotalPriceLB = new JLabel("200,000원");
+		orderTotalPriceLB.setHorizontalAlignment(SwingConstants.RIGHT);
+		orderTotalPriceLB.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+		orderTotalPriceLB.setBounds(237, 0, 99, 26);
+		orderTotalPricePanel.add(orderTotalPriceLB);
 		
 		JScrollPane orderListScrollPane = new JScrollPane();
 		orderListScrollPane.setBounds(12, 178, 348, 188);
-		orderPanel.add(orderListScrollPane);
+		orderPanel_1.add(orderListScrollPane);
 		
-		orderListPanel = new JPanel();
-		orderListPanel.setPreferredSize(new Dimension(10, 250));
-		orderListPanel.setBackground(Color.ORANGE);
+		JPanel orderListPanel = new JPanel();
+		orderListPanel.setPreferredSize(new Dimension(320, 200));
 		orderListScrollPane.setViewportView(orderListPanel);
 		
-		
 		JPanel orderDetailPanel = new JPanel();
-		orderDetailPanel.setPreferredSize(new Dimension(300, 60));
+		orderDetailPanel.setPreferredSize(new Dimension(320, 60));
 		orderListPanel.add(orderDetailPanel);
+		orderDetailPanel.setLayout(null);
 		
-		displayOrderList();
-	}
-	
-	private void displayOrderList() {
-		orderListPanel.removeAll();
-		for(int i=0;i<3;i++) {
-			JPanel orderDetailPanel = new JPanel();
-			orderDetailPanel.setPreferredSize(new Dimension(300, 60));
-			orderListPanel.add(orderDetailPanel);
-		}
-		
+		JLabel orderDetailLB = new JLabel("New label");
+		orderDetailLB.setBounds(0, 0, 320, 60);
+		orderDetailPanel.add(orderDetailLB);
+
 	}
 }
