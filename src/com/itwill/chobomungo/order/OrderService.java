@@ -26,5 +26,18 @@ public class OrderService {
 		
 		return 0;
 	}
+	//2. 카트에서 주문
+	
+	//3. 주문번호로 삭제
+	public int removeByOrderNo(Orders order) throws Exception {
+		return orderDao.deleteByOrderNo(order);
+	}
+	//4. 전체삭제
+	public int removeByUserId(Orders order) throws Exception {
+		return orderDao.deleteByUserId(order);
+	}
+	// userId 주문리스트
+
+	// 주문1개 상세
 	
 }
