@@ -56,7 +56,19 @@ public class UserService {
 	 * 회원수정
 	 */
 	public int update(User user) throws Exception {
-		return userDao.update(user);
+		if (userDao.countByUserId(user.getUserId()) < 1) {
+			return -1;
+		} else if (user.getUserPw() == null || user.getUserPw().length() < 8 || user.getUserPw().length() > 16) {
+			return -2;
+		} else if (!user.getUserPw().matches(LOWER_LETTER) || !user.getUserPw().matches(UPPER_LETTER)) {
+			return -3;
+		} else if (!user.getUserPw().matches(SPECIAL_CHARACTERS)) {
+			return -4;
+		} else {
+			int rowCount = userDao.insert(user);
+			return userDao.update(user);
+		}
+	
 	}
 
 	/*
