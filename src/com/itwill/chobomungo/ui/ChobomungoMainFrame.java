@@ -21,6 +21,10 @@ import com.itwill.chobomungo.user.UserService;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.itwill.chobomungo.ui.박준식.LoginPanel;
+import com.itwill.chobomungo.ui.손동필.UserUpdatePanel;
+import com.itwill.chobomungo.ui.박정국.UserCreatePanel;
+import com.itwill.chobomungo.ui.송도현.Product_ListPanel_송도현;
+import com.itwill.chobomungo.ui.jihyun.ProductDetailPanel;
 
 public class ChobomungoMainFrame extends JFrame {
 	/*
@@ -88,6 +92,9 @@ public class ChobomungoMainFrame extends JFrame {
 		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		chobomungoTabbedPane.addTab("상품", null, productTabbedPane, null);
 		
+		ProductDetailPanel productDetailPanel = new ProductDetailPanel();
+		productTabbedPane.addTab("New tab", null, productDetailPanel, null);
+		
 		userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		chobomungoTabbedPane.addTab("유저", null, userTabbedPane, null);
 		
@@ -154,6 +161,12 @@ public class ChobomungoMainFrame extends JFrame {
 		
 		
 		loginPanel.setMainFrame(this);
+		
+		UserCreatePanel userCreatePanel = new UserCreatePanel();
+		userTabbedPane.addTab("회원가입", null, userCreatePanel, null);
+		
+		UserUpdatePanel userUpdatePanel = new UserUpdatePanel();
+		userTabbedPane.addTab("회원정보", null, userUpdatePanel, null);
 		orderPanel.setMainFrame(this);
 		
 		
@@ -187,6 +200,4 @@ public class ChobomungoMainFrame extends JFrame {
 		}
 	
 	}
-	
-
 }
