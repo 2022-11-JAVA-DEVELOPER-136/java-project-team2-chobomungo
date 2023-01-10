@@ -166,6 +166,7 @@ public class ProductMainListPanel extends JPanel {
 			JButton CartBtn = new JButton("");
 			cartQtyStr = (String)CartQtyComboBox.getSelectedItem();
 			cartQty = Integer.parseInt(cartQtyStr);
+			System.out.println(cartQty);
 			CartBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
