@@ -33,6 +33,8 @@ public class CartPannel extends JPanel {
 	
 	/**user***/
 	private User loginUser = null;
+	
+	/******************************/
 	private JButton updateTopBtn;
 	private JButton deleteTopBtn;
 	private JPanel cartDetailPanel;
