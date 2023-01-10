@@ -23,6 +23,7 @@ import com.itwill.chobomungo.ui.ChobomungoMainFrame;
 import com.itwill.chobomungo.user.UserService;
 
 import javax.swing.ImageIcon;
+import java.awt.Dimension;
 
 public class ProductDetailPanel extends JPanel {
 	
@@ -47,14 +48,17 @@ public class ProductDetailPanel extends JPanel {
 	 * @throws Exception 
 	 */
 	public ProductDetailPanel() throws Exception {
+		setPreferredSize(new Dimension(400, 620));
 		setLayout(new BorderLayout(0, 0));
 		
 		productService = new ProductService();
 		
 		JScrollPane ProductDetailScrollPane = new JScrollPane();
+		ProductDetailScrollPane.setPreferredSize(new Dimension(400, 500));
 		add(ProductDetailScrollPane, BorderLayout.CENTER);
 		
 		JPanel ProductDetailPanel = new JPanel();
+		ProductDetailPanel.setPreferredSize(new Dimension(400, 500));
 		ProductDetailScrollPane.setViewportView(ProductDetailPanel);
 		ProductDetailPanel.setLayout(null);
 		
@@ -62,20 +66,20 @@ public class ProductDetailPanel extends JPanel {
 		
 		productTitleLB = new JLabel("소설5");
 		productTitleLB.setFont(new Font("Dialog", Font.BOLD, 20));
-		productTitleLB.setBounds(41, 35, 295, 29);
+		productTitleLB.setBounds(30, 10, 295, 29);
 		ProductDetailPanel.add(productTitleLB);
 		
 		productImg = new JLabel("\\book.png");
 		productImg.setIcon(new ImageIcon(ProductDetailPanel.class.getResource("/com/itwill/chobomungo/ui/jihyun/sample.png")));
-		productImg.setBounds(41, 83, 160, 200);
+		productImg.setBounds(30, 58, 160, 200);
 		ProductDetailPanel.add(productImg);
 		
 		JLabel productDescMainLB = new JLabel("상품상세정보");
-		productDescMainLB.setBounds(41, 316, 74, 21);
+		productDescMainLB.setBounds(30, 291, 74, 21);
 		ProductDetailPanel.add(productDescMainLB);
 		
 		productDescScrollPane = new JScrollPane();
-		productDescScrollPane.setBounds(41, 346, 300, 144);
+		productDescScrollPane.setBounds(30, 321, 300, 144);
 		ProductDetailPanel.add(productDescScrollPane);
 		
 		productDescTA = new JTextArea();
@@ -83,22 +87,22 @@ public class ProductDetailPanel extends JPanel {
 		productDescTA.setText("상품설명");
 		
 		JLabel productPriceMainLB = new JLabel("판매가격");
-		productPriceMainLB.setBounds(226, 81, 61, 16);
+		productPriceMainLB.setBounds(215, 56, 61, 16);
 		ProductDetailPanel.add(productPriceMainLB);
 		
 		productPriceLB = new JLabel("10000원");
 		productPriceLB.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		productPriceLB.setBounds(261, 112, 87, 16);
+		productPriceLB.setBounds(250, 87, 87, 16);
 		ProductDetailPanel.add(productPriceLB);
 		
 		/****************************************************/
 		
 		JLabel productAmountLB = new JLabel("구매수량");
-		productAmountLB.setBounds(226, 150, 61, 16);
+		productAmountLB.setBounds(215, 125, 61, 16);
 		ProductDetailPanel.add(productAmountLB);
 		
 		productAmountCB = new JComboBox();
-		productAmountCB.setBounds(265, 170, 66, 29);
+		productAmountCB.setBounds(254, 145, 66, 29);
 		ProductDetailPanel.add(productAmountCB);
 		
 		JButton productCartBtn = new JButton("장바구니");
@@ -117,7 +121,7 @@ public class ProductDetailPanel extends JPanel {
 			
 			}
 		});
-		productCartBtn.setBounds(230, 210, 100, 35);
+		productCartBtn.setBounds(219, 185, 100, 35);
 		ProductDetailPanel.add(productCartBtn);
 		
 		productOrderBtn = new JButton("구매하기");
@@ -131,7 +135,7 @@ public class ProductDetailPanel extends JPanel {
 				/********로그인 창 띄우기*******/
 			}
 		});
-		productOrderBtn.setBounds(230, 250, 100, 35);
+		productOrderBtn.setBounds(219, 225, 100, 35);
 		ProductDetailPanel.add(productOrderBtn);
 
 	}
