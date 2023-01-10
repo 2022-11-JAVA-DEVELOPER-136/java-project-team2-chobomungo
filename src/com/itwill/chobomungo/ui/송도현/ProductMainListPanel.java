@@ -75,7 +75,8 @@ public class ProductMainListPanel extends JPanel {
 		JButton ProductDetailDescBtn = new JButton("제품상세보기");
 		ProductDetailDescBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
+				mainFrame.productTabbedPane.setSelectedIndex(1);
 			}
 		});
 		ProductDetailDescBtn.setBounds(152, 119, 166, 41);
