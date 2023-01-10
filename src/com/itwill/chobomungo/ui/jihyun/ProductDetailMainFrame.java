@@ -2,6 +2,7 @@ package com.itwill.chobomungo.ui.jihyun;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -46,7 +47,7 @@ public class ProductDetailMainFrame extends JFrame {
 		contentPane.add(productDatailPanel, BorderLayout.CENTER);
 		
 		
-		product = new Product(1,"나는 바보다",1000,"eeee.gif","어떡하지 나는 아무것도 몰라..");		
+		product = new Product(1,"1111",1000,"eeee.gif","1");		
 	}
 
 }
