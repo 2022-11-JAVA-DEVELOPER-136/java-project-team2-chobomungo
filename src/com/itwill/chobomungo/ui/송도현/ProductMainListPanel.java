@@ -33,6 +33,10 @@ public class ProductMainListPanel extends JPanel {
 	
 	JLabel productListLB;
 	JPanel productItemListPanel;
+	
+	private String cartQtyStr;
+	private int cartQty;
+	private JComboBox CartQtyComboBox;
 	/**
 	 * Create the panel.
 	 * @throws Exception 
@@ -83,7 +87,7 @@ public class ProductMainListPanel extends JPanel {
 		ProductDetailDescBtn.setBounds(152, 119, 166, 41);
 		productPanel.add(ProductDetailDescBtn);
 		
-		JComboBox CartQtyComboBox = new JComboBox();
+		CartQtyComboBox = new JComboBox();
 		CartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		CartQtyComboBox.setBounds(157, 10, 40, 34);
 		productPanel.add(CartQtyComboBox);
@@ -161,11 +165,13 @@ public class ProductMainListPanel extends JPanel {
 			productPanel.add(CartQtyComboBox);
 			
 			JButton CartBtn = new JButton("");
+			cartQtyStr = (String)CartQtyComboBox.getSelectedItem();
+			cartQty = Integer.parseInt(cartQtyStr);
 			CartBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
 						if(mainFrame.loginUser!=null) {
-							mainFrame.cartService.addCart(0, mainFrame.loginUser.getUserId(), product.getP_no());
+							mainFrame.cartService.addCart(cartQty, mainFrame.loginUser.getUserId(), product.getP_no());
 							mainFrame.cartPannel.displayCartList(mainFrame.loginUser);
 							mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 						}else {
