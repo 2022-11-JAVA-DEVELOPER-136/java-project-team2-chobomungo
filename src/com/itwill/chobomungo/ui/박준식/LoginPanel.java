@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTabbedPane;
 import java.awt.Dimension;
+import java.awt.Color;
 //import java.awt.event.ComponentListener;
 
 public class LoginPanel extends JPanel {
@@ -47,6 +48,7 @@ public class LoginPanel extends JPanel {
 		setLayout(null);
 		
 		JPanel loginPanel = new JPanel();
+		loginPanel.setBackground(Color.WHITE);
 		loginPanel.setBounds(12, 5, 376, 605);
 		add(loginPanel);
 		loginPanel.setLayout(null);
@@ -112,17 +114,8 @@ public class LoginPanel extends JPanel {
 		
 		JLabel loginTitle_LB_1 = new JLabel("로그인");
 		loginTitle_LB_1.setFont(new Font("굴림", Font.PLAIN, 34));
-		loginTitle_LB_1.setBounds(122, 10, 116, 40);
+		loginTitle_LB_1.setBounds(122, 26, 116, 40);
 		loginPanel.add(loginTitle_LB_1);
-		
-		JButton searchIDPassword_LB_1 = new JButton("아이디/비밀번호 찾기");
-		searchIDPassword_LB_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		searchIDPassword_LB_1.setBounds(175, 307, 151, 23);
-		loginPanel.add(searchIDPassword_LB_1);
 		
 		
 		
