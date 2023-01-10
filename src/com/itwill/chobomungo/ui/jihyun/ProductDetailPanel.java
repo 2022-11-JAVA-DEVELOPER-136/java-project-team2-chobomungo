@@ -90,7 +90,7 @@ public class ProductDetailPanel extends JPanel {
 		ProductDetailPanel.add(productPriceLB);
 		
 		/****************************************************/
-		displayProductDetail(9);
+		displayProductDetail(3);
 		
 		
 		JLabel productAmountLB = new JLabel("구매수량");
