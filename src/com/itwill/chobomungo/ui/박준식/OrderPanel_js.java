@@ -7,7 +7,7 @@ import java.awt.Font;
 public class OrderPanel_js extends JPanel {
 
 	/**
-	 * Create the panel.
+	 *  Create the panel.
 	 */
 	public OrderPanel_js() {
 		setLayout(null);
