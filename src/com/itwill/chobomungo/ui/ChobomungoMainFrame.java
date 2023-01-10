@@ -24,7 +24,6 @@ import com.itwill.chobomungo.ui.박준식.LoginPanel;
 import com.itwill.chobomungo.ui.손동필.UserUpdatePanel;
 import com.itwill.chobomungo.ui.박정국.UserCreatePanel;
 import com.itwill.chobomungo.ui.jihyun.ProductDetailPanel;
-import com.itwill.chobomungo.ui.송도현.Product_ListPanel_1차_송도현;
 
 public class ChobomungoMainFrame extends JFrame {
 	/*
@@ -47,14 +46,17 @@ public class ChobomungoMainFrame extends JFrame {
 	public User loginUser=null;
 	/******************************************/
 	
-	private JPanel contentPane;
-	private JTextField globalSerchTF;
+	public JPanel contentPane;
+	public JTextField globalSerchTF;
 	
-	private JTabbedPane productTabbedPane;
-	private JTabbedPane userTabbedPane;
-	private JTabbedPane chobomungoTabbedPane;
-	private OrderPanel orderPanel;
-	private LoginPanel loginPanel;
+	public JTabbedPane productTabbedPane;
+	public JTabbedPane userTabbedPane;
+	public JTabbedPane chobomungoTabbedPane;
+	public OrderPanel orderPanel;
+	public LoginPanel loginPanel;
+	public ProductDetailPanel productDetailPanel;
+	public UserCreatePanel userCreatePanel;
+	public UserUpdatePanel userUpdatePanel;
 	
 	
 	/**
@@ -92,11 +94,8 @@ public class ChobomungoMainFrame extends JFrame {
 		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		chobomungoTabbedPane.addTab("상품", null, productTabbedPane, null);
 		
-		ProductDetailPanel productDetailPanel = new ProductDetailPanel();
-		productTabbedPane.addTab("New tab", null, productDetailPanel, null);
-		
-		Product_ListPanel_1차_송도현 product_ListPanel_1차_송도현 = new Product_ListPanel_1차_송도현();
-		productTabbedPane.addTab("New tab", null, product_ListPanel_1차_송도현, null);
+		productDetailPanel = new ProductDetailPanel();
+		productTabbedPane.addTab("상품상세", null, productDetailPanel, null);
 		
 		userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		chobomungoTabbedPane.addTab("유저", null, userTabbedPane, null);
@@ -151,11 +150,12 @@ public class ChobomungoMainFrame extends JFrame {
 		globalUserBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(loginUser==null) {
-					chobomungoTabbedPane.setSelectedIndex(0);
-					//login_idTF.requestFocus();
+					chobomungoTabbedPane.setSelectedIndex(1);
+					userTabbedPane.setSelectedIndex(0);
 				}else {
-					//chobomungoTabbedPane.setSelectedIndex(1);
-					
+					userUpdatePanel.displayMemberInfo(loginUser); 
+					chobomungoTabbedPane.setSelectedIndex(1);
+					userTabbedPane.setSelectedIndex(2);
 				}
 			}
 		});
@@ -164,11 +164,12 @@ public class ChobomungoMainFrame extends JFrame {
 		
 		
 		loginPanel.setMainFrame(this);
+		orderPanel.setMainFrame(this);
 		
-		UserCreatePanel userCreatePanel = new UserCreatePanel();
+		userCreatePanel = new UserCreatePanel();
 		userTabbedPane.addTab("회원가입", null, userCreatePanel, null);
 		
-		UserUpdatePanel userUpdatePanel = new UserUpdatePanel();
+		userUpdatePanel = new UserUpdatePanel();
 		userTabbedPane.addTab("회원정보", null, userUpdatePanel, null);
 		orderPanel.setMainFrame(this);
 		
@@ -203,4 +204,6 @@ public class ChobomungoMainFrame extends JFrame {
 		}
 	
 	}
+	
+	
 }

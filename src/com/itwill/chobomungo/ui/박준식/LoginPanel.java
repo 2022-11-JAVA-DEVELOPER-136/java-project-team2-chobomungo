@@ -80,7 +80,7 @@ public class LoginPanel extends JPanel {
 					
 					int result = mainFrame.userService.login(userId, userPw);
 					if(result == 0) {
-						 //로그인성공
+						 //////로그인성공
 						JOptionPane.showMessageDialog(null, "로그인 성공");
 						loginProcess(userId);
 						loginIdTF.setText("");
@@ -127,7 +127,7 @@ public class LoginPanel extends JPanel {
 		
 	}
 	/**************로그인성공시 호출할메쏘드***************/
-	public void loginProcess(String userId) throws Exception{
+	private void loginProcess(String userId) throws Exception{
 		loginUser=null;
 		/***********로그인성공시 해야할일***********
 			 1.로그인성공한 멤버객체 멤버필드에저장

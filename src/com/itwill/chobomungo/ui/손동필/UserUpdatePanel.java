@@ -223,7 +223,7 @@ public class UserUpdatePanel extends JPanel {
 
 	}
 
-	private void displayMemberInfo(User user) {
+	public void displayMemberInfo(User user) {
 		/**** 회원상세데이타보여주기 *****/
 		updateID_TF.setText(user.getUserId());
 		updatePassword_TF.setText(user.getUserPw());
