@@ -25,20 +25,20 @@ import javax.swing.ImageIcon;
 
 public class ProductDetailPanel extends JPanel {
 	
-	private ProductService productService;
-	private CartService cartService;
-	private UserService userService;
-	private OrderService orderService;
-	private Product product;
-	private Product selectProduct;
+	public ProductService productService;
+	public CartService cartService;
+	public UserService userService;
+	public OrderService orderService;
+	public Product product;
+	public Product selectProduct;
 	
-	private JLabel productTitleLB;
-	private JLabel productImg;
-	private JScrollPane productDescScrollPane;
-	private JLabel productPriceLB;
-	private JComboBox productAmountCB;
-	private JButton productOrderBtn;
-	private JTextArea productDescTA;
+	public JLabel productTitleLB;
+	public JLabel productImg;
+	public JScrollPane productDescScrollPane;
+	public JLabel productPriceLB;
+	public JComboBox productAmountCB;
+	public JButton productOrderBtn;
+	public JTextArea productDescTA;
 
 	/**
 	 * Create the panel.
