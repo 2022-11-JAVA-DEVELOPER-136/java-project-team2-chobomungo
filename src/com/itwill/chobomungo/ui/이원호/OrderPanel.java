@@ -111,8 +111,9 @@ public class OrderPanel extends JPanel {
 		orderNumberOfItemPanel.setBounds(12, 116, 348, 30);
 		orderPanel.add(orderNumberOfItemPanel);
 		
-		JLabel orderNumberOfItemtLB = new JLabel("");
-		orderNumberOfItemtLB.setBounds(12, 0, 75, 30);
+		JLabel orderNumberOfItemtLB = new JLabel("주문 리스트");
+		orderNumberOfItemtLB.setFont(new Font("D2Coding", Font.BOLD, 14));
+		orderNumberOfItemtLB.setBounds(12, 0, 87, 30);
 		orderNumberOfItemPanel.add(orderNumberOfItemtLB);
 		
 		orderBTN = new JButton("주문 하기");
@@ -221,7 +222,7 @@ public class OrderPanel extends JPanel {
 			orderTotalPriceLB.setHorizontalAlignment(SwingConstants.RIGHT);
 			orderTotalPriceLB.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 			orderTotalPriceLB.setBounds(237, 0, 99, 26);
-			orderTotalPricePanel.add(orderTotalPriceLB);
+			orderTotalPricePanel.add(orderTotalPriceLB);			
 			
 			orderListPanel.add(orderDetailPanel);
 			
