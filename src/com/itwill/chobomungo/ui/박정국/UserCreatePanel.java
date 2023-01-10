@@ -39,6 +39,10 @@ public class UserCreatePanel extends JPanel {
 	public JButton pwCheckBtn;
 	public JButton memberJoinBtn;
 	public JButton goMainBtn;
+	private JLabel lblNewLabel_1_2;
+	private JLabel lblNewLabel_1_3;
+	private JLabel lblNewLabel_1_4;
+	private JLabel lblNewLabel_1_5;
 	
 	public UserCreatePanel() throws Exception {
 		setPreferredSize(new Dimension(400, 620));
@@ -58,45 +62,45 @@ public class UserCreatePanel extends JPanel {
 		
 		userIDTF = new JTextField();
 		userIDTF.setText("아이디");
-		userIDTF.setBounds(75, 49, 212, 21);
+		userIDTF.setBounds(95, 49, 192, 21);
 		panel.add(userIDTF);
 		userIDTF.setColumns(10);
 		
 		
 		userPwTF = new JTextField();
 		userPwTF.setText("비밀번호");
-		userPwTF.setBounds(75, 98, 212, 21);
+		userPwTF.setBounds(95, 98, 192, 21);
 		panel.add(userPwTF);
 		userPwTF.setColumns(10);
 		
 		userPWCheckTF = new JTextField();
 		userPWCheckTF.setText("비밀번호 확인");
-		userPWCheckTF.setBounds(75, 129, 212, 21);
+		userPWCheckTF.setBounds(95, 129, 192, 21);
 		panel.add(userPWCheckTF);
 		userPWCheckTF.setColumns(10);
 		
 		
 		userNameTF = new JTextField();
 		userNameTF.setText("이름");
-		userNameTF.setBounds(75, 177, 212, 21);
+		userNameTF.setBounds(95, 177, 192, 21);
 		panel.add(userNameTF);
 		userNameTF.setColumns(10);
 		
 		userPhoneTF = new JTextField();
 		userPhoneTF.setText("연락처");
-		userPhoneTF.setBounds(75, 208, 212, 21);
+		userPhoneTF.setBounds(95, 208, 192, 21);
 		panel.add(userPhoneTF);
 		userPhoneTF.setColumns(10);
 		
 		userAddressTF = new JTextField();
 		userAddressTF.setText("주소");
-		userAddressTF.setBounds(75, 239, 212, 21);
+		userAddressTF.setBounds(95, 239, 192, 21);
 		panel.add(userAddressTF);
 		userAddressTF.setColumns(10);
 		
 		userEmailTF = new JTextField();
 		userEmailTF.setText("이메일");
-		userEmailTF.setBounds(75, 270, 212, 21);
+		userEmailTF.setBounds(95, 270, 192, 21);
 		panel.add(userEmailTF);
 		userEmailTF.setColumns(10);
 		
@@ -131,9 +135,8 @@ public class UserCreatePanel extends JPanel {
 						userPhoneTF.setText("");
 						userAddressTF.setText("");
 						userEmailTF.setText("");
-						
-						createFormEnable(false);
-						//memberTabbedPane.setSelectedIndex(1);
+						mainFrame.chobomungoTabbedPane.setSelectedIndex(isAdd);
+						mainFrame.userTabbedPane.setSelectedIndex(0);
 					}else {
 						JOptionPane.showMessageDialog(null, "다시 확인해주세요.");
 						userIDTF.requestFocus();
@@ -148,11 +151,11 @@ public class UserCreatePanel extends JPanel {
 		memberJoinBtn.setBounds(102, 338, 152, 21);
 		panel.add(memberJoinBtn);
 		
-		goMainBtn = new JButton("메인으로");
+		goMainBtn = new JButton("가입취소");
 		goMainBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//JFrame frame = new 메인클래스(); //메인 탭으로 이동
-		        //frame.setVisible(true);
+				mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
+				mainFrame.userTabbedPane.setSelectedIndex(0);
 			}
 		});
 		goMainBtn.setBounds(102, 369, 152, 21);
@@ -182,7 +185,7 @@ public class UserCreatePanel extends JPanel {
 				}
 			}
 		});
-		idCheckBtn.setBounds(75, 73, 128, 21);
+		idCheckBtn.setBounds(95, 73, 118, 21);
 		panel.add(idCheckBtn);
 		
 		pwCheckBtn = new JButton("비밀번호 확인");
@@ -204,8 +207,36 @@ public class UserCreatePanel extends JPanel {
 				}
 			}
 		});
-		pwCheckBtn.setBounds(75, 153, 128, 21);
+		pwCheckBtn.setBounds(95, 153, 118, 21);
 		panel.add(pwCheckBtn);
+		
+		JLabel lblNewLabel = new JLabel("아이디");
+		lblNewLabel.setBounds(12, 52, 57, 15);
+		panel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("패스워드");
+		lblNewLabel_1.setBounds(12, 101, 57, 15);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("패스워드확인");
+		lblNewLabel_1_1.setBounds(12, 132, 83, 15);
+		panel.add(lblNewLabel_1_1);
+		
+		lblNewLabel_1_2 = new JLabel("이름");
+		lblNewLabel_1_2.setBounds(12, 180, 72, 15);
+		panel.add(lblNewLabel_1_2);
+		
+		lblNewLabel_1_3 = new JLabel("연락처");
+		lblNewLabel_1_3.setBounds(12, 211, 72, 15);
+		panel.add(lblNewLabel_1_3);
+		
+		lblNewLabel_1_4 = new JLabel("주소");
+		lblNewLabel_1_4.setBounds(12, 242, 72, 15);
+		panel.add(lblNewLabel_1_4);
+		
+		lblNewLabel_1_5 = new JLabel("이메일");
+		lblNewLabel_1_5.setBounds(12, 273, 72, 15);
+		panel.add(lblNewLabel_1_5);
 		
 	
 	}
@@ -238,5 +269,4 @@ public class UserCreatePanel extends JPanel {
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 	}
-	
 }

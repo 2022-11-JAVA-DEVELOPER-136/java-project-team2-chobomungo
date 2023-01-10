@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import com.itwill.chobomungo.ui.ChobomungoMainFrame;
 import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
+import javax.swing.JPasswordField;
 
 
 public class UserUpdatePanel extends JPanel {
@@ -23,15 +24,14 @@ public class UserUpdatePanel extends JPanel {
 	public JTextField updateEmail_TF;
 	public JTextField updateName_TF;
 	public JTextField updateLoc_TF;
+	public JPasswordField updatePwTF;
 
 	public JLabel updateTitle_LB;
 	public JButton updateFormBtn;
 	public JButton updateBtn;
 	public JTextField idTF;
-	public JLabel idMsgLB;
 	public ChobomungoMainFrame mainFrame;
-
-	public JTextField updatePassword_TF;
+	private JButton logoutBTN;
 
 	/**
 	 * Create the panel.
@@ -139,36 +139,15 @@ public class UserUpdatePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String id = updateID_TF.getText();
-					String pw = new String(updatePassword_TF.getText());
+					String pw = new String(updatePwTF.getText());
 					String name = updateName_TF.getText();
 					String phoneNumber = updatePhone_TF.getText();
 					String loc = updateLoc_TF.getText();
 					String email = updateEmail_TF.getText();
 
-					if (id.equals("") || pw.equals("") || name.equals("") || phoneNumber.equals("") || loc.equals("")
-							|| email.equals("")) {
-						idMsgLB.setText("내용을 입력하세요.");
-						updateID_TF.requestFocus();
-						return;
-					}
-					User updateUser2 = new User(id, pw, name, phoneNumber, loc, email);
-					int updateCheck = 0;
-
-					updateCheck = mainFrame.userService.update(updateUser2);
-
-					if (updateCheck == -1) {
-						JOptionPane.showMessageDialog(null, "존재하지 않는 아이디 입니다");
-					} else if (updateCheck == -2) {
-						JOptionPane.showMessageDialog(null, "비밀번호 8~16 길이로 사용하세요");
-					} else if (updateCheck == -3) {
-						JOptionPane.showMessageDialog(null, "대소문자 각 하나 이상 사용하세요.");
-					} else if (updateCheck == -4) {
-						JOptionPane.showMessageDialog(null, "특수문자 !,~,@,#,$,*,^ 사용하세요");
-					} else {
-						JOptionPane.showMessageDialog(null, "회원정보 수정완료");
-					}
+					userValidation(id,pw,name,phoneNumber,loc,email);
+					
 					mainFrame.loginUser = mainFrame.userService.findUser(id);
-					updateFormEnable(false);
 				} catch (Exception e1) {
 					System.out.println(e1.getMessage());
 				}
@@ -177,14 +156,19 @@ public class UserUpdatePanel extends JPanel {
 
 		updateFormBtn.setBounds(60, 273, 97, 21);
 		add(updateFormBtn);
-
-		updatePassword_TF = new JTextField();
-		updatePassword_TF.setEditable(false);
-		updatePassword_TF.setBackground(Color.WHITE);
-		updatePassword_TF.setFont(new Font("Dialog", Font.PLAIN, 12));
-		updatePassword_TF.setBounds(140, 100, 143, 21);
-		add(updatePassword_TF);
-		updatePassword_TF.setColumns(10);
+		
+		updatePwTF = new JPasswordField();
+		updatePwTF.setBounds(140, 101, 143, 21);
+		add(updatePwTF);
+		
+		logoutBTN = new JButton("로그아웃");
+		logoutBTN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		logoutBTN.setBounds(60, 305, 232, 23);
+		add(logoutBTN);
 
 	}
 
@@ -193,7 +177,7 @@ public class UserUpdatePanel extends JPanel {
 			// 활성화
 //			updateID_TF.setEditable(true);
 //			updateName_TF.setEditable(true);
-			updatePassword_TF.setEditable(true);
+			updatePwTF.setEditable(true);
 			updatePhone_TF.setEditable(true);
 			updateLoc_TF.setEditable(true);
 			updateEmail_TF.setEditable(true);
@@ -205,7 +189,7 @@ public class UserUpdatePanel extends JPanel {
 			// 불활성화
 			updateID_TF.setEnabled(false);
 			updateName_TF.setEnabled(false);
-			updatePassword_TF.setEditable(false);
+			updatePwTF.setEditable(false);
 			updatePhone_TF.setEditable(false);
 			updateLoc_TF.setEditable(false);
 			updateEmail_TF.setEditable(false);
@@ -221,12 +205,52 @@ public class UserUpdatePanel extends JPanel {
 	public void displayMemberInfo(User user) {
 		/**** 회원상세데이타보여주기 *****/
 		updateID_TF.setText(user.getUserId());
-		updatePassword_TF.setText(user.getUserPw());
+		updatePwTF.setText(user.getUserPw());
 		updateName_TF.setText(user.getUserName());
 		updatePhone_TF.setText(user.getUserPhone());
 		updateLoc_TF.setText(user.getUserAddress());
 		updateEmail_TF.setText(user.getUserEmail());
 
+	}
+	
+	public void userValidation(String id,String pw, String name, String phoneNumber, String loc, String email) throws Exception {
+		if (pw.equals("")) {
+			JOptionPane.showMessageDialog(null, "내용을 입력하세요.");
+			updateID_TF.requestFocus();
+			return;
+		}else if(phoneNumber.equals("")) {
+			JOptionPane.showMessageDialog(null, "내용을 입력하세요.");
+			updatePhone_TF.requestFocus();
+			return;
+		}else if(loc.equals("")) {
+			JOptionPane.showMessageDialog(null, "내용을 입력하세요.");
+			updateLoc_TF.requestFocus();
+			return;
+		}else if(email.equals("")) {
+			JOptionPane.showMessageDialog(null, "내용을 입력하세요.");
+			updateEmail_TF.requestFocus();
+			return;
+		}
+		
+		User updateUser2 = new User(id, pw, name, phoneNumber, loc, email);
+		int updateCheck = 0;
+
+		updateCheck = mainFrame.userService.update(updateUser2);
+
+		if (updateCheck == -1) {
+			JOptionPane.showMessageDialog(null, "존재하지 않는 아이디 입니다");
+		} else if (updateCheck == -2) {
+			JOptionPane.showMessageDialog(null, "비밀번호 8~16 길이로 사용하세요");
+			updatePwTF.requestFocus();
+		} else if (updateCheck == -3) {
+			JOptionPane.showMessageDialog(null, "대소문자 각 하나 이상 사용하세요.");
+			updatePwTF.requestFocus();
+		} else if (updateCheck == -4) {
+			JOptionPane.showMessageDialog(null, "특수문자 !,~,@,#,$,*,^ 사용하세요");
+			updatePwTF.requestFocus();
+		} else {
+			JOptionPane.showMessageDialog(null, "회원정보 수정완료");
+		}
 	}
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {

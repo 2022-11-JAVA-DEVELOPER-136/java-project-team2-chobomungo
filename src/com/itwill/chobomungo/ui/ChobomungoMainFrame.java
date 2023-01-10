@@ -187,6 +187,7 @@ public class ChobomungoMainFrame extends JFrame {
 		productMainListPanel.setMainFrame(this);
 		productDetailPanel.setMainFrame(this);
 		userUpdatePanel.setMainFrame(this);
+		userCreatePanel.setMainFrame(this);
 		
 	//생성자끝	
 	}
