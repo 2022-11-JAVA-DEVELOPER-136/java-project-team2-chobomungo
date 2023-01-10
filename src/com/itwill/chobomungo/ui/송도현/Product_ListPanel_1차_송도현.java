@@ -30,8 +30,8 @@ public class Product_ListPanel_1차_송도현 extends JPanel {
 	ProductService productService;
 	
 	User loginUser=null;
-	private JLabel productListLB;
-	private JPanel productItemListPanel;
+	JLabel productListLB;
+	JPanel productItemListPanel;
 	/**
 	 * Create the panel.
 	 * @throws Exception 
@@ -47,7 +47,7 @@ public class Product_ListPanel_1차_송도현 extends JPanel {
 		productItemListPanel = new JPanel();
 		FlowLayout fl_productItemListPanel = (FlowLayout) productItemListPanel.getLayout();
 		fl_productItemListPanel.setAlignment(FlowLayout.LEFT);
-		productItemListPanel.setPreferredSize(new Dimension(260, 1000));
+		productItemListPanel.setPreferredSize(new Dimension(260, 3000));
 		productListScrollPane.setViewportView(productItemListPanel);
 		
 		/*************product item start*************/
