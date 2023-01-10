@@ -69,25 +69,21 @@ public class UserCreatePanel extends JPanel {
 		
 		
 		userNameTF = new JTextField();
-		userNameTF.setText("이름");
 		userNameTF.setBounds(95, 177, 192, 21);
 		panel.add(userNameTF);
 		userNameTF.setColumns(10);
 		
 		userPhoneTF = new JTextField();
-		userPhoneTF.setText("연락처");
 		userPhoneTF.setBounds(95, 208, 192, 21);
 		panel.add(userPhoneTF);
 		userPhoneTF.setColumns(10);
 		
 		userAddressTF = new JTextField();
-		userAddressTF.setText("주소");
 		userAddressTF.setBounds(95, 239, 192, 21);
 		panel.add(userAddressTF);
 		userAddressTF.setColumns(10);
 		
 		userEmailTF = new JTextField();
-		userEmailTF.setText("이메일");
 		userEmailTF.setBounds(95, 270, 192, 21);
 		panel.add(userEmailTF);
 		userEmailTF.setColumns(10);
@@ -107,7 +103,6 @@ public class UserCreatePanel extends JPanel {
 					/***********유효성체크****************/					
 					
 					User newMember=new User(id,password,name,phone,address,email);
-					int isAdd = mainFrame.userService.create(newMember);
 					joinValidation(newMember);
 					
 				}catch (Exception e1) {
@@ -115,7 +110,7 @@ public class UserCreatePanel extends JPanel {
 				}
 			}
 		});
-		memberJoinBtn.setBounds(102, 338, 152, 21);
+		memberJoinBtn.setBounds(102, 315, 152, 21);
 		panel.add(memberJoinBtn);
 		
 		goMainBtn = new JButton("가입취소");
@@ -125,7 +120,7 @@ public class UserCreatePanel extends JPanel {
 				mainFrame.userTabbedPane.setSelectedIndex(0);
 			}
 		});
-		goMainBtn.setBounds(102, 369, 152, 21);
+		goMainBtn.setBounds(102, 346, 152, 21);
 		panel.add(goMainBtn);
 		
 		idCheckBtn = new JButton("아이디 중복확인");
