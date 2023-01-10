@@ -11,7 +11,7 @@ public class UserDaoTestMain {
 		UserDao userdao = new UserDao();
 
 		System.out.println("1.insert");
-		User user = new User("book22", "4444", "손동필", "010-4444-4444", "서울시 강북구", "book4@korea.com");
+		User user = new User("book24", "4444", "손동필", "010-4444-4444", "서울시 강북구", "book4@korea.com");
 		rowCount = userdao.insert(user);
 		System.out.println(rowCount);
 
@@ -21,7 +21,7 @@ public class UserDaoTestMain {
 		System.out.println(rowCount);
 
 		System.out.println("3.delete");
-		rowCount = userdao.delete("book23");
+		rowCount = userdao.delete("book23","1234");
 		System.out.println(rowCount);
 
 		System.out.println("3.findByPrimaryKey- ");

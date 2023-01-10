@@ -29,7 +29,7 @@ public class OrderDao {
 			pstmt1 = con.prepareStatement(OrderSQL.ORDER_INSERT);
 			pstmt1.setString(1,orders.getO_desc());
 			pstmt1.setInt(2,orders.getO_price());
-			pstmt1.setString(3,orders.getUser().getUser_id());
+			pstmt1.setString(3,orders.getUserId());
 			pstmt1.executeUpdate();
 			
 			// "insert into order_item(oi.no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ_nextval,?,orders_o_no_SEQ_nextval,?)"
@@ -55,7 +55,7 @@ public class OrderDao {
 		return 0;
 	}
 	//user_id 주문 전체 삭제
-	public int deleteByUserId(Orders orders) throws Exception {
+	public int deleteByUserId(String userId) throws Exception {
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
@@ -63,7 +63,7 @@ public class OrderDao {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(OrderSQL.ORDER_DELETE_USERID);
-			pstmt.setString(1, orders.getUser().getUser_id());
+			pstmt.setString(1, userId);
 			rowCount = pstmt.executeUpdate();
 			con.commit();
 			
@@ -80,7 +80,7 @@ public class OrderDao {
 		return rowCount;
 	}
 	//cart_no로 주문 1개 삭제
-	public int deleteByOrderNo(Orders orders) throws Exception {
+	public int deleteByOrderNo(String userId, int o_no) throws Exception {
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		int rowCount = 0;
@@ -88,8 +88,8 @@ public class OrderDao {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(OrderSQL.ORDER_DELETE_ORDER_NO);
-			pstmt.setString(1,orders.getUser().getUser_id());
-			pstmt.setInt(2,orders.getO_no());
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, o_no);
 			rowCount = pstmt.executeUpdate();
 			con.commit();			
 		}catch (Exception e) {
@@ -105,7 +105,7 @@ public class OrderDao {
 		return rowCount;
 	}
 	//User_ID의 주문리스트
-	public List<Orders> findByUserID(String sUserId) throws Exception {
+	public List<Orders> findByUserID(String userId) throws Exception {
 		List<Orders> orderList = new ArrayList<Orders>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -113,20 +113,14 @@ public class OrderDao {
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_USERID);
-			pstmt.setString(1,sUserId);
+			pstmt.setString(1,userId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				orderList.add(new Orders(rs.getInt("o_no"),
 				rs.getString("o_desc"),
 				rs.getInt("o_price"),
 				rs.getDate("o_date"),
-				new User(rs.getString("user_id"),
-						rs.getString("user_pw"),
-						rs.getString("user_name"),
-						rs.getString("user_phone"),
-						rs.getString("user_address"),
-						rs.getString("user_email")
-						)));
+				rs.getString("user_id")));
 			} 
 			
 		} finally {
@@ -137,7 +131,7 @@ public class OrderDao {
 		return orderList;
 	}
 	//주문1개 상세리스트
-	public Orders findByOrderNo(Orders orders) throws Exception {
+	public Orders findByOrderNo(String userId, int o_no) throws Exception {
 		Orders order = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -145,20 +139,15 @@ public class OrderDao {
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_PRODUCT_USERID);
-			pstmt.setString(1,orders.getUser().getUser_id());
-			pstmt.setInt(2, orders.getO_no());
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, o_no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				order = new Orders(rs.getInt("o_no"),
 								   rs.getString("o_desc"),
 								   rs.getInt("o_price"),
 								   rs.getDate("o_date"),
-									new User(rs.getString("user_id"),
-											rs.getString("user_pw"),
-											rs.getString("user_name"),
-											rs.getString("user_phone"),
-											rs.getString("user_address"),
-											rs.getString("user_email")));
+								   rs.getString("user_id"));
 				
 				do {
 					order.getOrderItemList().

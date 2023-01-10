@@ -56,25 +56,57 @@ public class UserService {
 	 * 회원수정
 	 */
 	public int update(User user) throws Exception {
-		return userDao.update(user);
+		if (userDao.countByUserId(user.getUserId()) < 1) {
+			return -1;
+		} else if (user.getUserPw() == null || user.getUserPw().length() < 8 || user.getUserPw().length() > 16) {
+			return -2;
+		} else if (!user.getUserPw().matches(LOWER_LETTER) || !user.getUserPw().matches(UPPER_LETTER)) {
+			return -3;
+		} else if (!user.getUserPw().matches(SPECIAL_CHARACTERS)) {
+			return -4;
+		} else {
+			int rowCount = userDao.insert(user);
+			return rowCount;
+		}
+
 	}
 
 	/*
 	 * 회원탈퇴
 	 */
-	public int remove(String userId) throws Exception {
-		return userDao.delete(userId);
+	public int remove(String userId, String userPw) throws Exception {
+		return userDao.delete(userId, userPw);
 	}
 
 	// 아이디 찾기
-	public String FindId(String userName, String userPhone) throws Exception {
+	public String findId(String userName, String userPhone) throws Exception {
 		return userDao.findByUserId(userName, userPhone);
 
 	}
 
 	// 비밀번호 찾기
-	public String FindPw(String userId, String userName) throws Exception {
+	public String findPw(String userId, String userName) throws Exception {
 		return userDao.findByUserPw(userId, userName);
+	}
+
+	// 이메일 중복체크
+	public boolean emailDuplicateCheck(String email) throws Exception {
+		boolean duplicateCheck = false;
+		if (userDao.countByUserEmail(email) >= 1) {
+			duplicateCheck = true;
+			return duplicateCheck;
+		}
+		return duplicateCheck;
+		
+	}
+	
+	//아이디 중복확인 
+	public boolean idCheck (String userId) throws Exception {
+		boolean check = false;
+		if(userDao.countByUserId(userId)>=1) {
+			check = true;
+		}
+		return check;
 	}
 
 }
