@@ -142,6 +142,10 @@ public class LoginPanel extends JPanel {
 		mainFrame.loginUser = mainFrame.userService.findUser(userId); 
 		mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 		mainFrame.productTabbedPane.setSelectedIndex(0);
+		mainFrame.userTabbedPane.setEnabledAt(0, false);
+		mainFrame.userTabbedPane.setEnabledAt(1, false);
+		mainFrame.userTabbedPane.setEnabledAt(2, true);
+		mainFrame.chobomungoTabbedPane.setEnabledAt(2,true);
 	}
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {

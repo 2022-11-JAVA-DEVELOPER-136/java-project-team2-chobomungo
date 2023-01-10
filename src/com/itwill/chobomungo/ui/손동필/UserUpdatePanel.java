@@ -164,7 +164,7 @@ public class UserUpdatePanel extends JPanel {
 		logoutBTN = new JButton("로그아웃");
 		logoutBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				logoutProcess();
 			}
 		});
 		logoutBTN.setBounds(60, 305, 232, 23);
@@ -251,6 +251,27 @@ public class UserUpdatePanel extends JPanel {
 		} else {
 			JOptionPane.showMessageDialog(null, "회원정보 수정완료");
 		}
+	}
+	
+	private void logoutProcess() {
+		/**********로그인성공시 해야할일***********
+		 1.로그인 성공한 맴버객체 초기화
+		 2.로그인,회원가입탭 활성화 회원정보 불활성화
+		   메뉴아이템(로그아웃) 불활성화,메뉴아이템(로그인,가입) 활성화
+		 3.MemberMainFrame타이틀 변경
+		 4.메인화면으로 화면전환
+		 ******************************************/
+		//1.로그인 성공한 맴버객체 초기화
+		mainFrame.loginUser = null;
+		//2.로그인,회원가입탭 활성화 회원정보 불활성화
+		mainFrame.userTabbedPane.setEnabledAt(0, true);
+		mainFrame.userTabbedPane.setEnabledAt(1, true);
+		mainFrame.userTabbedPane.setEnabledAt(2, false);
+		mainFrame.chobomungoTabbedPane.setEnabledAt(2,false);
+		mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
+		mainFrame.productTabbedPane.setSelectedIndex(0);
+		
+		
 	}
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
