@@ -139,6 +139,7 @@ public class LoginPanel extends JPanel {
 	 ********************************************/
 	//1.로그인성공한 멤버객체 멤버필드에저장
 		mainFrame.loginUser = mainFrame.userService.findUser(userId); 
+		mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 	}
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
