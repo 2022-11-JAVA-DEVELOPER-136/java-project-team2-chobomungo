@@ -14,6 +14,7 @@ import javax.swing.JButton;
 
 import com.itwill.chobomungo.cart.CartService;
 import com.itwill.chobomungo.order.OrderService;
+import com.itwill.chobomungo.product.Product;
 import com.itwill.chobomungo.product.ProductService;
 import com.itwill.chobomungo.ui.이원호.OrderPanel;
 import com.itwill.chobomungo.user.User;
@@ -45,6 +46,7 @@ public class ChobomungoMainFrame extends JFrame {
 	/*********************************************/
 	/*****로그인 user 객체 저장할 user객체*****/
 	public User loginUser=null;
+	public Product product = null;
 	/******************************************/
 	
 	public JPanel contentPane;

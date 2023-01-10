@@ -141,7 +141,7 @@ public class ProductDetailPanel extends JPanel {
 	}
 	
 	
-	private void displayProductDetail(int p_no) throws Exception{
+	public void displayProductDetail(int p_no) throws Exception{
 		
 		selectProduct = productService.bookSearchNumber(p_no);
 		productTitleLB.setText(selectProduct.getP_title());

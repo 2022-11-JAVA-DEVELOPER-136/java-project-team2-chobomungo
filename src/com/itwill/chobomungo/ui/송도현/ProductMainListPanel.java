@@ -139,6 +139,18 @@ public class ProductMainListPanel extends JPanel {
 			productItemListPanel.add(productPanel);
 			
 			JButton ProductDetailDescBtn = new JButton("제품상세보기");
+			ProductDetailDescBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
+						mainFrame.productTabbedPane.setSelectedIndex(1);
+						mainFrame.productDetailPanel.displayProductDetail(product.getP_no());
+						
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+				}
+			});
 			ProductDetailDescBtn.setBounds(152, 119, 166, 41);
 			productPanel.add(ProductDetailDescBtn);
 			
