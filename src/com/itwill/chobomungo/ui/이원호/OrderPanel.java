@@ -38,6 +38,7 @@ public class OrderPanel extends JPanel {
 	private JButton orderBTN;
 	private JLabel orderTotalPriceLB;
 	private JPanel orderTotalPricePanel;
+	private ChobomungoMainFrame mainFrame;
 	
 	/**
 	 * Create the panel.
@@ -230,6 +231,10 @@ public class OrderPanel extends JPanel {
 			orderListPanel.add(orderDetailPanel);
 			
 		}
+	}
+	
+	public void setMainFrame(ChobomungoMainFrame mainFrame) {
+		this.mainFrame = mainFrame;
 	}
 
 
