@@ -46,8 +46,6 @@ public class ProductDetailMainFrame extends JFrame {
 		ProductDetailPanel productDatailPanel = new ProductDetailPanel();
 		contentPane.add(productDatailPanel, BorderLayout.CENTER);
 		
-		
-		product = new Product(1,"1111",1000,"eeee.gif","1");		
 	}
 
 }
