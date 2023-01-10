@@ -20,6 +20,7 @@ import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import com.itwill.chobomungo.ui.박준식.LoginPanel_박준식;
 
 public class ChobomungoMainFrame extends JFrame {
 	
@@ -30,7 +31,7 @@ public class ChobomungoMainFrame extends JFrame {
 	private UserService userService;
 	/*********************************************/
 	/*****로그인 user 객체 저장할 user객체*****/
-	private User loginUser = new User("book1","1111","강감찬","","서울","111");
+	private User loginUser=null;
 	/******************************************/
 	
 	private JPanel contentPane;
@@ -39,6 +40,7 @@ public class ChobomungoMainFrame extends JFrame {
 	private JTabbedPane productTabbedPane;
 	private JTabbedPane userTabbedPane;
 	private JTabbedPane chobomungoTabbedPane;
+	private OrderPanel orderPanel;
 	
 	
 	/**
@@ -79,7 +81,10 @@ public class ChobomungoMainFrame extends JFrame {
 		userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		chobomungoTabbedPane.addTab("유저", null, userTabbedPane, null);
 		
-		OrderPanel orderPanel = new OrderPanel(loginUser);
+		LoginPanel_박준식 loginPanel_박준식 = new LoginPanel_박준식();
+		userTabbedPane.addTab("New tab", null, loginPanel_박준식, null);
+		
+		orderPanel = new OrderPanel(loginUser);
 		chobomungoTabbedPane.addTab("주문", null, orderPanel, null);
 		
 		JPanel globalNorthPanel = new JPanel();
@@ -135,8 +140,8 @@ public class ChobomungoMainFrame extends JFrame {
 			}
 		});
 		globalSouthPanel.add(globalUserBTN);
+		loginUser = loginPanel_박준식.loginUser;
 		
-		loginUser = new User();
 	}
 
 }

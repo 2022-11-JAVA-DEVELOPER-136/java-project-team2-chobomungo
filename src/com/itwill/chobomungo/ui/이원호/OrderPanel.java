@@ -172,14 +172,16 @@ public class OrderPanel extends JPanel {
 		});
 		orderDetailDeleteBTN.setBounds(274, 9, 39, 23);
 		orderDetailPanel.add(orderDetailDeleteBTN);
-	
-		displayOrderList(loginUser);
+		if(loginUser==null) {
+			
+		}else {
+			displayOrderList(loginUser);
+		}
 		
 	}
 	public void displayOrderList(User loginUser) throws Exception {
 		OrderService orderService = new OrderService();
 		orderListPanel.removeAll();
-		orderTotalPricePanel.removeAll();
 		List<Orders> orderList = orderService.orderList(loginUser.getUserId());
 		int totPrice = 0;
 		for(Orders order : orderList) {
@@ -213,6 +215,7 @@ public class OrderPanel extends JPanel {
 				}
 			});
 			
+			orderTotalPricePanel.removeAll();
 			JLabel orderTotalNameLB = new JLabel("최종 결제 금액");
 			orderTotalNameLB.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 			orderTotalNameLB.setBounds(12, 0, 99, 26);

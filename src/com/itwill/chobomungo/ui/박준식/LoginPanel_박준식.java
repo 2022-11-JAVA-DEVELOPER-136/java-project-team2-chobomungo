@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
 
 import javax.swing.JPasswordField;
@@ -13,6 +14,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTabbedPane;
+import java.awt.Dimension;
 //import java.awt.event.ComponentListener;
 
 public class LoginPanel_박준식 extends JPanel {
@@ -24,13 +26,13 @@ public class LoginPanel_박준식 extends JPanel {
 	private JButton joinBtn;
 	private JButton searchIDPassword_LB;
 	private JLabel loginTitle_LB;
-
+	public User loginUser;
 	/**
 	 * Create the panel.
 	 */
 	
 	/***************** 1.UserService멤버필드 선언 ********************/
-	private UserService userService;
+	private UserService userService = new UserService();
 	private JButton btnNewButton_1;
 	private JLabel loginTitle_LB_1;
 	private JPanel loginPanel;
@@ -40,6 +42,7 @@ public class LoginPanel_박준식 extends JPanel {
 	/******************************************************************/
 	
 	public LoginPanel_박준식() throws Exception{
+		setPreferredSize(new Dimension(400, 620));
 		setLayout(null);
 		
 		JPanel loginPanel = new JPanel();
@@ -48,24 +51,24 @@ public class LoginPanel_박준식 extends JPanel {
 		loginPanel.setLayout(null);
 		
 		JLabel idLB = new JLabel("아이디");
-		idLB.setBounds(12, 227, 57, 15);
+		idLB.setBounds(41, 93, 57, 15);
 		loginPanel.add(idLB);
 		
 		JLabel pwLB = new JLabel("비밀번호");
-		pwLB.setBounds(12, 312, 57, 15);
+		pwLB.setBounds(41, 178, 57, 15);
 		loginPanel.add(pwLB);
 		
 		JTextField loginIdTF = new JTextField();
-		loginIdTF.setBounds(122, 224, 116, 21);
+		loginIdTF.setBounds(122, 90, 116, 21);
 		loginPanel.add(loginIdTF);
 		loginIdTF.setColumns(10);
 		
 		JPasswordField loginpwTF = new JPasswordField();
-		loginpwTF.setBounds(122, 309, 116, 21);
+		loginpwTF.setBounds(122, 175, 116, 21);
 		loginPanel.add(loginpwTF);
 		
 		JButton loginBtn = new JButton("로그인");
-		loginBtn.setBounds(12, 387, 151, 23);
+		loginBtn.setBounds(12, 253, 151, 23);
 		loginPanel.add(loginBtn);
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -78,7 +81,7 @@ public class LoginPanel_박준식 extends JPanel {
 					if(result == 0) {
 						 //////로그인성공
 						JOptionPane.showMessageDialog(null, "로그인 성공");
-						//loginProcess(userId);
+						loginProcess(userId);
 						loginIdTF.setText("");
 						loginpwTF.setText("");
 					}else {
@@ -89,7 +92,7 @@ public class LoginPanel_박준식 extends JPanel {
 					} 
 					
 				}catch (Exception e1) {
-					
+					e1.printStackTrace();
 				}
 				
 			}
@@ -102,12 +105,12 @@ public class LoginPanel_박준식 extends JPanel {
 				//userTabbedPane.setSelectedIndex(1);
 			}
 		});
-		joinBtn_2.setBounds(175, 387, 151, 23);
+		joinBtn_2.setBounds(175, 253, 151, 23);
 		loginPanel.add(joinBtn_2);
 		
 		JLabel loginTitle_LB_1 = new JLabel("로그인");
 		loginTitle_LB_1.setFont(new Font("굴림", Font.PLAIN, 34));
-		loginTitle_LB_1.setBounds(122, 106, 116, 40);
+		loginTitle_LB_1.setBounds(122, 10, 116, 40);
 		loginPanel.add(loginTitle_LB_1);
 		
 		JButton searchIDPassword_LB_1 = new JButton("아이디/비밀번호 찾기");
@@ -116,23 +119,25 @@ public class LoginPanel_박준식 extends JPanel {
 				
 			}
 		});
-		searchIDPassword_LB_1.setBounds(175, 441, 151, 23);
+		searchIDPassword_LB_1.setBounds(175, 307, 151, 23);
 		loginPanel.add(searchIDPassword_LB_1);
 		
 		
-		/**************로그인성공시 호출할메쏘드***************/
-		//private void loginProcess(String userId) throws Exception{
-			/***********로그인성공시 해야할일***********
+		
+	}
+	/**************로그인성공시 호출할메쏘드***************/
+	private void loginProcess(String userId) throws Exception{
+		loginUser=null;
+		/***********로그인성공시 해야할일***********
 			 1.로그인성공한 멤버객체 멤버필드에저장
 			 2.UemberMainFrame타이틀변경
 			 3.로그인,회원가입탭 불활성화
 			   로그인,회원가입 메뉴아이템 불활성화
 			   로그아웃 메뉴아이템 활성화
 			 4.회원정보보기 화면전환
-			********************************************/
-			//1.로그인성공한 멤버객체 멤버필드에저장
-			//this.loginIdTF = userService.userDetail(userId);
-		}
-		
+	 ********************************************/
+	//1.로그인성공한 멤버객체 멤버필드에저장
+		loginUser = userService.findUser(userId);
 	}
+	
 }
