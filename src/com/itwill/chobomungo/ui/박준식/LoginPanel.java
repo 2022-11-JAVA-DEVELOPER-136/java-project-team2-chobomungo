@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.itwill.chobomungo.ui.ChobomungoMainFrame;
 import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
 
@@ -27,12 +28,12 @@ public class LoginPanel extends JPanel {
 	private JButton searchIDPassword_LB;
 	private JLabel loginTitle_LB;
 	public User loginUser;
+	private ChobomungoMainFrame mainFrame;
 	/**
 	 * Create the panel.
 	 */
 	
 	/***************** 1.UserService멤버필드 선언 ********************/
-	private UserService userService = new UserService();
 	private JButton btnNewButton_1;
 	private JLabel loginTitle_LB_1;
 	private JPanel loginPanel;
@@ -77,7 +78,7 @@ public class LoginPanel extends JPanel {
 					String userId = loginIdTF.getText();
 					String userPw = new String(loginpwTF.getPassword());
 					
-					int result = userService.login(userId, userPw);
+					int result = mainFrame.userService.login(userId, userPw);
 					if(result == 0) {
 						 //////로그인성공
 						JOptionPane.showMessageDialog(null, "로그인 성공");
@@ -137,7 +138,12 @@ public class LoginPanel extends JPanel {
 			 4.회원정보보기 화면전환
 	 ********************************************/
 	//1.로그인성공한 멤버객체 멤버필드에저장
-		loginUser = userService.findUser(userId);
+		mainFrame.loginUser = mainFrame.userService.findUser(userId); 
 	}
+	public void setMainFrame(ChobomungoMainFrame mainFrame) {
+		this.mainFrame = mainFrame;
+	}
+	
+	
 	
 }

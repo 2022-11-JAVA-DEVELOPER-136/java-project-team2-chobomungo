@@ -23,15 +23,24 @@ import java.awt.event.ActionEvent;
 import com.itwill.chobomungo.ui.박준식.LoginPanel;
 
 public class ChobomungoMainFrame extends JFrame {
+	/*
+	 * Panel상수
+	 */
+	public static final int PANEL_PRODUCT_LIST = 1;
+	public static final int PANEL_PRODUCT_DETAIL = 2;
+	
+	public static final int PANEL_USER_LOGIN = 3;
+	public static final int PANEL_USER_JOIN = 4;
+	public static final int PANEL_USER_UPDATE = 5;
 	
 	/**************서비스객체선언*****************/
-	private ProductService productService;
-	private OrderService orderService;
-	private CartService cartService;
-	private UserService userService;
+	public ProductService productService;
+	public OrderService orderService;
+	public CartService cartService;
+	public UserService userService;
 	/*********************************************/
 	/*****로그인 user 객체 저장할 user객체*****/
-	private User loginUser=null;
+	public User loginUser=null;
 	/******************************************/
 	
 	private JPanel contentPane;
@@ -41,6 +50,7 @@ public class ChobomungoMainFrame extends JFrame {
 	private JTabbedPane userTabbedPane;
 	private JTabbedPane chobomungoTabbedPane;
 	private OrderPanel orderPanel;
+	private LoginPanel loginPanel;
 	
 	
 	/**
@@ -81,8 +91,8 @@ public class ChobomungoMainFrame extends JFrame {
 		userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		chobomungoTabbedPane.addTab("유저", null, userTabbedPane, null);
 		
-		LoginPanel loginPanel_박준식 = new LoginPanel();
-		userTabbedPane.addTab("New tab", null, loginPanel_박준식, null);
+		loginPanel = new LoginPanel();
+		userTabbedPane.addTab("로그인", null, loginPanel, null);
 		
 		orderPanel = new OrderPanel(loginUser);
 		chobomungoTabbedPane.addTab("주문", null, orderPanel, null);
@@ -140,8 +150,43 @@ public class ChobomungoMainFrame extends JFrame {
 			}
 		});
 		globalSouthPanel.add(globalUserBTN);
-		loginUser = loginPanel_박준식.loginUser;
 		
+		
+		
+		loginPanel.setMainFrame(this);
+		orderPanel.setMainFrame(this);
+		
+		
+		/***********서비스객체 생성**************/
+		userService = new UserService();
+		productService = new ProductService();
+		cartService = new CartService();
+		orderService = new OrderService();
+		/****************************************/
+		
+	//생성자끝	
 	}
+	
+	/*************패널변경메쏘드**************/
+	public void changePanel(int panel_no) {
+		if(panel_no == PANEL_PRODUCT_LIST) {
+			chobomungoTabbedPane.setSelectedIndex(0);
+			productTabbedPane.setSelectedIndex(0);
+		}else if(panel_no == PANEL_PRODUCT_DETAIL){
+			chobomungoTabbedPane.setSelectedIndex(0);
+			productTabbedPane.setSelectedIndex(1);
+		}else if(panel_no == PANEL_USER_LOGIN){
+			chobomungoTabbedPane.setSelectedIndex(1);
+			userTabbedPane.setSelectedIndex(0);
+		}else if(panel_no == PANEL_USER_JOIN){
+			chobomungoTabbedPane.setSelectedIndex(1);
+			userTabbedPane.setSelectedIndex(1);
+		}else if(panel_no == PANEL_USER_UPDATE){
+			chobomungoTabbedPane.setSelectedIndex(1);
+			userTabbedPane.setSelectedIndex(2);
+		}
+	
+	}
+	
 
 }
