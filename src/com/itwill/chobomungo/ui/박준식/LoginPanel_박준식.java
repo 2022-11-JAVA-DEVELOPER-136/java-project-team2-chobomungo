@@ -121,7 +121,7 @@ public class LoginPanel_박준식 extends JPanel {
 		
 		
 		/**************로그인성공시 호출할메쏘드***************/
-		private void loginProcess(String userId) throws Exception{
+		//private void loginProcess(String userId) throws Exception{
 			/***********로그인성공시 해야할일***********
 			 1.로그인성공한 멤버객체 멤버필드에저장
 			 2.UemberMainFrame타이틀변경
@@ -131,7 +131,7 @@ public class LoginPanel_박준식 extends JPanel {
 			 4.회원정보보기 화면전환
 			********************************************/
 			//1.로그인성공한 멤버객체 멤버필드에저장
-			this.loginIdTF = userService.userDetail(userId);
+			//this.loginIdTF = userService.userDetail(userId);
 		}
 		
 	}
