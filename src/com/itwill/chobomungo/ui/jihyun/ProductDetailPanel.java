@@ -19,6 +19,7 @@ import com.itwill.chobomungo.cart.CartService;
 import com.itwill.chobomungo.order.OrderService;
 import com.itwill.chobomungo.product.Product;
 import com.itwill.chobomungo.product.ProductService;
+import com.itwill.chobomungo.ui.ChobomungoMainFrame;
 import com.itwill.chobomungo.user.UserService;
 
 import javax.swing.ImageIcon;
@@ -40,6 +41,7 @@ public class ProductDetailPanel extends JPanel {
 	public JButton productOrderBtn;
 	public JTextArea productDescTA;
 
+	public ChobomungoMainFrame mainFrame;
 	/**
 	 * Create the panel.
 	 * @throws Exception 
@@ -90,8 +92,6 @@ public class ProductDetailPanel extends JPanel {
 		ProductDetailPanel.add(productPriceLB);
 		
 		/****************************************************/
-		displayProductDetail(9);
-		
 		
 		JLabel productAmountLB = new JLabel("구매수량");
 		productAmountLB.setBounds(226, 150, 61, 16);
@@ -147,4 +147,7 @@ public class ProductDetailPanel extends JPanel {
 		
 	}
 
+	public void setMainFrame(ChobomungoMainFrame mainFrame) {
+		this.mainFrame = mainFrame;
+	}
 }

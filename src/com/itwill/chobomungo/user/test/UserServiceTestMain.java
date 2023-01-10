@@ -100,8 +100,8 @@ public class UserServiceTestMain {
 		System.out.println(idCheck);
 		
 		//이메일 중복체크
-		boolean emailCheck = userService.emailDuplicateCheck("book3@korea.com");
-		System.out.println(emailCheck);
+		//boolean emailCheck = userService.emailDuplicateCheck("book3@korea.com");
+		//System.out.println(emailCheck);
 
 	}
 

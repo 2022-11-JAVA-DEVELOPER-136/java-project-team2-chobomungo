@@ -103,7 +103,8 @@ public class LoginPanel extends JPanel {
 		JButton joinBtn_2 = new JButton("회원가입");
 		joinBtn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//userTabbedPane.setSelectedIndex(1);
+				mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
+				mainFrame.userTabbedPane.setSelectedIndex(1);
 			}
 		});
 		joinBtn_2.setBounds(175, 253, 151, 23);

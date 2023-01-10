@@ -170,8 +170,8 @@ public class ChobomungoMainFrame extends JFrame {
 		
 		loginPanel.setMainFrame(this);
 		orderPanel.setMainFrame(this);
+		productMainListPanel.setMainFrame(this);
 		
-		userCreatePanel = new UserCreatePanel();
 		userTabbedPane.addTab("회원가입", null, userCreatePanel, null);
 		
 		userUpdatePanel = new UserUpdatePanel();

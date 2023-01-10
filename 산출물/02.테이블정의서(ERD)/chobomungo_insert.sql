@@ -12,8 +12,6 @@ insert into product values(product_p_no_SEQ.nextval, '3', 25000, 'default.jpg','
 insert into product values(product_p_no_SEQ.nextval, '4', 25000, 'default.jpg','상세 정보...');
 insert into product values(product_p_no_SEQ.nextval, '5', 25000, 'default.jpg','상세 정보...');
 insert into product values(product_p_no_SEQ.nextval, '6', 25000, 'default.jpg','상세 정보...');
-insert into product values(product_p_no_SEQ.nextval, '7', 25000, 'default.jpg','상세 정보...');
-insert into product values(product_p_no_SEQ.nextval, '8', 25000, 'default.jpg','상세 정보...');
 commit;
 
 

@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+import com.itwill.chobomungo.ui.ChobomungoMainFrame;
 import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
 
@@ -16,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.border.LineBorder;
 
 public class UserCreatePanel extends JPanel {
@@ -30,15 +33,16 @@ public class UserCreatePanel extends JPanel {
 	/**
 	 * Create the panel
 	 */
+	public ChobomungoMainFrame mainFrame;
 	
-	UserService userService;
 	public JButton idCheckBtn;
 	public JButton pwCheckBtn;
-	public JButton emailCheckBtn;
+	public JButton memberJoinBtn;
+	public JButton goMainBtn;
 	
 	public UserCreatePanel() throws Exception {
+		setPreferredSize(new Dimension(400, 620));
 		setLayout(null);
-		
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
@@ -96,7 +100,7 @@ public class UserCreatePanel extends JPanel {
 		panel.add(user_email);
 		user_email.setColumns(10);
 		
-		JButton memberJoinBtn = new JButton("회원가입 완료");
+		memberJoinBtn = new JButton("회원가입 완료");
 		memberJoinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*********** 회원가입 ************/
@@ -111,7 +115,7 @@ public class UserCreatePanel extends JPanel {
 					/***********유효성체크****************/					
 					
 					User newMember=new User(id,password,name,phone,address,email);
-					int isAdd = userService.create(newMember);
+					int isAdd = mainFrame.userService.create(newMember);
 					if(isAdd==1) {
 						//로그인화면전환
 						System.out.println("생성완료.");
@@ -144,7 +148,7 @@ public class UserCreatePanel extends JPanel {
 		memberJoinBtn.setBounds(102, 338, 152, 21);
 		panel.add(memberJoinBtn);
 		
-		JButton goMainBtn = new JButton("메인으로");
+		goMainBtn = new JButton("메인으로");
 		goMainBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JFrame frame = new 메인클래스(); //메인 탭으로 이동
@@ -160,7 +164,7 @@ public class UserCreatePanel extends JPanel {
 				String id = user_id.getText();
 				boolean isAdd;
 				try {
-					isAdd = userService.idCheck(id);
+					isAdd = mainFrame.userService.idCheck(id);
 					if(isAdd==false) {
 						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
 						user_id.requestFocus();
@@ -203,35 +207,6 @@ public class UserCreatePanel extends JPanel {
 		pwCheckBtn.setBounds(75, 153, 128, 21);
 		panel.add(pwCheckBtn);
 		
-		emailCheckBtn = new JButton("이메일 중복확인");
-		emailCheckBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String em = user_email.getText();
-				boolean isAdd;
-				try {
-					isAdd = userService.emailDuplicateCheck(em);
-					if(isAdd==false) {
-						JOptionPane.showMessageDialog(null, "사용가능한 주소입니다.");
-						user_email.requestFocus();
-						user_email.setSelectionStart(0);
-						user_email.setSelectionEnd(em.length());
-				}else {
-					JOptionPane.showMessageDialog(null, "이미 사용하고 있는 주소입니다.");
-					user_email.requestFocus();
-					user_email.setSelectionStart(0);
-					user_email.setSelectionEnd(em.length());
-				}
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		emailCheckBtn.setBounds(75, 294, 128, 21);
-		panel.add(emailCheckBtn);
-		
-		userService= new UserService();
-		
 	
 	}
 	
@@ -260,5 +235,8 @@ public class UserCreatePanel extends JPanel {
 
 	}
 	
+	public void setMainFrame(ChobomungoMainFrame mainFrame) {
+		this.mainFrame = mainFrame;
+	}
 	
 }

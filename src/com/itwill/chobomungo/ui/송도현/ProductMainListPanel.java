@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 
 import com.itwill.chobomungo.product.Product;
 import com.itwill.chobomungo.product.ProductService;
+import com.itwill.chobomungo.ui.ChobomungoMainFrame;
 import com.itwill.chobomungo.user.User;
 import javax.swing.JComboBox;
 import java.awt.Font;
@@ -27,9 +28,8 @@ import javax.swing.DefaultComboBoxModel;
 
 public class ProductMainListPanel extends JPanel {
 	
-	ProductService productService;
+	public ChobomungoMainFrame mainFrame;
 	
-	User loginUser=null;
 	JLabel productListLB;
 	JPanel productItemListPanel;
 	/**
@@ -73,6 +73,11 @@ public class ProductMainListPanel extends JPanel {
 		productItemListPanel.add(productPanel);
 		
 		JButton ProductDetailDescBtn = new JButton("제품상세보기");
+		ProductDetailDescBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		ProductDetailDescBtn.setBounds(152, 119, 166, 41);
 		productPanel.add(ProductDetailDescBtn);
 		
@@ -101,16 +106,12 @@ public class ProductMainListPanel extends JPanel {
 		productPanel.add(SumLabel);
 		/*************product item end*************/
 		
-		productService=new ProductService();
-		loginUser= new User("book1",null,null,null,null,null);
-		productList();
-		
 	}
 	
 	public void productList() throws Exception{
 		
 		List<Product> productList= 
-			productService.productList();
+			mainFrame.productService.productList();
 		
 		productItemListPanel.removeAll();
 		for(Product product:productList) {
@@ -165,7 +166,9 @@ public class ProductMainListPanel extends JPanel {
 		}
 	}
 	
-	
+	public void setMainFrame(ChobomungoMainFrame mainFrame) {
+		this.mainFrame = mainFrame;
+	}
 	
 	
 	
