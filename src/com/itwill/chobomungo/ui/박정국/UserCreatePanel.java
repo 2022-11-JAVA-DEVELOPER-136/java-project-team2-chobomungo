@@ -22,13 +22,13 @@ import java.awt.Dimension;
 import javax.swing.border.LineBorder;
 
 public class UserCreatePanel extends JPanel {
-	public JTextField user_id;
-	public JTextField user_pw;
-	public JTextField user_pw_check;
-	public JTextField user_name;
-	public JTextField user_phone;
-	public JTextField user_address;
-	public JTextField user_email;
+	public JTextField userIDTF;
+	public JTextField userPwTF;
+	public JTextField userPWCheckTF;
+	public JTextField userNameTF;
+	public JTextField userPhoneTF;
+	public JTextField userAddressTF;
+	public JTextField userEmailTF;
 
 	/**
 	 * Create the panel
@@ -56,49 +56,49 @@ public class UserCreatePanel extends JPanel {
 		panelTitle.setBounds(102, 10, 159, 29);
 		panel.add(panelTitle);
 		
-		user_id = new JTextField();
-		user_id.setText("아이디");
-		user_id.setBounds(75, 49, 212, 21);
-		panel.add(user_id);
-		user_id.setColumns(10);
+		userIDTF = new JTextField();
+		userIDTF.setText("아이디");
+		userIDTF.setBounds(75, 49, 212, 21);
+		panel.add(userIDTF);
+		userIDTF.setColumns(10);
 		
 		
-		user_pw = new JTextField();
-		user_pw.setText("비밀번호");
-		user_pw.setBounds(75, 98, 212, 21);
-		panel.add(user_pw);
-		user_pw.setColumns(10);
+		userPwTF = new JTextField();
+		userPwTF.setText("비밀번호");
+		userPwTF.setBounds(75, 98, 212, 21);
+		panel.add(userPwTF);
+		userPwTF.setColumns(10);
 		
-		user_pw_check = new JTextField();
-		user_pw_check.setText("비밀번호 확인");
-		user_pw_check.setBounds(75, 129, 212, 21);
-		panel.add(user_pw_check);
-		user_pw_check.setColumns(10);
+		userPWCheckTF = new JTextField();
+		userPWCheckTF.setText("비밀번호 확인");
+		userPWCheckTF.setBounds(75, 129, 212, 21);
+		panel.add(userPWCheckTF);
+		userPWCheckTF.setColumns(10);
 		
 		
-		user_name = new JTextField();
-		user_name.setText("이름");
-		user_name.setBounds(75, 177, 212, 21);
-		panel.add(user_name);
-		user_name.setColumns(10);
+		userNameTF = new JTextField();
+		userNameTF.setText("이름");
+		userNameTF.setBounds(75, 177, 212, 21);
+		panel.add(userNameTF);
+		userNameTF.setColumns(10);
 		
-		user_phone = new JTextField();
-		user_phone.setText("연락처");
-		user_phone.setBounds(75, 208, 212, 21);
-		panel.add(user_phone);
-		user_phone.setColumns(10);
+		userPhoneTF = new JTextField();
+		userPhoneTF.setText("연락처");
+		userPhoneTF.setBounds(75, 208, 212, 21);
+		panel.add(userPhoneTF);
+		userPhoneTF.setColumns(10);
 		
-		user_address = new JTextField();
-		user_address.setText("주소");
-		user_address.setBounds(75, 239, 212, 21);
-		panel.add(user_address);
-		user_address.setColumns(10);
+		userAddressTF = new JTextField();
+		userAddressTF.setText("주소");
+		userAddressTF.setBounds(75, 239, 212, 21);
+		panel.add(userAddressTF);
+		userAddressTF.setColumns(10);
 		
-		user_email = new JTextField();
-		user_email.setText("이메일");
-		user_email.setBounds(75, 270, 212, 21);
-		panel.add(user_email);
-		user_email.setColumns(10);
+		userEmailTF = new JTextField();
+		userEmailTF.setText("이메일");
+		userEmailTF.setBounds(75, 270, 212, 21);
+		panel.add(userEmailTF);
+		userEmailTF.setColumns(10);
 		
 		memberJoinBtn = new JButton("회원가입 완료");
 		memberJoinBtn.addActionListener(new ActionListener() {
@@ -106,12 +106,12 @@ public class UserCreatePanel extends JPanel {
 				/*********** 회원가입 ************/
 				try {
 					/******TextField로부터 데이터 얻기*****/
-					String id = user_id.getText();
-					String password=user_pw.getText();
-					String name=user_name.getText();
-					String phone=user_phone.getText();
-					String address=user_address.getText();
-					String email=user_email.getText();
+					String id = userIDTF.getText();
+					String password=userPwTF.getText();
+					String name=userNameTF.getText();
+					String phone=userPhoneTF.getText();
+					String address=userAddressTF.getText();
+					String email=userEmailTF.getText();
 					/***********유효성체크****************/					
 					
 					User newMember=new User(id,password,name,phone,address,email);
@@ -120,25 +120,25 @@ public class UserCreatePanel extends JPanel {
 						//로그인화면전환
 						System.out.println("생성완료.");
 						JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
-						user_id.requestFocus();
-						user_id.setSelectionStart(0);
-						user_id.setSelectionEnd(id.length());
+						userIDTF.requestFocus();
+						userIDTF.setSelectionStart(0);
+						userIDTF.setSelectionEnd(id.length());
 						
-						user_id.setText("");
-						user_pw.setText("");
-						user_pw_check.setText("");
-						user_name.setText("");
-						user_phone.setText("");
-						user_address.setText("");
-						user_email.setText("");
+						userIDTF.setText("");
+						userPwTF.setText("");
+						userPWCheckTF.setText("");
+						userNameTF.setText("");
+						userPhoneTF.setText("");
+						userAddressTF.setText("");
+						userEmailTF.setText("");
 						
 						createFormEnable(false);
 						//memberTabbedPane.setSelectedIndex(1);
 					}else {
 						JOptionPane.showMessageDialog(null, "다시 확인해주세요.");
-						user_id.requestFocus();
-						user_id.setSelectionStart(0);
-						user_id.setSelectionEnd(id.length());
+						userIDTF.requestFocus();
+						userIDTF.setSelectionStart(0);
+						userIDTF.setSelectionEnd(id.length());
 					}
 				}catch (Exception e1) {
 					System.out.println("회원가입-->"+e1.getMessage());
@@ -161,20 +161,20 @@ public class UserCreatePanel extends JPanel {
 		idCheckBtn = new JButton("아이디 중복확인");
 		idCheckBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id = user_id.getText();
+				String id = userIDTF.getText();
 				boolean isAdd;
 				try {
 					isAdd = mainFrame.userService.idCheck(id);
 					if(isAdd==false) {
 						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
-						user_id.requestFocus();
-						user_id.setSelectionStart(0);
-						user_id.setSelectionEnd(id.length());
+						userIDTF.requestFocus();
+						userIDTF.setSelectionStart(0);
+						userIDTF.setSelectionEnd(id.length());
 				}else {
 					JOptionPane.showMessageDialog(null, "이미 사용하고 있는 아이디입니다.");
-					user_id.requestFocus();
-					user_id.setSelectionStart(0);
-					user_id.setSelectionEnd(id.length());
+					userIDTF.requestFocus();
+					userIDTF.setSelectionStart(0);
+					userIDTF.setSelectionEnd(id.length());
 				}
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -188,19 +188,19 @@ public class UserCreatePanel extends JPanel {
 		pwCheckBtn = new JButton("비밀번호 확인");
 		pwCheckBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String password1=user_pw.getText();
-				String password2=user_pw_check.getText();
+				String password1=userPwTF.getText();
+				String password2=userPWCheckTF.getText();
 				boolean isAdd = password1.equals(password2);
 				if(isAdd) {
 					JOptionPane.showMessageDialog(null, "비밀번호가 일치합니다.");
-					user_pw.requestFocus();
-					user_pw.setSelectionStart(0);
-					user_pw.setSelectionEnd(password1.length());
+					userPwTF.requestFocus();
+					userPwTF.setSelectionStart(0);
+					userPwTF.setSelectionEnd(password1.length());
 				}else {
 					JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.");
-					user_pw.requestFocus();
-					user_pw.setSelectionStart(0);
-					user_pw.setSelectionEnd(password1.length());
+					userPwTF.requestFocus();
+					userPwTF.setSelectionStart(0);
+					userPwTF.setSelectionEnd(password1.length());
 				}
 			}
 		});
@@ -213,23 +213,23 @@ public class UserCreatePanel extends JPanel {
 	public void createFormEnable(boolean b) {
 		if (b) {
 			// 활성화
-			user_id.setEditable(true);
-			user_pw.setEditable(true);
-			user_pw_check.setEditable(true);
-			user_name.setEditable(true);
-			user_phone.setEditable(true);
-			user_address.setEditable(true);
-			user_email.setEditable(true);
+			userIDTF.setEditable(true);
+			userPwTF.setEditable(true);
+			userPWCheckTF.setEditable(true);
+			userNameTF.setEditable(true);
+			userPhoneTF.setEditable(true);
+			userAddressTF.setEditable(true);
+			userEmailTF.setEditable(true);
 			
 		} else {
 			// 비활성화
-			user_id.setEditable(false);
-			user_pw.setEditable(false);
-			user_pw_check.setEditable(false);
-			user_name.setEditable(false);
-			user_phone.setEditable(false);
-			user_address.setEditable(false);
-			user_email.setEditable(false);
+			userIDTF.setEditable(false);
+			userPwTF.setEditable(false);
+			userPWCheckTF.setEditable(false);
+			userNameTF.setEditable(false);
+			userPhoneTF.setEditable(false);
+			userAddressTF.setEditable(false);
+			userEmailTF.setEditable(false);
 			
 		}
 

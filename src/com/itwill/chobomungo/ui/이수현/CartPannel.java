@@ -56,6 +56,7 @@ public class CartPannel extends JPanel {
 	 * @throws Exception 
 	 */
 	public CartPannel() throws Exception {
+		setPreferredSize(new Dimension(400, 600));
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel cartPanel = new JPanel();

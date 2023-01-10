@@ -59,9 +59,9 @@ public class ChobomungoMainFrame extends JFrame {
 	public OrderPanel orderPanel;
 	public LoginPanel loginPanel;
 	public ProductDetailPanel productDetailPanel;
-	public UserCreatePanel userCreatePanel;
-	public UserUpdatePanel userUpdatePanel;
-	private ProductMainListPanel productMainListPanel;
+	public ProductMainListPanel productMainListPanel;
+	private UserUpdatePanel userUpdatePanel;
+	private UserCreatePanel userCreatePanel;
 	
 	
 	/**
@@ -113,6 +113,12 @@ public class ChobomungoMainFrame extends JFrame {
 		
 		orderPanel = new OrderPanel();
 		chobomungoTabbedPane.addTab("주문", null, orderPanel, null);
+		
+		userCreatePanel = new UserCreatePanel();
+		userTabbedPane.addTab("회원가입", null, userCreatePanel, null);
+		
+		userUpdatePanel = new UserUpdatePanel();
+		userTabbedPane.addTab("회원정보", null, userUpdatePanel, null);
 		
 		JPanel globalNorthPanel = new JPanel();
 		globalNorthPanel.setPreferredSize(new Dimension(10, 50));
@@ -169,17 +175,6 @@ public class ChobomungoMainFrame extends JFrame {
 		});
 		globalSouthPanel.add(globalUserBTN);
 		
-		
-		
-
-		
-		userTabbedPane.addTab("회원가입", null, userCreatePanel, null);
-		
-		userUpdatePanel = new UserUpdatePanel();
-		userTabbedPane.addTab("회원정보", null, userUpdatePanel, null);
-		orderPanel.setMainFrame(this);
-		
-		
 		/***********서비스객체 생성**************/
 		userService = new UserService();
 		productService = new ProductService();
@@ -190,29 +185,10 @@ public class ChobomungoMainFrame extends JFrame {
 		loginPanel.setMainFrame(this);
 		orderPanel.setMainFrame(this);
 		productMainListPanel.setMainFrame(this);
+		productDetailPanel.setMainFrame(this);
+		userUpdatePanel.setMainFrame(this);
 		
 	//생성자끝	
-	}
-	
-	/*************패널변경메쏘드**************/
-	public void changePanel(int panel_no) {
-		if(panel_no == PANEL_PRODUCT_LIST) {
-			chobomungoTabbedPane.setSelectedIndex(0);
-			productTabbedPane.setSelectedIndex(0);
-		}else if(panel_no == PANEL_PRODUCT_DETAIL){
-			chobomungoTabbedPane.setSelectedIndex(0);
-			productTabbedPane.setSelectedIndex(1);
-		}else if(panel_no == PANEL_USER_LOGIN){
-			chobomungoTabbedPane.setSelectedIndex(1);
-			userTabbedPane.setSelectedIndex(0);
-		}else if(panel_no == PANEL_USER_JOIN){
-			chobomungoTabbedPane.setSelectedIndex(1);
-			userTabbedPane.setSelectedIndex(1);
-		}else if(panel_no == PANEL_USER_UPDATE){
-			chobomungoTabbedPane.setSelectedIndex(1);
-			userTabbedPane.setSelectedIndex(2);
-		}
-	
 	}
 	
 	
