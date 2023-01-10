@@ -179,8 +179,9 @@ public class ProductMainListPanel extends JPanel {
 		}
 	}
 	
-	public void setMainFrame(ChobomungoMainFrame mainFrame) {
+	public void setMainFrame(ChobomungoMainFrame mainFrame) throws Exception {
 		this.mainFrame = mainFrame;
+		productList();
 	}
 	
 	
