@@ -15,77 +15,84 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class UserCreatePanel extends JPanel {
-	private JTextField user_id;
-	private JTextField user_pw;
-	private JTextField user_pw_check;
-	private JTextField user_name;
-	private JTextField user_phone;
-	private JTextField user_address;
-	private JTextField user_email;
+	public JTextField user_id;
+	public JTextField user_pw;
+	public JTextField user_pw_check;
+	public JTextField user_name;
+	public JTextField user_phone;
+	public JTextField user_address;
+	public JTextField user_email;
 
 	/**
 	 * Create the panel
 	 */
 	
 	UserService userService;
+	public JButton idCheckBtn;
+	public JButton pwCheckBtn;
+	public JButton emailCheckBtn;
 	
 	public UserCreatePanel() throws Exception {
 		setLayout(null);
 		
+		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 400, 620);
 		add(panel);
 		panel.setLayout(null);
 		
 		JLabel panelTitle = new JLabel("회원가입");
-		panelTitle.setFont(new Font("굴림", Font.PLAIN, 15));
+		panelTitle.setFont(new Font("Dialog", Font.BOLD, 20));
 		panelTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		panelTitle.setBounds(36, 10, 159, 29);
+		panelTitle.setBounds(102, 10, 159, 29);
 		panel.add(panelTitle);
 		
 		user_id = new JTextField();
 		user_id.setText("아이디");
-		user_id.setBounds(12, 49, 212, 21);
+		user_id.setBounds(75, 49, 212, 21);
 		panel.add(user_id);
 		user_id.setColumns(10);
 		
 		
 		user_pw = new JTextField();
 		user_pw.setText("비밀번호");
-		user_pw.setBounds(12, 92, 212, 21);
+		user_pw.setBounds(75, 98, 212, 21);
 		panel.add(user_pw);
 		user_pw.setColumns(10);
 		
 		user_pw_check = new JTextField();
 		user_pw_check.setText("비밀번호 확인");
-		user_pw_check.setBounds(12, 123, 212, 21);
+		user_pw_check.setBounds(75, 129, 212, 21);
 		panel.add(user_pw_check);
 		user_pw_check.setColumns(10);
 		
 		
 		user_name = new JTextField();
 		user_name.setText("이름");
-		user_name.setBounds(12, 170, 212, 21);
+		user_name.setBounds(75, 177, 212, 21);
 		panel.add(user_name);
 		user_name.setColumns(10);
 		
 		user_phone = new JTextField();
 		user_phone.setText("연락처");
-		user_phone.setBounds(12, 201, 212, 21);
+		user_phone.setBounds(75, 208, 212, 21);
 		panel.add(user_phone);
 		user_phone.setColumns(10);
 		
 		user_address = new JTextField();
 		user_address.setText("주소");
-		user_address.setBounds(12, 232, 212, 21);
+		user_address.setBounds(75, 239, 212, 21);
 		panel.add(user_address);
 		user_address.setColumns(10);
 		
 		user_email = new JTextField();
 		user_email.setText("이메일");
-		user_email.setBounds(12, 263, 212, 21);
+		user_email.setBounds(75, 270, 212, 21);
 		panel.add(user_email);
 		user_email.setColumns(10);
 		
@@ -108,7 +115,21 @@ public class UserCreatePanel extends JPanel {
 					if(isAdd==1) {
 						//로그인화면전환
 						System.out.println("생성완료.");
-						 //memberTabbedPane.setSelectedIndex(1);
+						JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
+						user_id.requestFocus();
+						user_id.setSelectionStart(0);
+						user_id.setSelectionEnd(id.length());
+						
+						user_id.setText("");
+						user_pw.setText("");
+						user_pw_check.setText("");
+						user_name.setText("");
+						user_phone.setText("");
+						user_address.setText("");
+						user_email.setText("");
+						
+						createFormEnable(false);
+						//memberTabbedPane.setSelectedIndex(1);
 					}else {
 						JOptionPane.showMessageDialog(null, "다시 확인해주세요.");
 						user_id.requestFocus();
@@ -120,7 +141,7 @@ public class UserCreatePanel extends JPanel {
 				}
 			}
 		});
-		memberJoinBtn.setBounds(36, 304, 152, 21);
+		memberJoinBtn.setBounds(102, 338, 152, 21);
 		panel.add(memberJoinBtn);
 		
 		JButton goMainBtn = new JButton("메인으로");
@@ -130,13 +151,12 @@ public class UserCreatePanel extends JPanel {
 		        //frame.setVisible(true);
 			}
 		});
-		goMainBtn.setBounds(36, 335, 152, 21);
+		goMainBtn.setBounds(102, 369, 152, 21);
 		panel.add(goMainBtn);
-
-		JLabel lblNewLabel_1 = new JLabel("아이디 중복확인");
-		lblNewLabel_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		
+		idCheckBtn = new JButton("아이디 중복확인");
+		idCheckBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				String id = user_id.getText();
 				boolean isAdd;
 				try {
@@ -147,7 +167,7 @@ public class UserCreatePanel extends JPanel {
 						user_id.setSelectionStart(0);
 						user_id.setSelectionEnd(id.length());
 				}else {
-					JOptionPane.showMessageDialog(null, "이미 사용하고있는 아이디입니다.");
+					JOptionPane.showMessageDialog(null, "이미 사용하고 있는 아이디입니다.");
 					user_id.requestFocus();
 					user_id.setSelectionStart(0);
 					user_id.setSelectionEnd(id.length());
@@ -158,36 +178,87 @@ public class UserCreatePanel extends JPanel {
 				}
 			}
 		});
+		idCheckBtn.setBounds(75, 73, 128, 21);
+		panel.add(idCheckBtn);
 		
-		lblNewLabel_1.setBounds(12, 74, 97, 15);
-		panel.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("비밀번호 확인");
-		lblNewLabel_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		pwCheckBtn = new JButton("비밀번호 확인");
+		pwCheckBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				String password1=user_pw.getText();
 				String password2=user_pw_check.getText();
 				boolean isAdd = password1.equals(password2);
 				if(isAdd) {
 					JOptionPane.showMessageDialog(null, "비밀번호가 일치합니다.");
-					user_id.requestFocus();
-					user_id.setSelectionStart(0);
-					user_id.setSelectionEnd(password1.length());
+					user_pw.requestFocus();
+					user_pw.setSelectionStart(0);
+					user_pw.setSelectionEnd(password1.length());
 				}else {
 					JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.");
-					user_id.requestFocus();
-					user_id.setSelectionStart(0);
-					user_id.setSelectionEnd(password1.length());
+					user_pw.requestFocus();
+					user_pw.setSelectionStart(0);
+					user_pw.setSelectionEnd(password1.length());
 				}
 			}
 		});
+		pwCheckBtn.setBounds(75, 153, 128, 21);
+		panel.add(pwCheckBtn);
 		
-		lblNewLabel_2.setBounds(12, 149, 105, 15);
-		panel.add(lblNewLabel_2);
+		emailCheckBtn = new JButton("이메일 중복확인");
+		emailCheckBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String em = user_email.getText();
+				boolean isAdd;
+				try {
+					isAdd = userService.emailDuplicateCheck(em);
+					if(isAdd==false) {
+						JOptionPane.showMessageDialog(null, "사용가능한 주소입니다.");
+						user_email.requestFocus();
+						user_email.setSelectionStart(0);
+						user_email.setSelectionEnd(em.length());
+				}else {
+					JOptionPane.showMessageDialog(null, "이미 사용하고 있는 주소입니다.");
+					user_email.requestFocus();
+					user_email.setSelectionStart(0);
+					user_email.setSelectionEnd(em.length());
+				}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		emailCheckBtn.setBounds(75, 294, 128, 21);
+		panel.add(emailCheckBtn);
 		
 		userService= new UserService();
 		
-		
+	
 	}
+	
+	public void createFormEnable(boolean b) {
+		if (b) {
+			// 활성화
+			user_id.setEditable(true);
+			user_pw.setEditable(true);
+			user_pw_check.setEditable(true);
+			user_name.setEditable(true);
+			user_phone.setEditable(true);
+			user_address.setEditable(true);
+			user_email.setEditable(true);
+			
+		} else {
+			// 비활성화
+			user_id.setEditable(false);
+			user_pw.setEditable(false);
+			user_pw_check.setEditable(false);
+			user_name.setEditable(false);
+			user_phone.setEditable(false);
+			user_address.setEditable(false);
+			user_email.setEditable(false);
+			
+		}
+
+	}
+	
+	
 }
