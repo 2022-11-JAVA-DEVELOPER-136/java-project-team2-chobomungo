@@ -24,6 +24,8 @@ public class UserService {
 			return -3;
 		} else if (!user.getUserPw().matches(SPECIAL_CHARACTERS)) {
 			return -4;
+		} else if (userDao.countByUserEmail(user.getUserEmail()) >= 1) {
+			return -5;
 		} else {
 			int rowCount = userDao.insert(user);
 			return rowCount;
@@ -65,7 +67,7 @@ public class UserService {
 		} else if (!user.getUserPw().matches(SPECIAL_CHARACTERS)) {
 			return -4;
 		} else {
-			int rowCount = userDao.insert(user);
+			int rowCount = userDao.update(user);
 			return rowCount;
 		}
 
@@ -90,20 +92,20 @@ public class UserService {
 	}
 
 	// 이메일 중복체크
-	public boolean emailDuplicateCheck(String email) throws Exception {
+	public boolean emailDuplicateCheck(User user) throws Exception {
 		boolean duplicateCheck = false;
-		if (userDao.countByUserEmail(email) >= 1) {
+		if (userDao.countByUserEmail(user.getUserEmail()) >= 1) {
 			duplicateCheck = true;
 			return duplicateCheck;
 		}
 		return duplicateCheck;
-		
+
 	}
-	
-	//아이디 중복확인 
-	public boolean idCheck (String userId) throws Exception {
+
+	// 아이디 중복확인
+	public boolean idCheck(String userId) throws Exception {
 		boolean check = false;
-		if(userDao.countByUserId(userId)>=1) {
+		if (userDao.countByUserId(userId) >= 1) {
 			check = true;
 		}
 		return check;

@@ -101,7 +101,7 @@ public class ChobomungoMainFrame extends JFrame {
 		loginPanel = new LoginPanel();
 		userTabbedPane.addTab("로그인", null, loginPanel, null);
 		
-		orderPanel = new OrderPanel(loginUser);
+		orderPanel = new OrderPanel();
 		chobomungoTabbedPane.addTab("주문", null, orderPanel, null);
 		
 		JPanel globalNorthPanel = new JPanel();
