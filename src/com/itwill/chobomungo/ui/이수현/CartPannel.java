@@ -35,8 +35,6 @@ public class CartPannel extends JPanel {
 	private CartService cartService;
 	private UserService userService;
 	
-	/**user***/
-	private User loginUser = null;
 	
 	/******************************/
 	private JButton updateTopBtn;
