@@ -78,7 +78,7 @@ public class LoginPanel_박준식 extends JPanel {
 					if(result == 0) {
 						//로그인성공
 						JOptionPane.showMessageDialog(null, "로그인 성공");
-						loginProcess(userId);
+						//loginProcess(userId);
 						loginIdTF.setText("");
 						loginpwTF.setText("");
 					}else {
