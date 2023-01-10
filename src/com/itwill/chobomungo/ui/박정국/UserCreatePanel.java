@@ -20,11 +20,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.border.LineBorder;
+import javax.swing.JPasswordField;
 
 public class UserCreatePanel extends JPanel {
 	public JTextField userIDTF;
-	public JTextField userPwTF;
-	public JTextField userPWCheckTF;
 	public JTextField userNameTF;
 	public JTextField userPhoneTF;
 	public JTextField userAddressTF;
@@ -39,10 +38,12 @@ public class UserCreatePanel extends JPanel {
 	public JButton pwCheckBtn;
 	public JButton memberJoinBtn;
 	public JButton goMainBtn;
-	private JLabel lblNewLabel_1_2;
-	private JLabel lblNewLabel_1_3;
-	private JLabel lblNewLabel_1_4;
-	private JLabel lblNewLabel_1_5;
+	private JLabel userNameLB;
+	private JLabel userPhoneLB;
+	private JLabel userAddressLB;
+	private JLabel userEmailLB;
+	private JPasswordField userPwTF;
+	private JPasswordField userPWCheckTF;
 	
 	public UserCreatePanel() throws Exception {
 		setPreferredSize(new Dimension(400, 620));
@@ -65,19 +66,6 @@ public class UserCreatePanel extends JPanel {
 		userIDTF.setBounds(95, 49, 192, 21);
 		panel.add(userIDTF);
 		userIDTF.setColumns(10);
-		
-		
-		userPwTF = new JTextField();
-		userPwTF.setText("비밀번호");
-		userPwTF.setBounds(95, 98, 192, 21);
-		panel.add(userPwTF);
-		userPwTF.setColumns(10);
-		
-		userPWCheckTF = new JTextField();
-		userPWCheckTF.setText("비밀번호 확인");
-		userPWCheckTF.setBounds(95, 129, 192, 21);
-		panel.add(userPWCheckTF);
-		userPWCheckTF.setColumns(10);
 		
 		
 		userNameTF = new JTextField();
@@ -104,7 +92,7 @@ public class UserCreatePanel extends JPanel {
 		panel.add(userEmailTF);
 		userEmailTF.setColumns(10);
 		
-		memberJoinBtn = new JButton("회원가입 완료");
+		memberJoinBtn = new JButton("회원가입");
 		memberJoinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*********** 회원가입 ************/
@@ -122,12 +110,7 @@ public class UserCreatePanel extends JPanel {
 					int isAdd = mainFrame.userService.create(newMember);
 					if(isAdd==1) {
 						//로그인화면전환
-						System.out.println("생성완료.");
 						JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
-						userIDTF.requestFocus();
-						userIDTF.setSelectionStart(0);
-						userIDTF.setSelectionEnd(id.length());
-						
 						userIDTF.setText("");
 						userPwTF.setText("");
 						userPWCheckTF.setText("");
@@ -135,7 +118,7 @@ public class UserCreatePanel extends JPanel {
 						userPhoneTF.setText("");
 						userAddressTF.setText("");
 						userEmailTF.setText("");
-						mainFrame.chobomungoTabbedPane.setSelectedIndex(isAdd);
+						mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
 						mainFrame.userTabbedPane.setSelectedIndex(0);
 					}else {
 						JOptionPane.showMessageDialog(null, "다시 확인해주세요.");
@@ -210,60 +193,47 @@ public class UserCreatePanel extends JPanel {
 		pwCheckBtn.setBounds(95, 153, 118, 21);
 		panel.add(pwCheckBtn);
 		
-		JLabel lblNewLabel = new JLabel("아이디");
-		lblNewLabel.setBounds(12, 52, 57, 15);
-		panel.add(lblNewLabel);
+		JLabel userIdLB = new JLabel("아이디");
+		userIdLB.setBounds(12, 52, 57, 15);
+		panel.add(userIdLB);
 		
-		JLabel lblNewLabel_1 = new JLabel("패스워드");
-		lblNewLabel_1.setBounds(12, 101, 57, 15);
-		panel.add(lblNewLabel_1);
+		JLabel userPwLB = new JLabel("패스워드");
+		userPwLB.setBounds(12, 101, 57, 15);
+		panel.add(userPwLB);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("패스워드확인");
-		lblNewLabel_1_1.setBounds(12, 132, 83, 15);
-		panel.add(lblNewLabel_1_1);
+		JLabel userPwCheckLB = new JLabel("패스워드확인");
+		userPwCheckLB.setBounds(12, 132, 83, 15);
+		panel.add(userPwCheckLB);
 		
-		lblNewLabel_1_2 = new JLabel("이름");
-		lblNewLabel_1_2.setBounds(12, 180, 72, 15);
-		panel.add(lblNewLabel_1_2);
+		userNameLB = new JLabel("이름");
+		userNameLB.setBounds(12, 180, 72, 15);
+		panel.add(userNameLB);
 		
-		lblNewLabel_1_3 = new JLabel("연락처");
-		lblNewLabel_1_3.setBounds(12, 211, 72, 15);
-		panel.add(lblNewLabel_1_3);
+		userPhoneLB = new JLabel("연락처");
+		userPhoneLB.setBounds(12, 211, 72, 15);
+		panel.add(userPhoneLB);
 		
-		lblNewLabel_1_4 = new JLabel("주소");
-		lblNewLabel_1_4.setBounds(12, 242, 72, 15);
-		panel.add(lblNewLabel_1_4);
+		userAddressLB = new JLabel("주소");
+		userAddressLB.setBounds(12, 242, 72, 15);
+		panel.add(userAddressLB);
 		
-		lblNewLabel_1_5 = new JLabel("이메일");
-		lblNewLabel_1_5.setBounds(12, 273, 72, 15);
-		panel.add(lblNewLabel_1_5);
+		userEmailLB = new JLabel("이메일");
+		userEmailLB.setBounds(12, 273, 72, 15);
+		panel.add(userEmailLB);
+		
+		userPwTF = new JPasswordField();
+		userPwTF.setBounds(95, 98, 192, 21);
+		panel.add(userPwTF);
+		
+		userPWCheckTF = new JPasswordField();
+		userPWCheckTF.setBounds(95, 126, 192, 21);
+		panel.add(userPWCheckTF);
 		
 	
 	}
 	
-	public void createFormEnable(boolean b) {
-		if (b) {
-			// 활성화
-			userIDTF.setEditable(true);
-			userPwTF.setEditable(true);
-			userPWCheckTF.setEditable(true);
-			userNameTF.setEditable(true);
-			userPhoneTF.setEditable(true);
-			userAddressTF.setEditable(true);
-			userEmailTF.setEditable(true);
-			
-		} else {
-			// 비활성화
-			userIDTF.setEditable(false);
-			userPwTF.setEditable(false);
-			userPWCheckTF.setEditable(false);
-			userNameTF.setEditable(false);
-			userPhoneTF.setEditable(false);
-			userAddressTF.setEditable(false);
-			userEmailTF.setEditable(false);
-			
-		}
-
+	public void joinVaildaion() {
+		
 	}
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
