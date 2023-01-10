@@ -36,7 +36,6 @@ public class ProductMainListPanel extends JPanel {
 	
 	private String cartQtyStr;
 	private int cartQty;
-	private JComboBox CartQtyComboBox;
 	/**
 	 * Create the panel.
 	 * @throws Exception 
@@ -87,7 +86,7 @@ public class ProductMainListPanel extends JPanel {
 		ProductDetailDescBtn.setBounds(152, 119, 166, 41);
 		productPanel.add(ProductDetailDescBtn);
 		
-		CartQtyComboBox = new JComboBox();
+		JComboBox CartQtyComboBox = new JComboBox();
 		CartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		CartQtyComboBox.setBounds(157, 10, 40, 34);
 		productPanel.add(CartQtyComboBox);
