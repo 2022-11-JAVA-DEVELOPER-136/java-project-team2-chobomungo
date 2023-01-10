@@ -17,7 +17,7 @@ import javax.swing.JTabbedPane;
 import java.awt.Dimension;
 //import java.awt.event.ComponentListener;
 
-public class LoginPanel_박준식 extends JPanel {
+public class LoginPanel extends JPanel {
 	private JTextField loginIdTF;
 	private JPasswordField loginpwTF;
 	private JLabel idLB;
@@ -41,7 +41,7 @@ public class LoginPanel_박준식 extends JPanel {
 	private JButton joinBtn_2;
 	/******************************************************************/
 	
-	public LoginPanel_박준식() throws Exception{
+	public LoginPanel() throws Exception{
 		setPreferredSize(new Dimension(400, 620));
 		setLayout(null);
 		

@@ -20,7 +20,7 @@ import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import com.itwill.chobomungo.ui.박준식.LoginPanel_박준식;
+import com.itwill.chobomungo.ui.박준식.LoginPanel;
 
 public class ChobomungoMainFrame extends JFrame {
 	
@@ -81,7 +81,7 @@ public class ChobomungoMainFrame extends JFrame {
 		userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		chobomungoTabbedPane.addTab("유저", null, userTabbedPane, null);
 		
-		LoginPanel_박준식 loginPanel_박준식 = new LoginPanel_박준식();
+		LoginPanel loginPanel_박준식 = new LoginPanel();
 		userTabbedPane.addTab("New tab", null, loginPanel_박준식, null);
 		
 		orderPanel = new OrderPanel(loginUser);
