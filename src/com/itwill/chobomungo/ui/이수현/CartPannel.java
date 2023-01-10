@@ -20,6 +20,7 @@ import com.itwill.chobomungo.order.OrderService;
 import com.itwill.chobomungo.product.ProductService;
 import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
+import javax.swing.ImageIcon;
 
 
 public class CartPannel extends JPanel {
@@ -43,6 +44,7 @@ public class CartPannel extends JPanel {
 	private JButton deleteCartBtn;
 	private JButton orderBtn;
 	private JLabel cartTotalPriceLabel;
+	private JLabel lblNewLabel;
 	
 	/**
 	 * Create the panel.
@@ -79,6 +81,11 @@ public class CartPannel extends JPanel {
 		deleteTopBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 13));
 		deleteTopBtn.setBounds(299, 10, 65, 23);
 		cartTopUpdateDeletePanel.add(deleteTopBtn);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(CartPannel.class.getResource("/image/shopping-cart.png")));
+		lblNewLabel.setBounds(12, 0, 52, 33);
+		cartTopUpdateDeletePanel.add(lblNewLabel);
 		
 		JPanel cartTotalPricePanel = new JPanel();
 		cartTotalPricePanel.setBackground(new Color(221, 221, 221));
