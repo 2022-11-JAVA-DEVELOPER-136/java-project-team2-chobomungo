@@ -44,7 +44,7 @@ public class OrderPanel extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public OrderPanel(User loginUser) throws Exception {
+	public OrderPanel() throws Exception {
 		setPreferredSize(new Dimension(400, 620));
 
 		setLayout(new BorderLayout(0, 0));
@@ -70,8 +70,8 @@ public class OrderPanel extends JPanel {
 		orderDeliveryCKB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(orderDeliveryCKB.isSelected()) {
-					orderDeliveryAddressTF.setText(loginUser.getUserAddress());
-					orderDeliveryNameTF.setText(loginUser.getUserName());
+					orderDeliveryAddressTF.setText(mainFrame.loginUser.getUserAddress());
+					orderDeliveryNameTF.setText(mainFrame.loginUser.getUserName());
 				}else {
 					orderDeliveryAddressTF.setText("");
 					orderDeliveryNameTF.setText("");
@@ -173,11 +173,6 @@ public class OrderPanel extends JPanel {
 		});
 		orderDetailDeleteBTN.setBounds(274, 9, 39, 23);
 		orderDetailPanel.add(orderDetailDeleteBTN);
-		if(loginUser==null) {
-			
-		}else {
-			displayOrderList(loginUser);
-		}
 		
 	}
 	public void displayOrderList(User loginUser) throws Exception {
