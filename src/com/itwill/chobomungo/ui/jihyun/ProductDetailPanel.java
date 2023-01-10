@@ -28,6 +28,7 @@ import javax.swing.JFormattedTextField;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Cursor;
 
 public class ProductDetailPanel extends JPanel {
 	
@@ -35,7 +36,7 @@ public class ProductDetailPanel extends JPanel {
 	private CartService cartService;
 	private UserService userService;
 	private OrderService orderService;
-	
+	private Product product;
 	
 	private JLabel productTitleLB;
 	private JLabel productImg;
@@ -62,7 +63,7 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.setLayout(null);
 		
 		
-		
+		/***************상품정보****************/
 		productImg = new JLabel("");
 		productImg.setBounds(40, 58, 180, 230);
 		productDetailPanel.add(productImg);
@@ -98,7 +99,11 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productPriceLB);
 		productPriceLB.setText(productService.bookSearchNumber(1).getP_price()+"원");
 		
+		/**********************************************/
+		
+		
 		JLabel productAmountLB = new JLabel("구매수량");
+		productAmountLB.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		productAmountLB.setBounds(250, 125, 61, 16);
 		productDetailPanel.add(productAmountLB);
 		
@@ -108,6 +113,7 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productAmountCB);
 		
 		productCartBtn = new JButton("장바구니");
+		productCartBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		productCartBtn.addActionListener(new ActionListener() {
 			
@@ -130,6 +136,7 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productCartBtn);
 		
 		productOrderBtn = new JButton("구매하기");
+		productOrderBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 				productOrderBtn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -144,11 +151,19 @@ public class ProductDetailPanel extends JPanel {
 				
 				productOrderBtn.setBounds(240, 248, 117, 40);
 				productDetailPanel.add(productOrderBtn);
-		//productDescTA.setText(productService.bookSearchNumber(p.getP_no()).getP_desc());
 
 	}
-	
 
+	private void displayProductDetail() throws Exception{
+
+		
+		productTitleLB.setText(product.getP_title());
+		productImg.setText(product.getP_image());
+		productDescTA.setText(product.getP_desc());
+		productPriceLB.setText(product.getP_price()+"원");
+		productTitleLB.setText(product.getP_title());
+	
+	}
 
 	
 }
