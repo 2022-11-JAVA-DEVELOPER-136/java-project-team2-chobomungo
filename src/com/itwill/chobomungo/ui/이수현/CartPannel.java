@@ -32,10 +32,6 @@ import com.itwill.chobomungo.user.UserService;
 public class CartPannel extends JPanel {
 	
 	/***Service***/
-	private OrderService orderService;
-	private ProductService productService;
-	private CartService cartService;
-	private UserService userService;
 	private ChobomungoMainFrame mainFrame;
 	
 	/******************************/
@@ -173,20 +169,15 @@ public class CartPannel extends JPanel {
 		panel_1.setBackground(new Color(192, 192, 192));
 		panel_1.setLayout(null);
 	
-		displayCartList();
-
 		}
 		
-	User user = new User("book1",null,null,null,null,null);	
 	private JLabel cartTotalLabel_1;
 	private JPanel cartTotalPricePanel;
 
-	public void displayCartList () throws Exception {
+	public void displayCartList (User loginUser) throws Exception {
 
-
-		CartService cartService = new CartService();
 		cartListpanel.removeAll();
-		List<Cart> cartList = cartService.getCartListByUserId(user.getUserId());
+		List<Cart> cartList = mainFrame.cartService.getCartListByUserId(loginUser.getUserId());
 		int totPrice = 0;
 		for(Cart cart : cartList) {
 			totPrice += cart.getProduct().getP_price();

@@ -14,6 +14,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -160,6 +161,24 @@ public class ProductMainListPanel extends JPanel {
 			productPanel.add(CartQtyComboBox);
 			
 			JButton CartBtn = new JButton("");
+			CartBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						if(mainFrame.loginUser!=null) {
+							mainFrame.cartService.addCart(0, mainFrame.loginUser.getUserId(), product.getP_no());
+							mainFrame.cartPannel.displayCartList(mainFrame.loginUser);
+							mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
+						}else {
+							mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
+							mainFrame.userTabbedPane.setSelectedIndex(0);
+							JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
+						}
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+					
+				}
+			});
 			CartBtn.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/image/smallcart.png")));
 			CartBtn.setOpaque(false);
 			CartBtn.setBorder(null);

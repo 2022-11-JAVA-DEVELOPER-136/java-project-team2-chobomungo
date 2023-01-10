@@ -59,6 +59,7 @@ public class ChobomungoMainFrame extends JFrame {
 	public JTabbedPane chobomungoTabbedPane;
 	public OrderPanel orderPanel;
 	public LoginPanel loginPanel;
+	public CartPannel cartPannel;
 	public ProductDetailPanel productDetailPanel;
 	public ProductMainListPanel productMainListPanel;
 	private UserUpdatePanel userUpdatePanel;
@@ -112,7 +113,7 @@ public class ChobomungoMainFrame extends JFrame {
 		loginPanel = new LoginPanel();
 		userTabbedPane.addTab("로그인", null, loginPanel, null);
 		
-		CartPannel cartPannel = new CartPannel();
+		cartPannel = new CartPannel();
 		chobomungoTabbedPane.addTab("New tab", null, cartPannel, null);
 		
 		orderPanel = new OrderPanel();
@@ -188,6 +189,7 @@ public class ChobomungoMainFrame extends JFrame {
 		
 		loginPanel.setMainFrame(this);
 		orderPanel.setMainFrame(this);
+		cartPannel.setMainFrame(this);
 		productMainListPanel.setMainFrame(this);
 		productDetailPanel.setMainFrame(this);
 		userUpdatePanel.setMainFrame(this);
