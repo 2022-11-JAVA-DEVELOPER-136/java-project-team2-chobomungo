@@ -98,8 +98,10 @@ public class UserDao {
 		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_SELECT_BY_ID_COUNT);
 		pstmt.setString(1, userId);
 		ResultSet rs = pstmt.executeQuery();
-		rs.next();
-		int userCount = rs.getInt(1);
+		int userCount = -99;
+		if(rs.next()) {
+			userCount = rs.getInt(1);
+		}
 		return userCount;
 
 	}
@@ -109,8 +111,10 @@ public class UserDao {
 		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_SELECT_BY_EMAIL_COUNT);
 		pstmt.setString(1, userEmail);
 		ResultSet rs = pstmt.executeQuery();
-		rs.next();
-		int userCount = rs.getInt(1);
+		int userCount=-99;
+		if(rs.next()) {
+		userCount = rs.getInt(1);
+		}
 		return userCount;
 
 	}

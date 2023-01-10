@@ -108,24 +108,8 @@ public class UserCreatePanel extends JPanel {
 					
 					User newMember=new User(id,password,name,phone,address,email);
 					int isAdd = mainFrame.userService.create(newMember);
-					if(isAdd==1) {
-						//로그인화면전환
-						JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
-						userIDTF.setText("");
-						userPwTF.setText("");
-						userPWCheckTF.setText("");
-						userNameTF.setText("");
-						userPhoneTF.setText("");
-						userAddressTF.setText("");
-						userEmailTF.setText("");
-						mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
-						mainFrame.userTabbedPane.setSelectedIndex(0);
-					}else {
-						JOptionPane.showMessageDialog(null, "다시 확인해주세요.");
-						userIDTF.requestFocus();
-						userIDTF.setSelectionStart(0);
-						userIDTF.setSelectionEnd(id.length());
-					}
+					joinValidation(newMember);
+					
 				}catch (Exception e1) {
 					System.out.println("회원가입-->"+e1.getMessage());
 				}
@@ -232,8 +216,36 @@ public class UserCreatePanel extends JPanel {
 	
 	}
 	
-	public void joinVaildaion() {
-		
+	public void joinValidation(User joinUser) throws Exception {
+		int isAdd = mainFrame.userService.create(joinUser);
+		if(isAdd==1) {
+			//로그인화면전환
+			JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
+			userIDTF.setText("");
+			userPwTF.setText("");
+			userPWCheckTF.setText("");
+			userNameTF.setText("");
+			userPhoneTF.setText("");
+			userAddressTF.setText("");
+			userEmailTF.setText("");
+			mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
+			mainFrame.userTabbedPane.setSelectedIndex(0);
+		}else if(isAdd == -1){
+			JOptionPane.showMessageDialog(null, "아이디가 존재합니다.");
+			userIDTF.requestFocus();
+			userIDTF.setSelectionStart(0);
+			userIDTF.setSelectionEnd(joinUser.getUserId().length());
+		}else if(isAdd == -2) {
+			JOptionPane.showMessageDialog(null, "유효하지 않은 비밀번호입니다.");
+			userIDTF.requestFocus();
+			userPwTF.setSelectionStart(0);
+			userPwTF.setSelectionEnd(joinUser.getUserPw().length());
+		}else if(isAdd == -3) {
+			JOptionPane.showMessageDialog(null, "이메일이 존재합니다.");
+			userEmailTF.requestFocus();
+			userEmailTF.setSelectionStart(0);
+			userEmailTF.setSelectionEnd(joinUser.getUserEmail().length());
+		}
 	}
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {

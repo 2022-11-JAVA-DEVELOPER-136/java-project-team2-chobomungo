@@ -27,6 +27,7 @@ import com.itwill.chobomungo.ui.손동필.UserUpdatePanel;
 import com.itwill.chobomungo.ui.박정국.UserCreatePanel;
 import com.itwill.chobomungo.ui.jihyun.ProductDetailPanel;
 import com.itwill.chobomungo.ui.송도현.ProductMainListPanel;
+import com.itwill.chobomungo.ui.이수현.CartPannel;
 
 public class ChobomungoMainFrame extends JFrame {
 	/*
@@ -111,6 +112,9 @@ public class ChobomungoMainFrame extends JFrame {
 		loginPanel = new LoginPanel();
 		userTabbedPane.addTab("로그인", null, loginPanel, null);
 		
+		CartPannel cartPannel = new CartPannel();
+		chobomungoTabbedPane.addTab("New tab", null, cartPannel, null);
+		
 		orderPanel = new OrderPanel();
 		chobomungoTabbedPane.addTab("주문", null, orderPanel, null);
 		
@@ -191,6 +195,4 @@ public class ChobomungoMainFrame extends JFrame {
 		
 	//생성자끝	
 	}
-	
-	
 }

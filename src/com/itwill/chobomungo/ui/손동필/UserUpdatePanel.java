@@ -148,6 +148,18 @@ public class UserUpdatePanel extends JPanel {
 					userValidation(id,pw,name,phoneNumber,loc,email);
 					
 					mainFrame.loginUser = mainFrame.userService.findUser(id);
+					
+					updateID_TF.setEnabled(false);
+					updateName_TF.setEnabled(false);
+					updatePwTF.setEditable(false);
+					updatePhone_TF.setEditable(false);
+					updateLoc_TF.setEditable(false);
+					updateEmail_TF.setEditable(false);
+					
+					
+					updateFormBtn.setText("수정폼");
+					updateTitle_LB.setText("회원정보");
+					updateBtn.setEnabled(false);
 				} catch (Exception e1) {
 					System.out.println(e1.getMessage());
 				}

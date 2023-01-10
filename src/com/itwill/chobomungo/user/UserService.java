@@ -18,14 +18,10 @@ public class UserService {
 	public int create(User user) throws Exception {
 		if (userDao.countByUserId(user.getUserId()) >= 1) {
 			return -1;
-		} else if (user.getUserPw() == null || user.getUserPw().length() < 8 || user.getUserPw().length() > 16) {
+		} else if (user.getUserPw() == null || user.getUserPw().length() < 2 || user.getUserPw().length() > 16) {
 			return -2;
-		} else if (!user.getUserPw().matches(LOWER_LETTER) || !user.getUserPw().matches(UPPER_LETTER)) {
-			return -3;
-		} else if (!user.getUserPw().matches(SPECIAL_CHARACTERS)) {
-			return -4;
 		} else if (userDao.countByUserEmail(user.getUserEmail()) >= 1) {
-			return -5;
+			return -3;
 		} else {
 			int rowCount = userDao.insert(user);
 			return rowCount;
@@ -60,12 +56,8 @@ public class UserService {
 	public int update(User user) throws Exception {
 		if (userDao.countByUserId(user.getUserId()) < 1) {
 			return -1;
-		} else if (user.getUserPw() == null || user.getUserPw().length() < 8 || user.getUserPw().length() > 16) {
+		} else if (user.getUserPw() == null || user.getUserPw().length() < 2 || user.getUserPw().length() > 16) {
 			return -2;
-		} else if (!user.getUserPw().matches(LOWER_LETTER) || !user.getUserPw().matches(UPPER_LETTER)) {
-			return -3;
-		} else if (!user.getUserPw().matches(SPECIAL_CHARACTERS)) {
-			return -4;
 		} else {
 			int rowCount = userDao.update(user);
 			return rowCount;
