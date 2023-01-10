@@ -24,6 +24,7 @@ import com.itwill.chobomungo.cart.Cart;
 import com.itwill.chobomungo.cart.CartService;
 import com.itwill.chobomungo.order.OrderService;
 import com.itwill.chobomungo.product.ProductService;
+import com.itwill.chobomungo.ui.ChobomungoMainFrame;
 import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
 
@@ -35,7 +36,7 @@ public class CartPannel extends JPanel {
 	private ProductService productService;
 	private CartService cartService;
 	private UserService userService;
-	
+	private ChobomungoMainFrame mainFrame;
 	
 	/******************************/
 	public JButton updateTopBtn;
@@ -176,8 +177,7 @@ public class CartPannel extends JPanel {
 
 		}
 		
-		
-	User user = new User("book1",null,null,null,null,null);
+	User user = new User("book1",null,null,null,null,null);	
 	private JLabel cartTotalLabel_1;
 	private JPanel cartTotalPricePanel;
 
@@ -237,10 +237,10 @@ public class CartPannel extends JPanel {
 			
 			
 			cartTotalPricePanel.removeAll();
-			JLabel cartTotalLabel = new JLabel("장바구니 총 액");
-			cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-			cartTotalLabel.setBounds(12, 10, 99, 15);
-			cartTotalPriceLabel.add(cartTotalLabel);
+			JLabel cartTotalLabel_1 = new JLabel("장바구니 총 액");
+			cartTotalLabel_1.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+			cartTotalLabel_1.setBounds(12, 10, 99, 15);
+			cartTotalPricePanel.add(cartTotalLabel_1);
 			
 			// 카트 총액 
 		
@@ -248,9 +248,13 @@ public class CartPannel extends JPanel {
 			cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 			cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 			cartTotalPriceLabel.setBounds(220, 10, 128, 15);
-			cartTotalPriceLabel.add(cartTotalPriceLabel);
+			cartTotalPricePanel.add(cartTotalPriceLabel);
 
 		}
 
+	}
+	
+	public void setMainFrame(ChobomungoMainFrame mainFrame) {
+		this.mainFrame = mainFrame;
 	}
 }
