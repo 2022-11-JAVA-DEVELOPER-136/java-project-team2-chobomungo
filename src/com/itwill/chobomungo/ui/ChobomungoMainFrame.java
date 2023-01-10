@@ -24,7 +24,7 @@ import com.itwill.chobomungo.ui.박준식.LoginPanel;
 import com.itwill.chobomungo.ui.손동필.UserUpdatePanel;
 import com.itwill.chobomungo.ui.박정국.UserCreatePanel;
 import com.itwill.chobomungo.ui.jihyun.ProductDetailPanel;
-import com.itwill.chobomungo.ui.송도현.Product_ListPanel_1차_송도현;
+import com.itwill.chobomungo.ui.송도현.ProductMainListPanel;
 
 public class ChobomungoMainFrame extends JFrame {
 	/*
@@ -58,7 +58,7 @@ public class ChobomungoMainFrame extends JFrame {
 	public ProductDetailPanel productDetailPanel;
 	public UserCreatePanel userCreatePanel;
 	public UserUpdatePanel userUpdatePanel;
-	private Product_ListPanel_1차_송도현 product_ListPanel_1차_송도현;
+	private ProductMainListPanel productMainListPanel;
 	
 	
 	/**
@@ -96,8 +96,8 @@ public class ChobomungoMainFrame extends JFrame {
 		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		chobomungoTabbedPane.addTab("상품", null, productTabbedPane, null);
 		
-		product_ListPanel_1차_송도현 = new Product_ListPanel_1차_송도현();
-		productTabbedPane.addTab("New tab", null, product_ListPanel_1차_송도현, null);
+		productMainListPanel = new ProductMainListPanel();
+		productTabbedPane.addTab("메인", null, productMainListPanel, null);
 		
 		productDetailPanel = new ProductDetailPanel();
 		productTabbedPane.addTab("상품상세", null, productDetailPanel, null);

@@ -142,6 +142,7 @@ public class LoginPanel extends JPanel {
 		mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 		mainFrame.productTabbedPane.setSelectedIndex(0);
 	}
+	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 	}

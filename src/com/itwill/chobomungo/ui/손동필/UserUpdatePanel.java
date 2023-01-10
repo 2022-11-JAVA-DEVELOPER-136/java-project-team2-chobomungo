@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.itwill.chobomungo.ui.ChobomungoMainFrame;
 import com.itwill.chobomungo.user.User;
 import com.itwill.chobomungo.user.UserService;
 
@@ -28,12 +29,7 @@ public class UserUpdatePanel extends JPanel {
 	public JButton updateBtn;
 	public JTextField idTF;
 	public JLabel idMsgLB;
-
-	/********** 멤버서비스 객체선언 *************/
-	public UserService userService;
-
-	/********** 로그인한 회원 ******************/
-	User loginUser = new User("book3", "1234", "dp", "010", "address", "email");
+	public ChobomungoMainFrame mainFrame;
 
 	public JTextField updatePassword_TF;
 
@@ -129,7 +125,7 @@ public class UserUpdatePanel extends JPanel {
 				if (btnText.equals("수정폼")) {
 					updateFormEnable(true);
 				} else if (btnText.equals("수정취소")) {
-					displayMemberInfo(loginUser);
+					displayMemberInfo(mainFrame.loginUser);
 					updateFormEnable(false);
 				}
 
@@ -158,7 +154,7 @@ public class UserUpdatePanel extends JPanel {
 					User updateUser2 = new User(id, pw, name, phoneNumber, loc, email);
 					int updateCheck = 0;
 
-					updateCheck = userService.update(updateUser2);
+					updateCheck = mainFrame.userService.update(updateUser2);
 
 					if (updateCheck == -1) {
 						JOptionPane.showMessageDialog(null, "존재하지 않는 아이디 입니다");
@@ -171,7 +167,7 @@ public class UserUpdatePanel extends JPanel {
 					} else {
 						JOptionPane.showMessageDialog(null, "회원정보 수정완료");
 					}
-					loginUser = userService.findUser(id);
+					mainFrame.loginUser = mainFrame.userService.findUser(id);
 					updateFormEnable(false);
 				} catch (Exception e1) {
 					System.out.println(e1.getMessage());
@@ -190,7 +186,6 @@ public class UserUpdatePanel extends JPanel {
 		add(updatePassword_TF);
 		updatePassword_TF.setColumns(10);
 
-		userService = new UserService();
 	}
 
 	private void updateFormEnable(boolean b) {
@@ -232,5 +227,9 @@ public class UserUpdatePanel extends JPanel {
 		updateLoc_TF.setText(user.getUserAddress());
 		updateEmail_TF.setText(user.getUserEmail());
 
+	}
+	
+	public void setMainFrame(ChobomungoMainFrame mainFrame) {
+		this.mainFrame = mainFrame;
 	}
 }

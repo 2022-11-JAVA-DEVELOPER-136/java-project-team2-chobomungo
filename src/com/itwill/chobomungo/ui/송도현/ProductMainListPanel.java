@@ -25,7 +25,7 @@ import javax.swing.JComboBox;
 import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
 
-public class Product_ListPanel_1차_송도현 extends JPanel {
+public class ProductMainListPanel extends JPanel {
 	
 	ProductService productService;
 	
@@ -36,7 +36,7 @@ public class Product_ListPanel_1차_송도현 extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public Product_ListPanel_1차_송도현() throws Exception {
+	public ProductMainListPanel() throws Exception {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -65,7 +65,7 @@ public class Product_ListPanel_1차_송도현 extends JPanel {
 		productPanel.setAlignmentX(1.0f);
 		
 		JLabel productImageLabel = new JLabel("");
-		productImageLabel.setIcon(new ImageIcon(Product_ListPanel_1차_송도현.class.getResource("/product_Image/국내도서1.png")));
+		productImageLabel.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/product_Image/국내도서1.png")));
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setBounds(0, 0, 145, 170);
 		productPanel.add(productImageLabel);
@@ -86,7 +86,7 @@ public class Product_ListPanel_1차_송도현 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		CartBtn.setIcon(new ImageIcon(Product_ListPanel_1차_송도현.class.getResource("/image/smallcart.png")));
+		CartBtn.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/image/smallcart.png")));
 		CartBtn.setOpaque(false);
 		CartBtn.setBorder(null);
 		CartBtn.setBackground(Color.WHITE);
@@ -129,8 +129,7 @@ public class Product_ListPanel_1차_송도현 extends JPanel {
 			productPanel.setAlignmentX(1.0f);
 			
 			JLabel productImageLabel = new JLabel("");
-			System.out.println(Product_ListPanel_1차_송도현.class);
-			productImageLabel.setIcon(new ImageIcon(Product_ListPanel_1차_송도현.class.getResource("/product_Image/국내도서1.png")));
+			productImageLabel.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/product_Image/국내도서1.png")));
 			productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			productImageLabel.setBounds(0, 0, 145, 170);
 			productPanel.add(productImageLabel);
@@ -147,7 +146,7 @@ public class Product_ListPanel_1차_송도현 extends JPanel {
 			productPanel.add(CartQtyComboBox);
 			
 			JButton CartBtn = new JButton("");
-			CartBtn.setIcon(new ImageIcon(Product_ListPanel_1차_송도현.class.getResource("/image/smallcart.png")));
+			CartBtn.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/image/smallcart.png")));
 			CartBtn.setOpaque(false);
 			CartBtn.setBorder(null);
 			CartBtn.setBackground(Color.WHITE);
