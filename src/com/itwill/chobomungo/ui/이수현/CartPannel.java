@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -92,16 +93,16 @@ public class CartPannel extends JPanel {
 		carImageLabel.setBounds(12, 0, 52, 33);
 		cartTopUpdateDeletePanel.add(carImageLabel);
 		
-		JPanel cartTotalPricePanel = new JPanel();
+		cartTotalPricePanel = new JPanel();
 		cartTotalPricePanel.setBackground(new Color(221, 221, 221));
 		cartTotalPricePanel.setBounds(12, 386, 348, 39);
 		cartPanel.add(cartTotalPricePanel);
 		cartTotalPricePanel.setLayout(null);
 		
-		JLabel cartTotalLabel = new JLabel("장바구니 총 액");
-		cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-		cartTotalLabel.setBounds(12, 10, 99, 15);
-		cartTotalPricePanel.add(cartTotalLabel);
+		cartTotalLabel_1 = new JLabel("장바구니 총 액");
+		cartTotalLabel_1.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+		cartTotalLabel_1.setBounds(12, 10, 99, 15);
+		cartTotalPricePanel.add(cartTotalLabel_1);
 		
 		// 카트 총액 
 	
@@ -176,6 +177,8 @@ public class CartPannel extends JPanel {
 		
 		
 	User user = new User("book1",null,null,null,null,null);
+	private JLabel cartTotalLabel_1;
+	private JPanel cartTotalPricePanel;
 
 	public void displayCartList () throws Exception {
 
@@ -183,11 +186,10 @@ public class CartPannel extends JPanel {
 		CartService cartService = new CartService();
 		cartListpanel.removeAll();
 		List<Cart> cartList = cartService.getCartListByUserId(user.getUserId());
-		//int totPrice = 0;
-		//for문으로 cart 돌려서
+		int totPrice = 0;
 		for(Cart cart : cartList) {
-
-
+			totPrice += cart.getProduct().getP_price();
+			
 			cartDetailPanel = new JPanel();
 			cartDetailPanel.setBackground(new Color(221, 221, 221));
 			cartListpanel.add(cartDetailPanel);
@@ -229,10 +231,23 @@ public class CartPannel extends JPanel {
 			deleteCartBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
 			deleteCartBtn.setBounds(268, 14, 40, 23);
 			cartDetailPanel.add(deleteCartBtn);
-
+			
 			cartListpanel.add(cartDetailPanel);
-
-
+			
+			
+			cartTotalPricePanel.removeAll();
+			JLabel cartTotalLabel = new JLabel("장바구니 총 액");
+			cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+			cartTotalLabel.setBounds(12, 10, 99, 15);
+			cartTotalPriceLabel.add(cartTotalLabel);
+			
+			// 카트 총액 
+		
+			cartTotalPriceLabel = new JLabel(new DecimalFormat("#,###원").format(totPrice));
+			cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+			cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+			cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+			cartTotalPriceLabel.add(cartTotalPriceLabel);
 
 		}
 
