@@ -99,6 +99,11 @@ public class CartPannel extends JPanel {
 		carImageLabel.setBounds(12, 0, 52, 33);
 		cartTopUpdateDeletePanel.add(carImageLabel);
 		
+		JLabel textLabel = new JLabel("장바구니");
+		textLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 13));
+		textLabel.setBounds(63, 10, 79, 15);
+		cartTopUpdateDeletePanel.add(textLabel);
+		
 		cartTotalPricePanel = new JPanel();
 		cartTotalPricePanel.setBackground(new Color(255, 255, 255));
 		cartTotalPricePanel.setBounds(12, 326, 348, 39);
@@ -133,17 +138,17 @@ public class CartPannel extends JPanel {
 		cartDetailPanel.setBackground(new Color(255, 255, 255));
 		cartListpanel.add(cartDetailPanel);
 		cartDetailPanel.setLayout(null);
-		cartDetailPanel.setPreferredSize(new Dimension(320, 100));
+		cartDetailPanel.setPreferredSize(new Dimension(320, 110));
 		
 		//카트 상품 이미지
 		productImageLabel = new JLabel("이미지");
-		productImageLabel.setBounds(0, 0, 83, 127);
+		productImageLabel.setBounds(10, 26, 73, 84);
 		cartDetailPanel.add(productImageLabel);
 		
 		//카트 상품명 클릭 시 상세페이지 버튼
 		productDescBtn = new JButton("상품");
 		productDescBtn.setBackground(new Color(221, 221, 221));
-		productDescBtn.setBounds(89, 39, 95, 23);
+		productDescBtn.setBounds(93, 65, 95, 45);
 		cartDetailPanel.add(productDescBtn);
 		
 		//카트 상품 수량 
@@ -151,7 +156,7 @@ public class CartPannel extends JPanel {
 		
 		cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		cartCountcomboBox.setBackground(new Color(221, 221, 221));
-		cartCountcomboBox.setBounds(196, 39, 44, 23);
+		cartCountcomboBox.setBounds(198, 65, 44, 45);
 		cartDetailPanel.add(cartCountcomboBox);
 		
 		//카트 안에서? 상품 삭제
@@ -162,8 +167,13 @@ public class CartPannel extends JPanel {
 		});
 		deleteCartBtn.setBackground(new Color(221, 221, 221));
 		deleteCartBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
-		deleteCartBtn.setBounds(250, 39, 44, 23);
+		deleteCartBtn.setBounds(252, 65, 44, 45);
 		cartDetailPanel.add(deleteCartBtn);
+		
+		JLabel 상품명 = new JLabel("상품명");
+		상품명.setBounds(117, 25, 46, 15);
+		cartDetailPanel.add(상품명);
+		상품명.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
 		
 		
 		orderBtn = new JButton("주문하기");
@@ -247,7 +257,6 @@ public class CartPannel extends JPanel {
 			cartCountcomboBox.setBounds(209, 14, 32, 23);
 			
 			cartCountcomboBox.setSelectedItem(Integer.toString(cart.getCart_qty()));
-			
 			cartCountcomboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					if(e.getStateChange()==ItemEvent.SELECTED) {
