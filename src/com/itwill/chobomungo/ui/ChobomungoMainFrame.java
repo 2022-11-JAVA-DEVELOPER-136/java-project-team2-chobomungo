@@ -29,10 +29,13 @@ import com.itwill.chobomungo.ui.박정국.UserCreatePanel;
 import com.itwill.chobomungo.ui.jihyun.ProductDetailPanel;
 import com.itwill.chobomungo.ui.송도현.ProductMainListPanel;
 import com.itwill.chobomungo.ui.이수현.CartPannel;
+
+import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Cursor;
+import javax.swing.JList;
 
 public class ChobomungoMainFrame extends JFrame {
 	/*
@@ -69,6 +72,7 @@ public class ChobomungoMainFrame extends JFrame {
 	public ProductMainListPanel productMainListPanel;
 	private UserUpdatePanel userUpdatePanel;
 	private UserCreatePanel userCreatePanel;
+	private JList globalSerchList;
 	
 	
 	/**
@@ -191,6 +195,10 @@ public class ChobomungoMainFrame extends JFrame {
 		});
 		globalNorthPanel.add(globalCartBTN);
 		
+		globalSerchList = new JList();
+		globalSerchList.setBounds(89, 45, 179, -7);
+		globalNorthPanel.add(globalSerchList);
+		
 		JPanel globalSouthPanel = new JPanel();
 		globalSouthPanel.setBackground(Color.WHITE);
 		globalSouthPanel.setPreferredSize(new Dimension(10, 70));
@@ -270,12 +278,23 @@ public class ChobomungoMainFrame extends JFrame {
 	public void serchBook() throws Exception {
 		
 		List<Product> serchProduct = productService.bookSearchName(globalSerchTF.getText());
-		if(serchProduct.size()>=2) {
-			for(Product product : serchProduct) {
-				globalSerchTF.setText(product.getP_title()+"\n");
-				globalSerchTF.requestFocus();
+		for(Product product : serchProduct) {
+			globalSerchList.setModel();
+			globalSerchTF.requestFocus();
 				
-			}
+			
 		}
 	}
+	/*
+	 		memberListLT.setModel(new AbstractListModel() {
+			String[] values = new String[] {"김경미", "김경우", "김경양", "김경가", "김경나", "김경다", "김경라", "김경마", "김경바", "김경사", "김경아"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		scrollPane_1.setViewportView(memberListLT);
+	 */
 }
