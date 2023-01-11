@@ -195,7 +195,7 @@ public class CartPannel extends JPanel {
 		orderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					mainFrame.cartService.removeCartItemByUserId(mainFrame.loginUser.getUserId());
+					mainFrame.orderService.create(mainFrame.loginUser.getUserId());
 					mainFrame.orderPanel.displayOrderList();
 					mainFrame.cartPannel.displayCartList();
 					mainFrame.chobomungoTabbedPane.setSelectedIndex(3);

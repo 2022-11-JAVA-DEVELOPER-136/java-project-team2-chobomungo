@@ -170,7 +170,7 @@ public class OrderPanel extends JPanel {
 				}
 			}
 		});
-		orderCancleBTN.setFont(new Font("Dialog", Font.PLAIN, 12));
+		orderCancleBTN.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderCancleBTN.setBounds(191, 376, 167, 43);
 		orderPanel.add(orderCancleBTN);
 		
@@ -180,10 +180,12 @@ public class OrderPanel extends JPanel {
 		orderDetailPanel.setLayout(null);
 		
 		orderDetailImageLB = new JLabel("New label");
+		orderDetailImageLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailImageLB.setBounds(11, 10, 100, 144);
 		orderDetailPanel.add(orderDetailImageLB);
 		
 		orderDetailTitleLB = new JLabel("New label");
+		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailTitleLB.setBounds(123, 10, 212, 54);
 		orderDetailPanel.add(orderDetailTitleLB);
 		
@@ -218,7 +220,7 @@ public class OrderPanel extends JPanel {
 		orderDetailImageLB.setBounds(11, 27, 100, 110);
 		orderDetailPanel.add(orderDetailImageLB);
 		
-		orderDetailTitleLB = new JLabel(orderTitle+" 외"+(orderList.size()-1)+"건");
+		orderDetailTitleLB = new JLabel(orderTitle+" 외\n"+(orderList.size()-1)+"건");
 		orderDetailTitleLB.setBounds(123, 10, 212, 35);
 		orderDetailPanel.add(orderDetailTitleLB);
 		
