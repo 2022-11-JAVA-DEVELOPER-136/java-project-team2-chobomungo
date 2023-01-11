@@ -79,20 +79,7 @@ public class CartPannel extends JPanel {
 					mainFrame.cartService.removeCartItemByUserId(mainFrame.loginUser.getUserId());
 					JOptionPane.showMessageDialog(null, "전체 상품이 삭제되었습니다.");
 					displayCartList();
-					cartTotalPricePanel.removeAll();
-					cartTotalPricePanel.setBackground(new Color(255, 255, 255));
-					cartTotalPricePanel.setBounds(12, 326, 348, 39);
-					cartPanel.add(cartTotalPricePanel);
-					cartTotalPricePanel.setLayout(null);
-					cartTotalLabel = new JLabel("장바구니 총 액");
-					cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-					cartTotalLabel.setBounds(12, 10, 99, 15);
-					cartTotalPricePanel.add(cartTotalLabel);
-					cartTotalPriceLabel = new JLabel("0원\r\n");
-					cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-					cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-					cartTotalPriceLabel.setBounds(220, 10, 128, 15);
-					cartTotalPricePanel.add(cartTotalPriceLabel);
+					resetCartTotalPrice();
 					mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 					mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 					
@@ -195,6 +182,7 @@ public class CartPannel extends JPanel {
 					mainFrame.orderService.create(mainFrame.loginUser.getUserId());
 					mainFrame.orderPanel.displayOrderList();
 					mainFrame.cartPannel.displayCartList();
+					resetCartTotalPrice();
 					mainFrame.chobomungoTabbedPane.setSelectedIndex(3);
 				} catch (Exception e2) {
 					e2.printStackTrace();
@@ -316,7 +304,7 @@ public class CartPannel extends JPanel {
 						cartTotalLabel.setBounds(12, 10, 99, 15);
 						cartTotalPricePanel.add(cartTotalLabel);
 						// 카트 총액 
-						if(cartList.size()==1) {
+						if(cartList.size()<=1) {
 							cartTotalPriceLabel.setText("0원");
 							cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 							cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
@@ -348,7 +336,22 @@ public class CartPannel extends JPanel {
 		}
 		
 	}
-	
+	public void resetCartTotalPrice() {
+		cartTotalPricePanel.removeAll();
+		cartTotalPricePanel.setBackground(new Color(255, 255, 255));
+		cartTotalPricePanel.setBounds(12, 326, 348, 39);
+		cartPanel.add(cartTotalPricePanel);
+		cartTotalPricePanel.setLayout(null);
+		cartTotalLabel = new JLabel("장바구니 총 액");
+		cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+		cartTotalLabel.setBounds(12, 10, 99, 15);
+		cartTotalPricePanel.add(cartTotalLabel);
+		cartTotalPriceLabel = new JLabel("0원\r\n");
+		cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+		cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+		cartTotalPricePanel.add(cartTotalPriceLabel);
+	}
 
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
