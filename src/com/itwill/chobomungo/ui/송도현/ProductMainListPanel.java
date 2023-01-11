@@ -133,7 +133,7 @@ public class ProductMainListPanel extends JPanel {
 			productPanel.setAlignmentX(1.0f);
 			
 			JLabel productImageLabel = new JLabel("");
-			productImageLabel.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/product_Image/국내도서1.png")));
+			productImageLabel.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/product_Image"+product.getP_image())));
 			productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			productImageLabel.setBounds(0, 0, 145, 170);
 			productPanel.add(productImageLabel);
@@ -176,6 +176,7 @@ public class ProductMainListPanel extends JPanel {
 							mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 							//메세지 출력
 							JOptionPane.showMessageDialog(null, "장바구니에 상품이 추가되었습니다.");
+							cartQtyComboBox.setSelectedIndex(0);
 						}else {
 							mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
 							mainFrame.userTabbedPane.setSelectedIndex(0);
