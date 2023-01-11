@@ -80,6 +80,7 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productDescScrollPane);
 		
 		productDescTA = new JTextArea();
+		productDescTA.setLineWrap(true);
 		productDescTA.setText("");
 		productDescScrollPane.setViewportView(productDescTA);
 		productDescTA.setText("상품설명");
@@ -146,6 +147,7 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productDescScrollPane);
 		
 		productDescTA = new JTextArea();
+		productDescTA.setLineWrap(true);
 		productDescTA.setText(selectProduct.getP_desc());
 		productDescScrollPane.setViewportView(productDescTA);
 		
