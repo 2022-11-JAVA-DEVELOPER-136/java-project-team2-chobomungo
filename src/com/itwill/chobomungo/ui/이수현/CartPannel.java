@@ -49,7 +49,7 @@ public class CartPannel extends JPanel {
 	public JButton orderBtn;
 	private JLabel cartTotalPriceLabel;
 	private JLabel carImageLabel;
-	
+	int totPrice = 0;
 	/***Frame***/
 	private ChobomungoMainFrame mainFrame;
 	
@@ -186,7 +186,7 @@ public class CartPannel extends JPanel {
 	private JPanel cartPanel;
 
 	public void displayCartList () throws Exception {	
-		int totPrice = 0;
+		
 		cartListpanel.removeAll();
 		List<Cart> cartList = mainFrame.cartService.getCartListByUserId(mainFrame.loginUser.getUserId());
 		
@@ -225,6 +225,7 @@ public class CartPannel extends JPanel {
 					
 					try {
 						mainFrame.cartService.removeCartItemByUserId(mainFrame.loginUser.getUserId());
+						cartTotalPrice(totPrice);
 						displayCartList();
 						JOptionPane.showMessageDialog(null, "전체 상품이 삭제되었습니다.");
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
@@ -300,6 +301,7 @@ public class CartPannel extends JPanel {
 					try {
 						//삭제메소드, user_id 인자.
 						mainFrame.cartService.removeCartItemByCartNo(cart.getCart_no());
+						cartTotalPrice(totPrice);
 						displayCartList();
 						JOptionPane.showMessageDialog(null, "상품이 삭제되었습니다.");
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
@@ -334,30 +336,31 @@ public class CartPannel extends JPanel {
 					
 				}
 			});
+			cartTotalPrice(totPrice);
+		
+			orderBtn.setBackground(new Color(255, 255, 255));
+			orderBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
+			orderBtn.setBounds(52, 387, 277, 23);
+			cartPanel.add(orderBtn);
+		}
+
+	}
+		public void cartTotalPrice(int price) {
 			
-			// 장바구니 총액 패널
 			cartTotalPricePanel.removeAll();
 			JLabel cartTotalLabel_1 = new JLabel("장바구니 총 액");
 			cartTotalLabel_1.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 			cartTotalLabel_1.setBounds(12, 10, 99, 15);
 			cartTotalPricePanel.add(cartTotalLabel_1);
 			
-			cartTotalPriceLabel = new JLabel(new DecimalFormat("#,###원").format(totPrice));
+			cartTotalPriceLabel = new JLabel(new DecimalFormat("#,###원").format(price));
 			cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 			cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 			cartTotalPriceLabel.setBounds(220, 10, 128, 15);
 			cartTotalPricePanel.add(cartTotalPriceLabel);
-			
-			
-			orderBtn.setBackground(new Color(255, 255, 255));
-			orderBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
-			orderBtn.setBounds(52, 387, 277, 23);
-			cartPanel.add(orderBtn);
-
 		}
-
 		
-	}
+	
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
