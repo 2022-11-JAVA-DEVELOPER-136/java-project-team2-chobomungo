@@ -88,6 +88,11 @@ public class CartPannel extends JPanel {
 					cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 					cartTotalLabel.setBounds(12, 10, 99, 15);
 					cartTotalPricePanel.add(cartTotalLabel);
+					cartTotalPriceLabel = new JLabel("0원\r\n");
+					cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+					cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+					cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+					cartTotalPricePanel.add(cartTotalPriceLabel);
 					mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 					mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 					
@@ -126,7 +131,7 @@ public class CartPannel extends JPanel {
 		
 		// 카트 총액 
 	
-		cartTotalPriceLabel = new JLabel("123,456");
+		cartTotalPriceLabel = new JLabel("0원\r\n");
 		cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 		cartTotalPriceLabel.setBounds(220, 10, 128, 15);
@@ -315,11 +320,19 @@ public class CartPannel extends JPanel {
 						cartTotalLabel.setBounds(12, 10, 99, 15);
 						cartTotalPricePanel.add(cartTotalLabel);
 						// 카트 총액 
-						cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
-						cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-						cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-						cartTotalPriceLabel.setBounds(220, 10, 128, 15);
-						cartTotalPricePanel.add(cartTotalPriceLabel);
+						if(cartList.size()==1) {
+							cartTotalPriceLabel.setText("0원");
+							cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+							cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+							cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+							cartTotalPricePanel.add(cartTotalPriceLabel);
+						}else {
+							cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
+							cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+							cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+							cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+							cartTotalPricePanel.add(cartTotalPriceLabel);
+						}
 
 						displayCartList();
 						JOptionPane.showMessageDialog(null, "상품이 삭제되었습니다.");
