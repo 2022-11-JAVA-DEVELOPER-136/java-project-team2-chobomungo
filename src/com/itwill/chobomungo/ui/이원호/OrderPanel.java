@@ -178,6 +178,7 @@ public class OrderPanel extends JPanel {
 	public void displayOrderList(User loginUser) throws Exception {
 		orderListPanel.removeAll();
 		List<Orders> orderList = mainFrame.orderService.orderList(loginUser.getUserId());
+		//주문 리스트 하나에 담긴상품의 총금액
 		int totPrice = 0;
 		for(Orders order : orderList) {
 			totPrice += order.getO_price();
@@ -193,11 +194,12 @@ public class OrderPanel extends JPanel {
 			orderDetailPriceLB.setBounds(12, 49, 250, 21);
 			orderDetailPanel.add(orderDetailPriceLB);
 			
+			//삭제버튼 액션시 테이블의 데이터 삭제
 			JButton orderDetailDeleteBTN = new JButton("x");
 			orderDetailDeleteBTN.setBounds(274, 9, 39, 23);
 			orderDetailPanel.add(orderDetailDeleteBTN);
 			orderDetailDeleteBTN.addActionListener(new ActionListener() {
-				private Orders o = order;
+				Orders o = order;
 				public void actionPerformed(ActionEvent e) {
 					// 오더리스트 1개 삭제
 					try {
