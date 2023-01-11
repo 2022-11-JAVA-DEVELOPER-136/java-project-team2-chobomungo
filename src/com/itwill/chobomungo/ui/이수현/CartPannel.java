@@ -209,13 +209,21 @@ public class CartPannel extends JPanel {
 		
 		cartListpanel.removeAll();
 		List<Cart> cartList = mainFrame.cartService.getCartListByUserId(mainFrame.loginUser.getUserId());
-		
+
 		for(Cart cart : cartList) {
+
+			/*
+			totPrice += cart.getCart_qty()*cart.getProduct().getP_price();
+			cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
+			cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+			cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+			cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+			cartTotalPricePanel.add(cartTotalPriceLabel);
 			
-			//totPrice += cart.getCart_qty()*cart.getProduct().getP_price();
-			
+			>>>>>>>>> 다시보기 자꾸 덮어짐. . . . ㅠ 
+			 */
 			// >>>>>>>>>> 카트 디테일 패널
-			
+
 			cartDetailPanel = new JPanel();
 			cartDetailPanel.setBackground(new Color(221, 221, 221));
 			cartListpanel.add(cartDetailPanel);
@@ -235,16 +243,16 @@ public class CartPannel extends JPanel {
 			productDescBtn.setText(cart.getProduct().getP_title());
 			productDescBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+
 					try {
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 						mainFrame.productTabbedPane.setSelectedIndex(1);
 						mainFrame.productDetailPanel.displayProductDetail(cart.getProduct().getP_no());
-						
+
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}                          
-					
+
 				}
 			});
 			productDescBtn.setBackground(new Color(221, 221, 221));
@@ -252,7 +260,7 @@ public class CartPannel extends JPanel {
 			cartDetailPanel.add(productDescBtn);
 
 			//카트 상품 수량 수정 (콤보박스)
-			
+
 			cartCountcomboBox = new JComboBox();
 			cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 			cartCountcomboBox.setBackground(new Color(221, 221, 221));
@@ -278,21 +286,33 @@ public class CartPannel extends JPanel {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						
+
 					}
 				}
 			});
 			cartDetailPanel.add(cartCountcomboBox);
-			
+
 			//카트 리스트 안에서 X 버튼 누르면 상품 삭제
 			deleteCartBtn = new JButton("X");
 			deleteCartBtn.addActionListener(new ActionListener() {
-				
+
 				public void actionPerformed(ActionEvent e) {
 					//loginUser.getUserId());
 					try {
 						//삭제메소드, user_id 인자.
 						mainFrame.cartService.removeCartItemByCartNo(cart.getCart_no());
+
+						cartTotalPricePanel.removeAll();
+						cartTotalPricePanel.setBackground(new Color(255, 255, 255));
+						cartTotalPricePanel.setBounds(12, 326, 348, 39);
+						cartPanel.add(cartTotalPricePanel);
+						cartTotalPricePanel.setLayout(null);
+
+						cartTotalLabel = new JLabel("장바구니 총 액");
+						cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+						cartTotalLabel.setBounds(12, 10, 99, 15);
+						cartTotalPricePanel.add(cartTotalLabel);
+
 						displayCartList();
 						JOptionPane.showMessageDialog(null, "상품이 삭제되었습니다.");
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
@@ -308,13 +328,10 @@ public class CartPannel extends JPanel {
 			cartDetailPanel.add(deleteCartBtn);
 			cartListpanel.add(cartDetailPanel);
 			//카트 상세패널 끝
-			
+
 		}
-		
-		
 
 	}
-	
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
