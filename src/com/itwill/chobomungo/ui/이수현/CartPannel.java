@@ -154,7 +154,7 @@ public class CartPannel extends JPanel {
 		productDescBtn.setHorizontalAlignment(SwingConstants.LEFT);
 		productDescBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 10));
 		productDescBtn.setBackground(new Color(245, 245, 245));
-		productDescBtn.setBounds(106, 46, 102, 23);
+		productDescBtn.setBounds(106, 46, 134, 23);
 		cartDetailPanel.add(productDescBtn);
 		
 		//카트 상품 수량 
@@ -164,7 +164,7 @@ public class CartPannel extends JPanel {
 		
 		cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		cartCountcomboBox.setBackground(new Color(245, 245, 245));
-		cartCountcomboBox.setBounds(220, 45, 35, 23);
+		cartCountcomboBox.setBounds(252, 46, 35, 23);
 		cartDetailPanel.add(cartCountcomboBox);
 		
 		//카트 안에서? 상품 삭제
@@ -178,7 +178,7 @@ public class CartPannel extends JPanel {
 		});
 		deleteCartBtn.setBackground(new Color(255, 255, 255));
 		deleteCartBtn.setFont(new Font("경기천년제목 Light", Font.BOLD, 12));
-		deleteCartBtn.setBounds(265, 46, 45, 23);
+		deleteCartBtn.setBounds(287, 46, 30, 23);
 		cartDetailPanel.add(deleteCartBtn);
 		
 		
@@ -267,7 +267,7 @@ public class CartPannel extends JPanel {
 			productDescBtn.setHorizontalAlignment(SwingConstants.LEFT);
 			productDescBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 10));
 			productDescBtn.setBackground(new Color(245, 245, 245));
-			productDescBtn.setBounds(106, 46, 102, 23);
+			productDescBtn.setBounds(106, 46, 134, 23);
 			cartDetailPanel.add(productDescBtn);
 
 			//카트 상품 수량 수정 (콤보박스)
@@ -275,7 +275,7 @@ public class CartPannel extends JPanel {
 			cartCountcomboBox = new JComboBox();
 			cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 			cartCountcomboBox.setBackground(new Color(221, 221, 221));
-			cartCountcomboBox.setBounds(220, 45, 35, 23);
+			cartCountcomboBox.setBounds(252, 46, 35, 23);
 			cartCountcomboBox.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 			//카트 상품 수량 수정 (콤보박스)
 			cartCountcomboBox.setSelectedItem(Integer.toString(cart.getCart_qty()));
@@ -305,7 +305,7 @@ public class CartPannel extends JPanel {
 			cartDetailPanel.add(cartCountcomboBox);
 
 			//카트 리스트 안에서 X 버튼 누르면 상품 삭제
-			deleteCartBtn = new JButton("X");
+			deleteCartBtn = new JButton();
 			deleteCartBtn.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
@@ -331,7 +331,6 @@ public class CartPannel extends JPanel {
 							cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
 							cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 							cartTotalPriceLabel.setFont(new Font("경기천년제목 Light", Font.BOLD, 14));
-							deleteCartBtn.setBounds(265, 46, 45, 23);
 							cartTotalPricePanel.add(cartTotalPriceLabel);
 						}
 
@@ -339,7 +338,6 @@ public class CartPannel extends JPanel {
 						cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
 						cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 						cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-						deleteCartBtn.setBounds(265, 46, 45, 23);
 						cartTotalPricePanel.add(cartTotalPriceLabel);
 						
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
@@ -351,9 +349,9 @@ public class CartPannel extends JPanel {
 			});
 			deleteCartBtn.setBorder(null);
 			deleteCartBtn.setIcon(new ImageIcon(CartPannel.class.getResource("/image/close.png")));
-			deleteCartBtn.setBackground(new Color(221, 221, 221));
+			deleteCartBtn.setBackground(new Color(255, 255, 255));
 			deleteCartBtn.setFont(new Font("경기천년제목 Light", Font.BOLD, 12));
-			deleteCartBtn.setBounds(265, 46, 45, 23);
+			deleteCartBtn.setBounds(287, 46, 30, 23);
 			cartDetailPanel.add(deleteCartBtn);
 			cartListpanel.add(cartDetailPanel);
 			//카트 상세패널 끝
