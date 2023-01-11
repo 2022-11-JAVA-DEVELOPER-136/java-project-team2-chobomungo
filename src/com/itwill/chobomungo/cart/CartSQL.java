@@ -22,5 +22,4 @@ public class CartSQL {
 	public static final String CART_SELECT_BY_USER_ID_SQL = "select c.*,p.* from cart c join product p on c.p_no = p.p_no where user_id = ?";
 	public static final String CART_SELECT_BY_CART_NO_SQL = "select * from cart c join product p on c.p_no = p.p_no where cart_no = ?";
 	
-	
 }
