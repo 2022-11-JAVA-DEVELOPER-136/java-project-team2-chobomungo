@@ -39,9 +39,8 @@ public class CartPannel extends JPanel {
 	public JButton deleteTopBtn;
 	private JPanel cartDetailPanel;
 	private JPanel cartListpanel;
-	private JCheckBox cartCheckBox;
 	private JLabel productImageLabel;
-	private JButton proudctDescBtn;
+	private JButton productDescBtn;
 	private JComboBox cartCountcomboBox;
 	private JButton deleteCartBtn;
 	public JButton orderBtn;
@@ -65,7 +64,7 @@ public class CartPannel extends JPanel {
 		
 		JPanel cartTopUpdateDeletePanel = new JPanel();
 		cartTopUpdateDeletePanel.setBackground(new Color(221, 221, 221));
-		cartTopUpdateDeletePanel.setBounds(12, 43, 348, 39);
+		cartTopUpdateDeletePanel.setBounds(12, 10, 348, 39);
 		cartPanel.add(cartTopUpdateDeletePanel);
 		cartTopUpdateDeletePanel.setLayout(null);
 		
@@ -75,15 +74,15 @@ public class CartPannel extends JPanel {
 		updateTopBtn.setForeground(new Color(0, 0, 128));
 		updateTopBtn.setBackground(new Color(221, 221, 221));
 		updateTopBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 13));
-		updateTopBtn.setBounds(203, 10, 65, 23);
+		updateTopBtn.setBounds(169, 10, 65, 23);
 		cartTopUpdateDeletePanel.add(updateTopBtn);
 		
 		//카트 수량 삭제 버튼
-		deleteTopBtn = new JButton("삭제");
+		deleteTopBtn = new JButton("전체삭제");
 		deleteTopBtn.setForeground(new Color(0, 0, 128));
 		deleteTopBtn.setBackground(new Color(221, 221, 221));
 		deleteTopBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 13));
-		deleteTopBtn.setBounds(271, 10, 65, 23);
+		deleteTopBtn.setBounds(246, 10, 90, 23);
 		cartTopUpdateDeletePanel.add(deleteTopBtn);
 		
 		carImageLabel = new JLabel("");
@@ -93,7 +92,7 @@ public class CartPannel extends JPanel {
 		
 		cartTotalPricePanel = new JPanel();
 		cartTotalPricePanel.setBackground(new Color(221, 221, 221));
-		cartTotalPricePanel.setBounds(12, 386, 348, 39);
+		cartTotalPricePanel.setBounds(12, 328, 348, 39);
 		cartPanel.add(cartTotalPricePanel);
 		cartTotalPricePanel.setLayout(null);
 		
@@ -111,7 +110,7 @@ public class CartPannel extends JPanel {
 		cartTotalPricePanel.add(cartTotalPriceLabel);
 		
 		JScrollPane cartListscrollPane = new JScrollPane();
-		cartListscrollPane.setBounds(12, 98, 348, 239);
+		cartListscrollPane.setBounds(12, 69, 348, 239);
 		cartPanel.add(cartListscrollPane);
 		
 		//카트 리스트 
@@ -125,44 +124,38 @@ public class CartPannel extends JPanel {
 		cartDetailPanel.setBackground(new Color(221, 221, 221));
 		cartListpanel.add(cartDetailPanel);
 		cartDetailPanel.setLayout(null);
-		cartDetailPanel.setPreferredSize(new Dimension(320, 150));
-		
-		//카트 체크
-		cartCheckBox = new JCheckBox("");
-		cartCheckBox.setBackground(new Color(221, 221, 221));
-		cartCheckBox.setBounds(8, 14, 21, 23);
-		cartDetailPanel.add(cartCheckBox);
+		cartDetailPanel.setPreferredSize(new Dimension(320, 100));
 		
 		//카트 상품 이미지
 		productImageLabel = new JLabel("이미지");
-		productImageLabel.setBounds(37, 10, 40, 40);
+		productImageLabel.setBounds(12, 10, 65, 62);
 		cartDetailPanel.add(productImageLabel);
 		
 		//카트 상품명 클릭 시 상세페이지 버튼
-		proudctDescBtn = new JButton("상품");
-		proudctDescBtn.setBackground(new Color(221, 221, 221));
-		proudctDescBtn.setBounds(89, 14, 95, 23);
-		cartDetailPanel.add(proudctDescBtn);
+		productDescBtn = new JButton("상품");
+		productDescBtn.setBackground(new Color(221, 221, 221));
+		productDescBtn.setBounds(89, 30, 95, 23);
+		cartDetailPanel.add(productDescBtn);
 		
 		//카트 상품 수량 
 		cartCountcomboBox = new JComboBox();
 		cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		cartCountcomboBox.setBackground(new Color(221, 221, 221));
-		cartCountcomboBox.setBounds(209, 14, 32, 23);
+		cartCountcomboBox.setBounds(208, 30, 32, 23);
 		cartDetailPanel.add(cartCountcomboBox);
 		
 		//카트 안에서? 상품 삭제
 		deleteCartBtn = new JButton("X");
 		deleteCartBtn.setBackground(new Color(221, 221, 221));
 		deleteCartBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
-		deleteCartBtn.setBounds(268, 14, 40, 23);
+		deleteCartBtn.setBounds(268, 30, 40, 23);
 		cartDetailPanel.add(deleteCartBtn);
 		
 		//카트로 주문
 		orderBtn = new JButton("주문하기");
 		orderBtn.setBackground(new Color(221, 221, 221));
 		orderBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
-		orderBtn.setBounds(56, 469, 277, 23);
+		orderBtn.setBounds(52, 387, 277, 23);
 		cartPanel.add(orderBtn);
 		
 		JPanel panel_1 = new JPanel();
@@ -188,27 +181,34 @@ public class CartPannel extends JPanel {
 			cartDetailPanel.setLayout(null);
 			cartDetailPanel.setPreferredSize(new Dimension(320, 150));
 
-			//카트 체크
-			cartCheckBox = new JCheckBox("");
-			cartCheckBox.setBackground(new Color(221, 221, 221));
-			cartCheckBox.setBounds(8, 14, 21, 23);
-			cartDetailPanel.add(cartCheckBox);
-
 			//카트 상품 이미지
 			productImageLabel = new JLabel();
+			productImageLabel.setIcon(new ImageIcon(CartPannel.class.getResource("/product_image"+cart.getProduct().getP_image())));
+			productImageLabel.setBounds(37, 10, 40, 40);
+			cartDetailPanel.add(productImageLabel);
 			productImageLabel.setBounds(37, 10, 40, 40);
 			cartDetailPanel.add(productImageLabel);
 
 			//카트 상품명 클릭 시 상세페이지 버튼
-			proudctDescBtn = new JButton("");
-			proudctDescBtn.addActionListener(new ActionListener() {
+			productDescBtn = new JButton("");
+			productDescBtn.setText(cart.getProduct().getP_title());
+			productDescBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
+					
+					try {
+						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
+						mainFrame.productTabbedPane.setSelectedIndex(1);
+						mainFrame.productDetailPanel.displayProductDetail(cart.getProduct().getP_no());
+						
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}                          
+					
 				}
 			});
-			proudctDescBtn.setBackground(new Color(221, 221, 221));
-			proudctDescBtn.setBounds(89, 14, 95, 23);
-			cartDetailPanel.add(proudctDescBtn);
+			productDescBtn.setBackground(new Color(221, 221, 221));
+			productDescBtn.setBounds(89, 14, 95, 23);
+			cartDetailPanel.add(productDescBtn);
 
 			//카트 상품 수량 
 			cartCountcomboBox = new JComboBox();
@@ -216,6 +216,8 @@ public class CartPannel extends JPanel {
 			cartCountcomboBox.setBackground(new Color(221, 221, 221));
 			cartCountcomboBox.setBounds(209, 14, 32, 23);
 			cartDetailPanel.add(cartCountcomboBox);
+			
+			
 
 			//카트 안에서? 상품 삭제
 			deleteCartBtn = new JButton("X");

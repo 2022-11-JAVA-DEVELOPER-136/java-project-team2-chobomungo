@@ -46,14 +46,18 @@ insert into product values(product_p_no_SEQ.nextval, '미드나잇 라이브러�
 통찰력까지 매트 헤이그 작가가 보내는 공감과 위로의 
 메시지는 세대와성별을 아우르며 전 세계 독자들의 
 마음을 사로잡았다.');
+
 insert into product values(product_p_no_SEQ.nextval, '테라피스트', 20000, '/product_Image/해외도서2.png',
+
 '극도의 불안이 흐르는 스토리와 통쾌한 반전! 끝을 보
 기 전까지 책을 절대 내려놓을 수 없다! 평범한 여성을
 주인공으로 삼고 그들이 처한 특수한 상황과 교묘한 심
 리를 집요하게 파고들어 독자들을 옴짝달싹 못 하게 만
 드는 패리스 작가만의 서늘한 서스펜스가 《테라피스트
-》에서는 한층 더 강해졌다.');ss
+》에서는 한층 더 강해졌다.');
+
 insert into product values(product_p_no_SEQ.nextval, '노르웨이의 숲', 20000, '/product_Image/해외도서3.png',
+
 '독일 함부르크 공항에 막 착륙한 비행기 안에서 울린 
 비틀스의 《노르웨이의 숲》을 듣고 와타나베는 자신
 에게 간절한 부탁을 남긴 여자와 그 부탁을 떠올린다. 
