@@ -185,9 +185,6 @@ public class CartPannel extends JPanel {
 		orderBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
 		orderBtn.setBounds(52, 387, 277, 23);
 		cartPanel.add(orderBtn);
-		
-		
-		
 		} // 생성자 끝
 	
 	
@@ -242,7 +239,8 @@ public class CartPannel extends JPanel {
 			productDescBtn.setBounds(89, 14, 95, 23);
 			cartDetailPanel.add(productDescBtn);
 
-			//카트 상품 수량 
+			//카트 상품 수량 수정 (콤보박스)
+			
 			cartCountcomboBox = new JComboBox();
 			cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 			cartCountcomboBox.setBackground(new Color(221, 221, 221));
@@ -262,20 +260,19 @@ public class CartPannel extends JPanel {
 							for (Cart cart : cartList) {
 								totPrice += cart.getCart_qty()*cart.getProduct().getP_price();
 							}
-							//int cartTotPrice=mainFrame.cartService.getCartTotPrice();
+							//카트 총 액 (수량 수정 시 금액)
 							cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
+							JOptionPane.showMessageDialog(null, "상품이 수정 되었습니다.");
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						JOptionPane.showMessageDialog(null, "상품이 수정 되었습니다.");
 						
 					}
 				}
 			});
 			cartDetailPanel.add(cartCountcomboBox);
 			
-
 			//카트 리스트 안에서 X 버튼 누르면 상품 삭제
 			deleteCartBtn = new JButton("X");
 			deleteCartBtn.addActionListener(new ActionListener() {
