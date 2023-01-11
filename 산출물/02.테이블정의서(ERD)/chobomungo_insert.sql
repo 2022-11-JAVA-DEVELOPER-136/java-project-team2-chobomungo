@@ -6,7 +6,7 @@ insert into userinfo(user_id,user_pw,user_name,user_phone,user_address,user_emai
 commit;
 /**********************product insert************************/
 
-insert into product values(product_p_no_SEQ.nextval, '만일 내가 인생을 다시 산다면', 10000, '/product_Image/국내도서1.png',
+insert into product values(product_p_no_SEQ.nextval, '만일 내가 인생을 다시 산다면', 10000, '국내도서1.png',
 '“하나의 문이 닫히면 또 하나의 문이 열린다. 그러니 
 더 이상 고민하지 말고 그냥 재미있게 살아라!” 저자
 가30년간 정신분석 전문의로 일하며 깨달은 인생의 
@@ -16,14 +16,14 @@ insert into product values(product_p_no_SEQ.nextval, '만일 내가 인생을 �
 것을 상처라고 말하지 말 것’, ‘가까운 사람일수록 해
 서는 안 될 것들이 있다’ 등 환자들에게 미처 하지 못
 했던 그러나 꼭 해 주고 싶은 이야기들을 담고 있다.');
-insert into product values(product_p_no_SEQ.nextval, '불편한 편의점', 15000, '/product_Image/국내도서2.png',
+insert into product values(product_p_no_SEQ.nextval, '불편한 편의점', 15000, '국내도서2.png',
 '원 플러스 원의 기쁨, 삼각김밥 모양의 슬픔, 만 원에
 네 번의 폭소가 터지는 곳! 힘겨운 시대를 살아가는 우
 리들에게 다가온 조금 특별한 편의점 이야기! 서울역에
 서 노숙인 생활을 하던 독고라는 남자가 어느 날 70대 
 여성의 지갑을 주워준 인연으로 그녀가 운영하는 편의
 점에서 야간 알바를 하면서 이야기가 시작된다.');
-insert into product values(product_p_no_SEQ.nextval, '하얼빈', 18000, '/product_Image/국내도서3.png',
+insert into product values(product_p_no_SEQ.nextval, '하얼빈', 18000, '국내도서3.png',
 '『하얼빈』은 안중근에게 드리워져 있던 영웅의 그늘
 을걷어내고 그의 가장 뜨겁고 혼란스러웠을 시간을 현
 재에되살려놓는다. 소설 안에서 이토 히로부미로 상징
@@ -35,7 +35,7 @@ insert into product values(product_p_no_SEQ.nextval, '하얼빈', 18000, '/produ
 복합적인 갈등을 날렵하게 다뤄내며 안중근이라는 인
 물을 바라보는 시야의 차원을 높이는 이 작품은 김훈
 의 새로운 대표작으로 소개되기에 모자람이 없다.');
-insert into product values(product_p_no_SEQ.nextval, '미드나잇 라이브러리', 15000, '/product_Image/해외도서1.png',
+insert into product values(product_p_no_SEQ.nextval, '미드나잇 라이브러리', 15000, '해외도서1.png',
 '죽기로 결심한 주인공 ‘노라 시드’가 삶과 죽음 사이
 에 존재하는 미스터리한 도서관 ‘미드나잇 라이브러리’
 에서 눈을 뜨며 인생의 두 번째 기회를 얻는 이 소설
@@ -46,14 +46,14 @@ insert into product values(product_p_no_SEQ.nextval, '미드나잇 라이브러�
 통찰력까지 매트 헤이그 작가가 보내는 공감과 위로의 
 메시지는 세대와성별을 아우르며 전 세계 독자들의 
 마음을 사로잡았다.');
-insert into product values(product_p_no_SEQ.nextval, '테라피스트', 20000, '/product_Image/해외도서1.png',
+insert into product values(product_p_no_SEQ.nextval, '테라피스트', 20000, '해외도서2.png',
 '극도의 불안이 흐르는 스토리와 통쾌한 반전! 끝을 보
 기 전까지 책을 절대 내려놓을 수 없다! 평범한 여성을
 주인공으로 삼고 그들이 처한 특수한 상황과 교묘한 심
 리를 집요하게 파고들어 독자들을 옴짝달싹 못 하게 만
 드는 패리스 작가만의 서늘한 서스펜스가 《테라피스트
-》에서는 한층 더 강해졌다.');
-insert into product values(product_p_no_SEQ.nextval, '노르웨이의 숲', 20000, '/product_Image/해외도서1.png',
+》에서는 한층 더 강해졌다.');ss
+insert into product values(product_p_no_SEQ.nextval, '노르웨이의 숲', 20000, '해외도서3.png',
 '독일 함부르크 공항에 막 착륙한 비행기 안에서 울린 
 비틀스의 《노르웨이의 숲》을 듣고 와타나베는 자신
 에게 간절한 부탁을 남긴 여자와 그 부탁을 떠올린다. 
