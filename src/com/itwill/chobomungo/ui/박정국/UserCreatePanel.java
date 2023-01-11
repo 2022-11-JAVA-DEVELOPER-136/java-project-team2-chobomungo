@@ -21,6 +21,7 @@ import java.awt.Dimension;
 
 import javax.swing.border.LineBorder;
 import javax.swing.JPasswordField;
+import javax.swing.JCheckBox;
 
 public class UserCreatePanel extends JPanel {
 	public JTextField userIDTF;
@@ -44,6 +45,12 @@ public class UserCreatePanel extends JPanel {
 	private JLabel userEmailLB;
 	private JPasswordField userPwTF;
 	private JPasswordField userPWCheckTF;
+	private JTextField userPwVisibleTF;
+	
+	boolean b1=true;
+	boolean b2=true;
+	private JCheckBox pwCheckVisibleBtn;
+	private JTextField userPWCheckVIsibleTF;
 	
 	public UserCreatePanel() throws Exception {
 		setPreferredSize(new Dimension(400, 620));
@@ -283,6 +290,7 @@ public class UserCreatePanel extends JPanel {
 		panel.add(userPwTF);
 		
 		userPWCheckTF = new JPasswordField();
+		
 		userPWCheckTF.setText("******");
 		userPWCheckTF.addMouseListener(new MouseAdapter() {
 			@Override
@@ -290,8 +298,62 @@ public class UserCreatePanel extends JPanel {
 				userPWCheckTF.setText("");
 			}
 		});
+		userPWCheckTF.setVisible(b1);
 		userPWCheckTF.setBounds(95, 126, 192, 21);
 		panel.add(userPWCheckTF);
+		
+		JCheckBox pwVisibleBtn = new JCheckBox("보이기");
+		pwVisibleBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(b1==true) {
+					userPwTF.setVisible(false);
+					userPwVisibleTF.setVisible(true);
+					userPwVisibleTF.setText(userPwTF.getText());
+					b1=false;
+				}
+				else if(b1==false){
+					userPwTF.setVisible(true);
+					userPwVisibleTF.setVisible(false);
+					b1=true;
+				}
+			}
+		});
+		pwVisibleBtn.setBounds(295, 97, 72, 21);
+		panel.add(pwVisibleBtn);
+		
+		userPwVisibleTF = new JTextField();
+		userPwVisibleTF.setBounds(95, 98, 192, 21);
+		panel.add(userPwVisibleTF);
+		userPwVisibleTF.setVisible(false);
+		userPwVisibleTF.setColumns(10);
+		
+		pwCheckVisibleBtn = new JCheckBox("보이기");
+		pwCheckVisibleBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(b2==true) {
+					userPWCheckTF.setVisible(false);
+					userPWCheckVIsibleTF.setVisible(true);
+					userPWCheckVIsibleTF.setText(userPWCheckTF.getText());
+					b2=false;
+				}
+				else if(b2==false){
+					userPWCheckTF.setVisible(true);
+					userPWCheckVIsibleTF.setVisible(false);
+					b2=true;
+				}
+			}
+		});
+		pwCheckVisibleBtn.setBounds(295, 126, 72, 21);
+		panel.add(pwCheckVisibleBtn);
+		
+		userPWCheckVIsibleTF = new JTextField();
+		userPWCheckVIsibleTF.setBounds(95, 126, 192, 21);
+		panel.add(userPWCheckVIsibleTF);
+		userPWCheckVIsibleTF.setVisible(false);
+		userPWCheckVIsibleTF.setColumns(10);
 		
 	/*****생성자 끝******/
 	}
