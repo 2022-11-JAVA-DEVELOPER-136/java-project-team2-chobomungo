@@ -28,7 +28,7 @@ public class OrderService {
 		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		orderItemList.add(new OrderItem(0,oi_qty,p_no,product));
 		Orders newOrder = new Orders(0,
-				orderItemList.get(0).getProduct().getP_title()+(oi_qty-1)+"권",
+				orderItemList.get(0).getProduct().getP_title()+(oi_qty)+"권",
 				product.getP_price(),
 				new Date(),
 				userId); 
