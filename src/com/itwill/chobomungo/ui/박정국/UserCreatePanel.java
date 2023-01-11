@@ -46,11 +46,12 @@ public class UserCreatePanel extends JPanel {
 	private JPasswordField userPwTF;
 	private JPasswordField userPWCheckTF;
 	private JTextField userPwVisibleTF;
+	private JTextField userPWCheckVIsibleTF;
+	private JCheckBox pwVisibleBtn;
+	private JCheckBox pwCheckVisibleBtn;
 	
 	boolean b1=true;
 	boolean b2=true;
-	private JCheckBox pwCheckVisibleBtn;
-	private JTextField userPWCheckVIsibleTF;
 	
 	public UserCreatePanel() throws Exception {
 		setPreferredSize(new Dimension(400, 620));
@@ -301,7 +302,7 @@ public class UserCreatePanel extends JPanel {
 		userPWCheckTF.setBounds(95, 126, 192, 21);
 		panel.add(userPWCheckTF);
 		
-		JCheckBox pwVisibleBtn = new JCheckBox("보이기");
+		pwVisibleBtn = new JCheckBox("보이기");
 		pwVisibleBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -319,7 +320,7 @@ public class UserCreatePanel extends JPanel {
 				}
 			}
 		});
-		pwVisibleBtn.setBounds(295, 97, 72, 21);
+		pwVisibleBtn.setBounds(290, 98, 67, 21);
 		panel.add(pwVisibleBtn);
 		
 		userPwVisibleTF = new JTextField();
@@ -345,7 +346,7 @@ public class UserCreatePanel extends JPanel {
 				}
 			}
 		});
-		pwCheckVisibleBtn.setBounds(295, 126, 72, 21);
+		pwCheckVisibleBtn.setBounds(290, 126, 67, 21);
 		panel.add(pwCheckVisibleBtn);
 		
 		userPWCheckVIsibleTF = new JTextField();
