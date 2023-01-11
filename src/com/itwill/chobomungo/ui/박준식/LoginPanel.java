@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTabbedPane;
 import java.awt.Dimension;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 //import java.awt.event.ComponentListener;
 
 public class LoginPanel extends JPanel {
@@ -53,15 +54,17 @@ public class LoginPanel extends JPanel {
 		loginPanel.setLayout(null);
 		
 		JLabel idLB = new JLabel("아이디");
-		idLB.setBounds(41, 93, 57, 15);
+		idLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
+		idLB.setBounds(41, 131, 57, 15);
 		loginPanel.add(idLB);
 		
 		JLabel pwLB = new JLabel("비밀번호");
+		pwLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		pwLB.setBounds(41, 178, 57, 15);
 		loginPanel.add(pwLB);
 		
 		JTextField loginIdTF = new JTextField();
-		loginIdTF.setBounds(122, 90, 116, 21);
+		loginIdTF.setBounds(122, 128, 116, 21);
 		loginPanel.add(loginIdTF);
 		loginIdTF.setColumns(10);
 		
@@ -70,6 +73,7 @@ public class LoginPanel extends JPanel {
 		loginPanel.add(loginpwTF);
 		
 		JButton loginBtn = new JButton("로그인");
+		loginBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		loginBtn.setBounds(12, 253, 151, 23);
 		loginPanel.add(loginBtn);
 		loginBtn.addActionListener(new ActionListener() {
@@ -101,6 +105,7 @@ public class LoginPanel extends JPanel {
 		
 		
 		JButton joinBtn_2 = new JButton("회원가입");
+		joinBtn_2.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		joinBtn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
@@ -110,10 +115,20 @@ public class LoginPanel extends JPanel {
 		joinBtn_2.setBounds(175, 253, 151, 23);
 		loginPanel.add(joinBtn_2);
 		
-		JLabel loginTitle_LB_1 = new JLabel("로그인");
-		loginTitle_LB_1.setFont(new Font("굴림", Font.PLAIN, 34));
-		loginTitle_LB_1.setBounds(122, 26, 116, 40);
-		loginPanel.add(loginTitle_LB_1);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(LoginPanel.class.getResource("/image/초보3.jpg")));
+		lblNewLabel.setBounds(122, 17, 97, 70);
+		loginPanel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(LoginPanel.class.getResource("/image/login.png")));
+		lblNewLabel_1.setBounds(137, 87, 93, 28);
+		loginPanel.add(lblNewLabel_1);
+		
+		JLabel backgroundLB = new JLabel("");
+		backgroundLB.setIcon(new ImageIcon(LoginPanel.class.getResource("/image/grass.png")));
+		backgroundLB.setBounds(0, 365, 367, 52);
+		loginPanel.add(backgroundLB);
 		
 		
 		

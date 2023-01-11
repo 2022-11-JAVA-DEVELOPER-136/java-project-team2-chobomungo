@@ -47,6 +47,7 @@ public class ProductMainListPanel extends JPanel {
 		add(productListScrollPane);
 		
 		productItemListPanel = new JPanel();
+		productItemListPanel.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		FlowLayout fl_productItemListPanel = (FlowLayout) productItemListPanel.getLayout();
 		fl_productItemListPanel.setAlignment(FlowLayout.LEFT);
 		productItemListPanel.setPreferredSize(new Dimension(260, 3000));
@@ -54,6 +55,7 @@ public class ProductMainListPanel extends JPanel {
 		
 		/*************product item start*************/
 		JPanel productPanel = new JPanel();
+		productPanel.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productPanel.setLayout(null);
 		productPanel.setSize(new Dimension(120, 120));
@@ -75,6 +77,7 @@ public class ProductMainListPanel extends JPanel {
 		productItemListPanel.add(productPanel);
 		
 		JButton ProductDetailDescBtn = new JButton("제품상세보기");
+		ProductDetailDescBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 16));
 		ProductDetailDescBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
@@ -85,6 +88,7 @@ public class ProductMainListPanel extends JPanel {
 		productPanel.add(ProductDetailDescBtn);
 		
 		JComboBox cartQtyComboBox = new JComboBox();
+		cartQtyComboBox.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		cartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		cartQtyComboBox.setBounds(157, 10, 40, 34);
 		productPanel.add(cartQtyComboBox);
@@ -154,11 +158,13 @@ public class ProductMainListPanel extends JPanel {
 					}
 				}
 			});
+			ProductDetailDescBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 16));
 			ProductDetailDescBtn.setBounds(152, 119, 166, 41);
 			productPanel.add(ProductDetailDescBtn);
 			
 			JComboBox cartQtyComboBox = new JComboBox();
 			cartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
+			cartQtyComboBox.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 			cartQtyComboBox.setBounds(157, 15, 40, 23);
 			productPanel.add(cartQtyComboBox);
 			

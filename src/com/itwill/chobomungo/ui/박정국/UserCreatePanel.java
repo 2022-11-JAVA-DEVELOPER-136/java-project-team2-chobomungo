@@ -22,6 +22,7 @@ import java.awt.Dimension;
 import javax.swing.border.LineBorder;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
+import javax.swing.ImageIcon;
 
 public class UserCreatePanel extends JPanel {
 	public JTextField userIDTF;
@@ -59,6 +60,7 @@ public class UserCreatePanel extends JPanel {
 	int countEmail=0;
 	int countPw=0;
 	int countPwc=0;
+	private JLabel backgroundLB;
 	
 	public UserCreatePanel() throws Exception {
 		setPreferredSize(new Dimension(400, 620));
@@ -71,7 +73,7 @@ public class UserCreatePanel extends JPanel {
 		panel.setLayout(null);
 		
 		JLabel panelTitle = new JLabel("회원가입");
-		panelTitle.setFont(new Font("Dialog", Font.BOLD, 20));
+		panelTitle.setFont(new Font("경기천년제목 Light", Font.BOLD, 24));
 		panelTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		panelTitle.setBounds(102, 10, 159, 29);
 		panel.add(panelTitle);
@@ -163,7 +165,7 @@ public class UserCreatePanel extends JPanel {
 		userEmailTF.setColumns(10);
 		
 		memberJoinBtn = new JButton("회원가입");
-		memberJoinBtn.setFont(new Font("Dialog", Font.PLAIN, 12));
+		memberJoinBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		memberJoinBtn.addActionListener(new ActionListener() { //회원가입
 			public void actionPerformed(ActionEvent e) {
 				/*********** 회원가입 ************/
@@ -189,7 +191,7 @@ public class UserCreatePanel extends JPanel {
 		panel.add(memberJoinBtn);
 		
 		goMainBtn = new JButton("가입취소");
-		goMainBtn.setFont(new Font("Dialog", Font.PLAIN, 12));
+		goMainBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		goMainBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { //가입취소 클릭시 텍스트필드를 예시 글자로 채움
 				userIDTF.setText("2글자 이상 16글자 이하");
@@ -208,7 +210,7 @@ public class UserCreatePanel extends JPanel {
 		panel.add(goMainBtn);
 		
 		idCheckBtn = new JButton("아이디 중복확인");
-		idCheckBtn.setFont(new Font("Dialog", Font.PLAIN, 12));
+		idCheckBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		idCheckBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = userIDTF.getText();
@@ -241,7 +243,7 @@ public class UserCreatePanel extends JPanel {
 		panel.add(idCheckBtn);
 		
 		pwCheckBtn = new JButton("비밀번호 확인");
-		pwCheckBtn.setFont(new Font("Dialog", Font.PLAIN, 12));
+		pwCheckBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		pwCheckBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String password1=userPwTF.getText();
@@ -270,37 +272,37 @@ public class UserCreatePanel extends JPanel {
 		panel.add(pwCheckBtn);
 		
 		JLabel userIdLB = new JLabel("아이디");
-		userIdLB.setFont(new Font("Dialog", Font.PLAIN, 12));
+		userIdLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		userIdLB.setBounds(12, 52, 57, 15);
 		panel.add(userIdLB);
 		
 		JLabel userPwLB = new JLabel("패스워드");
-		userPwLB.setFont(new Font("Dialog", Font.PLAIN, 12));
+		userPwLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		userPwLB.setBounds(12, 101, 57, 15);
 		panel.add(userPwLB);
 		
 		JLabel userPwCheckLB = new JLabel("패스워드확인");
-		userPwCheckLB.setFont(new Font("Dialog", Font.PLAIN, 12));
+		userPwCheckLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		userPwCheckLB.setBounds(12, 132, 83, 15);
 		panel.add(userPwCheckLB);
 		
 		userNameLB = new JLabel("이름");
-		userNameLB.setFont(new Font("Dialog", Font.PLAIN, 12));
+		userNameLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		userNameLB.setBounds(12, 180, 72, 15);
 		panel.add(userNameLB);
 		
 		userPhoneLB = new JLabel("연락처");
-		userPhoneLB.setFont(new Font("Dialog", Font.PLAIN, 12));
+		userPhoneLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		userPhoneLB.setBounds(12, 211, 72, 15);
 		panel.add(userPhoneLB);
 		
 		userAddressLB = new JLabel("주소");
-		userAddressLB.setFont(new Font("Dialog", Font.PLAIN, 12));
+		userAddressLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		userAddressLB.setBounds(12, 242, 72, 15);
 		panel.add(userAddressLB);
 		
 		userEmailLB = new JLabel("이메일");
-		userEmailLB.setFont(new Font("Dialog", Font.PLAIN, 12));
+		userEmailLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		userEmailLB.setBounds(12, 273, 72, 15);
 		panel.add(userEmailLB);
 		
@@ -338,6 +340,8 @@ public class UserCreatePanel extends JPanel {
 		panel.add(userPWCheckTF);
 		
 		pwVisibleBtn = new JCheckBox("보이기");
+		pwVisibleBtn.setBackground(new Color(245, 245, 245));
+		pwVisibleBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		pwVisibleBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -366,6 +370,8 @@ public class UserCreatePanel extends JPanel {
 		userPwVisibleTF.setColumns(10);
 		
 		pwCheckVisibleBtn = new JCheckBox("보이기");
+		pwCheckVisibleBtn.setBackground(new Color(245, 245, 245));
+		pwCheckVisibleBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		pwCheckVisibleBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -391,6 +397,11 @@ public class UserCreatePanel extends JPanel {
 		panel.add(userPWCheckVIsibleTF);
 		userPWCheckVIsibleTF.setVisible(false); //텍스트 필드 비가시화
 		userPWCheckVIsibleTF.setColumns(10);
+		
+		backgroundLB = new JLabel("");
+		backgroundLB.setIcon(new ImageIcon(UserCreatePanel.class.getResource("/image/grass.png")));
+		backgroundLB.setBounds(1, 365, 367, 52);
+		panel.add(backgroundLB);
 		
 	/*****생성자 끝******/
 	}

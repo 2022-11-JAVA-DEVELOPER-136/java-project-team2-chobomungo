@@ -40,6 +40,7 @@ import javax.swing.JList;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JScrollPane;
+import java.awt.Font;
 
 public class ChobomungoMainFrame extends JFrame {
 	/*
@@ -109,9 +110,11 @@ public class ChobomungoMainFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		chobomungoTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		chobomungoTabbedPane.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		contentPane.add(chobomungoTabbedPane, BorderLayout.CENTER);
 		
 		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		productTabbedPane.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		chobomungoTabbedPane.addTab("상품", null, productTabbedPane, null);
 		
 		productMainListPanel = new ProductMainListPanel();
@@ -122,6 +125,7 @@ public class ChobomungoMainFrame extends JFrame {
 		productTabbedPane.addTab("상품상세", null, productDetailPanel, null);
 		
 		userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		userTabbedPane.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		chobomungoTabbedPane.addTab("유저", null, userTabbedPane, null);
 		
 		loginPanel = new LoginPanel();
