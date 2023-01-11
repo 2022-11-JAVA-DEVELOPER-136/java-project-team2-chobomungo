@@ -164,6 +164,7 @@ public class CartPannel extends JPanel {
 		deleteCartBtn = new JButton("X");
 		deleteCartBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		deleteCartBtn.setBackground(new Color(221, 221, 221));
@@ -211,7 +212,7 @@ public class CartPannel extends JPanel {
 		
 		for(Cart cart : cartList) {
 			
-			totPrice += cart.getCart_qty()*cart.getProduct().getP_price();
+			//totPrice += cart.getCart_qty()*cart.getProduct().getP_price();
 			
 			// >>>>>>>>>> 카트 디테일 패널
 			
@@ -256,7 +257,7 @@ public class CartPannel extends JPanel {
 			cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 			cartCountcomboBox.setBackground(new Color(221, 221, 221));
 			cartCountcomboBox.setBounds(209, 14, 32, 23);
-			
+			//카트 상품 수량 수정 (콤보박스)
 			cartCountcomboBox.setSelectedItem(Integer.toString(cart.getCart_qty()));
 			cartCountcomboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
@@ -310,11 +311,7 @@ public class CartPannel extends JPanel {
 			
 		}
 		
-		cartTotalPriceLabel = new JLabel("");
-		cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-		cartTotalPriceLabel.setBounds(220, 10, 128, 15);
-		cartTotalPricePanel.add(cartTotalPriceLabel);
+		
 
 	}
 	
