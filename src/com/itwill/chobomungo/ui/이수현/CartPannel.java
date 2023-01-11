@@ -194,10 +194,10 @@ public class CartPannel extends JPanel {
 		cartListpanel.removeAll();
 		List<Cart> cartList = mainFrame.cartService.getCartListByUserId(loginUser.getUserId());
 		int totPrice = 0;
+		int price = 0;
 		for(Cart cart : cartList) {
 			totPrice += cart.getProduct().getP_price();
-			
-			
+			price += totPrice;
 			//수정 전체삭제 패널
 			
 			cartTopUpdateDeletePanel.removeAll();
@@ -327,7 +327,7 @@ public class CartPannel extends JPanel {
 			cartTotalLabel_1.setBounds(12, 10, 99, 15);
 			cartTotalPricePanel.add(cartTotalLabel_1);
 			
-			cartTotalPriceLabel = new JLabel(new DecimalFormat("#,###원").format(totPrice));
+			cartTotalPriceLabel = new JLabel(new DecimalFormat("#,###원").format(price));
 			cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 			cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 			cartTotalPriceLabel.setBounds(220, 10, 128, 15);
