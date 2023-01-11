@@ -233,7 +233,6 @@ public class CartPannel extends JPanel {
 			cartTotalPriceLabel.setBounds(220, 10, 128, 15);
 			cartTotalPricePanel.add(cartTotalPriceLabel);
 			
-			// >>>>>>>>> 다시보기 자꾸 덮어짐. . . . ㅠ 
 			// >>>>>>>>>> 카트 디테일 패널
 
 			cartDetailPanel = new JPanel();
@@ -313,6 +312,7 @@ public class CartPannel extends JPanel {
 					try {
 						//삭제메소드, user_id 인자.
 						mainFrame.cartService.removeCartItemByCartNo(cart.getCart_no());
+						JOptionPane.showMessageDialog(null, "상품이 삭제되었습니다.");
 
 						cartTotalPricePanel.removeAll();
 						cartTotalLabel = new JLabel("장바구니 총 액");
@@ -335,7 +335,6 @@ public class CartPannel extends JPanel {
 						}
 
 						displayCartList();
-						JOptionPane.showMessageDialog(null, "상품이 삭제되었습니다.");
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 					} catch(Exception e1) {
