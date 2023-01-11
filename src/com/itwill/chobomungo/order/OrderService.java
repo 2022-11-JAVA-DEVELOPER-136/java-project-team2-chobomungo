@@ -96,5 +96,12 @@ public class OrderService {
 	public Orders orderDetail(String userId, int o_no) throws Exception {
 		return orderDao.findByOrderNo(userId, o_no);
 	}
+	
+	//오더 총액 계산
+	public int orderTotPrice(String userId, int o_no) throws Exception {
+		orderDao.findByOrderNo(userId, o_no).getO_price();
+		return 0;
+	}
+
 }
 
