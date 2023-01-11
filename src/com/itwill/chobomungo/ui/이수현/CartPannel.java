@@ -76,6 +76,7 @@ public class CartPannel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
+					
 					mainFrame.cartService.removeCartItemByUserId(mainFrame.loginUser.getUserId());
 					displayCartList();
 					JOptionPane.showMessageDialog(null, "전체 상품이 삭제되었습니다.");
