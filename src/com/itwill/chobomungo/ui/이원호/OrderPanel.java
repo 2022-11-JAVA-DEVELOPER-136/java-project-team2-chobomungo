@@ -43,6 +43,7 @@ public class OrderPanel extends JPanel {
 	private JLabel orderDetailTitleLB;
 	private JLabel orderPriceLB;
 	private JPanel orderPanel;
+	private JLabel backgroundLB;
 	
 	/**
 	 * Create the panel.
@@ -134,7 +135,7 @@ public class OrderPanel extends JPanel {
 				}
 			}
 		});
-		orderBTN.setBounds(12, 376, 167, 43);
+		orderBTN.setBounds(12, 376, 167, 30);
 		orderPanel.add(orderBTN);
 		
 		orderTotalPricePanel = new JPanel();
@@ -171,7 +172,7 @@ public class OrderPanel extends JPanel {
 			}
 		});
 		orderCancleBTN.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
-		orderCancleBTN.setBounds(191, 376, 167, 43);
+		orderCancleBTN.setBounds(191, 376, 167, 30);
 		orderPanel.add(orderCancleBTN);
 		
 		orderDetailPanel = new JPanel();
@@ -201,6 +202,11 @@ public class OrderPanel extends JPanel {
 		orderPriceLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderPriceLB.setBounds(256, 110, 79, 35);
 		orderDetailPanel.add(orderPriceLB);
+		
+		backgroundLB = new JLabel("");
+		backgroundLB.setIcon(new ImageIcon(OrderPanel.class.getResource("/image/grass.png")));
+		backgroundLB.setBounds(0, 391, 398, 52);
+		orderPanel.add(backgroundLB);
 		
 	}
 	public void displayOrderList() throws Exception {

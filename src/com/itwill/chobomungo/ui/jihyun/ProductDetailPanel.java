@@ -25,6 +25,7 @@ import com.itwill.chobomungo.user.UserService;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
 
 public class ProductDetailPanel extends JPanel {
 	
@@ -41,6 +42,7 @@ public class ProductDetailPanel extends JPanel {
 	private JPanel productDetailPanel;
 	private JScrollPane ProductDetailScrollPane;
 	private JButton productCartBtn_1;
+	private JLabel backgroundLB;
 	/**
 	 * Create the panel.
 	 * @throws Exception 
@@ -54,6 +56,7 @@ public class ProductDetailPanel extends JPanel {
 		add(ProductDetailScrollPane, BorderLayout.CENTER);
 		
 		productDetailPanel = new JPanel();
+		productDetailPanel.setBackground(Color.WHITE);
 		productDetailPanel.setPreferredSize(new Dimension(400, 500));
 		ProductDetailScrollPane.setViewportView(productDetailPanel);
 		productDetailPanel.setLayout(null);
@@ -86,6 +89,7 @@ public class ProductDetailPanel extends JPanel {
 		productDescTA.setText("상품설명");
 		
 		JLabel productPriceMainLB = new JLabel("판매가격");
+		productPriceMainLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		productPriceMainLB.setBounds(215, 56, 61, 16);
 		productDetailPanel.add(productPriceMainLB);
 		
@@ -95,20 +99,25 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productPriceLB);
 		
 		JLabel productAmountLB = new JLabel("구매수량");
+		productAmountLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		productAmountLB.setBounds(215, 125, 61, 16);
 		productDetailPanel.add(productAmountLB);
 		
 		productAmountCB = new JComboBox();
+		productAmountCB.setPreferredSize(new Dimension(30, 23));
+		productAmountCB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		productAmountCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		productAmountCB.setBounds(254, 145, 66, 29);
 		productDetailPanel.add(productAmountCB);
 		
 		productCartBtn_1 = new JButton("장바구니");
+		productCartBtn_1.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		productCartBtn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productCartBtn_1.setBounds(219, 185, 100, 35);
 		productDetailPanel.add(productCartBtn_1);
 		
 		productOrderBtn = new JButton("구매하기");
+		productOrderBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
 		productOrderBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productOrderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -117,6 +126,11 @@ public class ProductDetailPanel extends JPanel {
 		});
 		productOrderBtn.setBounds(219, 225, 100, 35);
 		productDetailPanel.add(productOrderBtn);
+		
+		backgroundLB = new JLabel("");
+		backgroundLB.setIcon(new ImageIcon(ProductDetailPanel.class.getResource("/image/grass.png")));
+		backgroundLB.setBounds(0, 448, 367, 52);
+		productDetailPanel.add(backgroundLB);
 
 	}
 	
