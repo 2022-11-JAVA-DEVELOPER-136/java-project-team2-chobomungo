@@ -114,7 +114,7 @@ public class ChobomungoMainFrame extends JFrame {
 		userTabbedPane.addTab("로그인", null, loginPanel, null);
 		
 		cartPannel = new CartPannel();
-		chobomungoTabbedPane.addTab("New tab", null, cartPannel, null);
+		chobomungoTabbedPane.addTab("카트", null, cartPannel, null);
 		
 		orderPanel = new OrderPanel();
 		chobomungoTabbedPane.addTab("주문", null, orderPanel, null);
@@ -161,6 +161,7 @@ public class ChobomungoMainFrame extends JFrame {
 		globalHomeBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(0);
+				productTabbedPane.setSelectedIndex(0);
 			}
 		});
 		globalSouthPanel.add(globalHomeBTN);

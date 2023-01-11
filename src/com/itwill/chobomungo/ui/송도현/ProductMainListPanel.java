@@ -34,8 +34,6 @@ public class ProductMainListPanel extends JPanel {
 	JLabel productListLB;
 	JPanel productItemListPanel;
 	
-	private String cartQtyStr;
-	private int cartQty;
 	/**
 	 * Create the panel.
 	 * @throws Exception 
@@ -86,29 +84,29 @@ public class ProductMainListPanel extends JPanel {
 		ProductDetailDescBtn.setBounds(152, 119, 166, 41);
 		productPanel.add(ProductDetailDescBtn);
 		
-		JComboBox CartQtyComboBox = new JComboBox();
-		CartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
-		CartQtyComboBox.setBounds(157, 10, 40, 34);
-		productPanel.add(CartQtyComboBox);
+		JComboBox cartQtyComboBox = new JComboBox();
+		cartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
+		cartQtyComboBox.setBounds(157, 10, 40, 34);
+		productPanel.add(cartQtyComboBox);
 		
-		JButton CartBtn = new JButton("");
-		CartBtn.addActionListener(new ActionListener() {
+		JButton cartBtn = new JButton("");
+		cartBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		CartBtn.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/image/smallcart.png")));
-		CartBtn.setOpaque(false);
-		CartBtn.setBorder(null);
-		CartBtn.setBackground(Color.WHITE);
-		CartBtn.setBounds(198, 0, 49, 52);
-		productPanel.add(CartBtn);
+		cartBtn.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/image/smallcart.png")));
+		cartBtn.setOpaque(false);
+		cartBtn.setBorder(null);
+		cartBtn.setBackground(Color.WHITE);
+		cartBtn.setBounds(198, 0, 49, 52);
+		productPanel.add(cartBtn);
 		
-		JLabel SumLabel = new JLabel("<html>상품번호: 1<br>상품명: 만일 내가 인생을 다시 산다면<br>가격: 10,000원</html>");
-		SumLabel.setForeground(Color.BLACK);
-		SumLabel.setFont(new Font("굴림", Font.PLAIN, 13));
-		SumLabel.setBackground(Color.WHITE);
-		SumLabel.setBounds(157, 43, 176, 76);
-		productPanel.add(SumLabel);
+		JLabel sumLabel = new JLabel("<html>상품번호: 1<br>상품명: 만일 내가 인생을 다시 산다면<br>가격: 10,000원</html>");
+		sumLabel.setForeground(Color.BLACK);
+		sumLabel.setFont(new Font("굴림", Font.PLAIN, 13));
+		sumLabel.setBackground(Color.WHITE);
+		sumLabel.setBounds(157, 43, 176, 76);
+		productPanel.add(sumLabel);
 		/*************product item end*************/
 		
 	}
@@ -135,7 +133,7 @@ public class ProductMainListPanel extends JPanel {
 			productPanel.setAlignmentX(1.0f);
 			
 			JLabel productImageLabel = new JLabel("");
-			productImageLabel.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/product_Image/국내도서1.png")));
+			productImageLabel.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/product_Image"+product.getP_image())));
 			productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			productImageLabel.setBounds(0, 0, 145, 170);
 			productPanel.add(productImageLabel);
@@ -158,22 +156,27 @@ public class ProductMainListPanel extends JPanel {
 			ProductDetailDescBtn.setBounds(152, 119, 166, 41);
 			productPanel.add(ProductDetailDescBtn);
 			
-			JComboBox CartQtyComboBox = new JComboBox();
-			CartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
-			CartQtyComboBox.setBounds(157, 15, 40, 23);
-			productPanel.add(CartQtyComboBox);
+			JComboBox cartQtyComboBox = new JComboBox();
+			cartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
+			cartQtyComboBox.setBounds(157, 15, 40, 23);
+			productPanel.add(cartQtyComboBox);
 			
-			JButton CartBtn = new JButton("");
-			cartQtyStr = (String)CartQtyComboBox.getSelectedItem();
-			cartQty = Integer.parseInt(cartQtyStr);
-			System.out.println(cartQty);
-			CartBtn.addActionListener(new ActionListener() {
+			JButton cartBtn = new JButton("");
+			/*
+			 * cartBtn 액션시 카트 객체 생성
+			 */
+			cartBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
 						if(mainFrame.loginUser!=null) {
+							String cartQtyStr = (String)cartQtyComboBox.getSelectedItem();
+							int cartQty = Integer.parseInt(cartQtyStr);
 							mainFrame.cartService.addCart(cartQty, mainFrame.loginUser.getUserId(), product.getP_no());
 							mainFrame.cartPannel.displayCartList(mainFrame.loginUser);
 							mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
+							//메세지 출력
+							JOptionPane.showMessageDialog(null, "장바구니에 상품이 추가되었습니다.");
+							cartQtyComboBox.setSelectedIndex(0);
 						}else {
 							mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
 							mainFrame.userTabbedPane.setSelectedIndex(0);
@@ -185,19 +188,19 @@ public class ProductMainListPanel extends JPanel {
 					
 				}
 			});
-			CartBtn.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/image/smallcart.png")));
-			CartBtn.setOpaque(false);
-			CartBtn.setBorder(null);
-			CartBtn.setBackground(Color.WHITE);
-			CartBtn.setBounds(213, 10, 40, 28);
-			productPanel.add(CartBtn);
+			cartBtn.setIcon(new ImageIcon(ProductMainListPanel.class.getResource("/image/smallcart.png")));
+			cartBtn.setOpaque(false);
+			cartBtn.setBorder(null);
+			cartBtn.setBackground(Color.WHITE);
+			cartBtn.setBounds(213, 10, 40, 28);
+			productPanel.add(cartBtn);
 			
-			JLabel SumLabel = new JLabel("<html>상품번호: "+product.getP_no()+"<br>상품명: "+product.getP_title()+ "<br>가격: "+product.getP_price()+"</html>");
-			SumLabel.setForeground(Color.BLACK);
-			SumLabel.setFont(new Font("굴림", Font.PLAIN, 13));
-			SumLabel.setBackground(Color.WHITE);
-			SumLabel.setBounds(157, 43, 176, 76);
-			productPanel.add(SumLabel);
+			JLabel sumLabel = new JLabel("<html>상품번호: "+product.getP_no()+"<br>상품명: "+product.getP_title()+ "<br>가격: "+product.getP_price()+"</html>");
+			sumLabel.setForeground(Color.BLACK);
+			sumLabel.setFont(new Font("굴림", Font.PLAIN, 13));
+			sumLabel.setBackground(Color.WHITE);
+			sumLabel.setBounds(157, 43, 176, 76);
+			productPanel.add(sumLabel);
 			productPanel.add(productImageLabel);
 			
 			productItemListPanel.add(productPanel);
