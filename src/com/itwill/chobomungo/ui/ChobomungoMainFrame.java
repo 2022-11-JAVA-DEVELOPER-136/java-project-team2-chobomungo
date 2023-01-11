@@ -132,7 +132,7 @@ public class ChobomungoMainFrame extends JFrame {
 		contentPane.add(globalNorthPanel, BorderLayout.NORTH);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\itwill\\Documents\\새 폴더\\book30.png"));
+		lblNewLabel.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/book30.png")));
 		globalNorthPanel.add(lblNewLabel);
 		
 		globalSerchTF = new JTextField();
@@ -141,11 +141,11 @@ public class ChobomungoMainFrame extends JFrame {
 		globalSerchTF.setColumns(10);
 		
 		JButton globalSerchBTN = new JButton("");
-		globalSerchBTN.setIcon(new ImageIcon("C:\\Users\\itwill\\Documents\\새 폴더\\search20.png"));
+		globalSerchBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/search20.png")));
 		globalNorthPanel.add(globalSerchBTN);
 		
 		JButton globalCartBTN = new JButton("");
-		globalCartBTN.setIcon(new ImageIcon("C:\\Users\\itwill\\Documents\\새 폴더\\cart20.png"));
+		globalCartBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cart20.png")));
 		globalCartBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(3);
@@ -158,7 +158,7 @@ public class ChobomungoMainFrame extends JFrame {
 		contentPane.add(globalSouthPanel, BorderLayout.SOUTH);
 		
 		JButton globalOrderBTN = new JButton("");
-		globalOrderBTN.setIcon(new ImageIcon("C:\\Users\\itwill\\Documents\\새 폴더\\buy_button50.png"));
+		globalOrderBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/buy_button50.png")));
 		globalOrderBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(2);
@@ -177,7 +177,7 @@ public class ChobomungoMainFrame extends JFrame {
 		globalSouthPanel.add(globalHomeBTN);
 		
 		JButton globalUserBTN = new JButton("");
-		globalUserBTN.setIcon(new ImageIcon("C:\\Users\\itwill\\Documents\\새 폴더\\uuser50.png"));
+		globalUserBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/uuser50.png")));
 		globalUserBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(loginUser==null) {
