@@ -31,6 +31,8 @@ import com.itwill.chobomungo.ui.송도현.ProductMainListPanel;
 import com.itwill.chobomungo.ui.이수현.CartPannel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Cursor;
 
 public class ChobomungoMainFrame extends JFrame {
 	/*
@@ -93,6 +95,7 @@ public class ChobomungoMainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 620);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -132,19 +135,27 @@ public class ChobomungoMainFrame extends JFrame {
 		userTabbedPane.addTab("회원정보", null, userUpdatePanel, null);
 		
 		JPanel globalNorthPanel = new JPanel();
+		globalNorthPanel.setBackground(Color.WHITE);
 		globalNorthPanel.setPreferredSize(new Dimension(10, 50));
 		contentPane.add(globalNorthPanel, BorderLayout.NORTH);
+		globalNorthPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(10, 8, 30, 30);
 		lblNewLabel.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/book30.png")));
 		globalNorthPanel.add(lblNewLabel);
 		
 		globalSerchTF = new JTextField();
+		globalSerchTF.setBounds(89, 11, 179, 24);
 		globalSerchTF.setDisabledTextColor(Color.WHITE);
 		globalNorthPanel.add(globalSerchTF);
 		globalSerchTF.setColumns(10);
 		
-		JButton globalSerchBTN = new JButton("검색");
+		JButton globalSerchBTN = new JButton("");
+		globalSerchBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalSerchBTN.setBackground(Color.WHITE);
+		globalSerchBTN.setBounds(273, 13, 21, 21);
+		globalSerchBTN.setBorder(null);
 		globalSerchBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/search20.png")));
 		globalSerchBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -160,7 +171,11 @@ public class ChobomungoMainFrame extends JFrame {
 		globalNorthPanel.add(globalSerchBTN);
 		
 		JButton globalCartBTN = new JButton("");
-		globalCartBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cart20.png")));
+		globalCartBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalCartBTN.setBackground(Color.WHITE);
+		globalCartBTN.setBounds(331, 8, 31, 31);
+		globalCartBTN.setBorder(null);
+		globalCartBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cart30.png")));
 		globalCartBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(loginUser == null) {
@@ -176,20 +191,30 @@ public class ChobomungoMainFrame extends JFrame {
 		globalNorthPanel.add(globalCartBTN);
 		
 		JPanel globalSouthPanel = new JPanel();
+		globalSouthPanel.setBackground(Color.WHITE);
 		globalSouthPanel.setPreferredSize(new Dimension(10, 70));
 		contentPane.add(globalSouthPanel, BorderLayout.SOUTH);
 		
 		JButton globalOrderBTN = new JButton("");
+		globalOrderBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalOrderBTN.setBackground(Color.WHITE);
+		globalOrderBTN.setBounds(45, 9, 51, 51);
+		globalOrderBTN.setBorder(null);
 		globalOrderBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/buy_button50.png")));
 		globalOrderBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(2);
 			}
 		});
+		globalSouthPanel.setLayout(null);
 		globalSouthPanel.add(globalOrderBTN);
 		
 		JButton globalHomeBTN = new JButton("");
-		globalHomeBTN.setIcon(new ImageIcon("C:\\Users\\itwill\\Documents\\새 폴더\\home50.png"));
+		globalHomeBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalHomeBTN.setBackground(Color.WHITE);
+		globalHomeBTN.setBounds(155, 9, 51, 51);
+		globalHomeBTN.setBorder(null);
+		globalHomeBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/home50.png")));
 		globalHomeBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(0);
@@ -199,6 +224,10 @@ public class ChobomungoMainFrame extends JFrame {
 		globalSouthPanel.add(globalHomeBTN);
 		
 		JButton globalUserBTN = new JButton("");
+		globalUserBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalUserBTN.setBackground(Color.WHITE);
+		globalUserBTN.setBounds(270, 10, 51, 51);
+		globalUserBTN.setBorder(null);
 		globalUserBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/uuser50.png")));
 		globalUserBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

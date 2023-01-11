@@ -103,10 +103,12 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productAmountCB);
 		
 		productCartBtn_1 = new JButton("장바구니");
+		productCartBtn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productCartBtn_1.setBounds(219, 185, 100, 35);
 		productDetailPanel.add(productCartBtn_1);
 		
 		productOrderBtn = new JButton("구매하기");
+		productOrderBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productOrderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
