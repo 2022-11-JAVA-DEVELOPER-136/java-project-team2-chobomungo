@@ -134,6 +134,7 @@ public class LoginPanel extends JPanel {
 		mainFrame.userTabbedPane.setEnabledAt(0, false);
 		mainFrame.userTabbedPane.setEnabledAt(1, false);
 		mainFrame.userTabbedPane.setEnabledAt(2, true);
+		mainFrame.userTabbedPane.setEnabledAt(3, true);
 		mainFrame.chobomungoTabbedPane.setEnabledAt(2,true);
 		mainFrame.chobomungoTabbedPane.setEnabledAt(3,true);
 	}
