@@ -186,20 +186,20 @@ public class OrderPanel extends JPanel {
 		
 		orderDetailTitleLB = new JLabel("New label");
 		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
-		orderDetailTitleLB.setBounds(123, 10, 212, 54);
+		orderDetailTitleLB.setBounds(123, 23, 212, 54);
 		orderDetailPanel.add(orderDetailTitleLB);
 		
 		JLabel orderPriceTitleLB = new JLabel("총 주문금액 :");
-		orderPriceTitleLB.setBounds(123, 119, 79, 35);
+		orderPriceTitleLB.setBounds(123, 110, 79, 35);
 		orderDetailPanel.add(orderPriceTitleLB);
 		
 		JLabel orderDeliveryPriceLB = new JLabel("배송비 :                                    0원");
-		orderDeliveryPriceLB.setBounds(123, 74, 212, 35);
+		orderDeliveryPriceLB.setBounds(123, 71, 212, 35);
 		orderDetailPanel.add(orderDeliveryPriceLB);
 		
 		orderPriceLB = new JLabel("");
 		orderPriceLB.setHorizontalAlignment(SwingConstants.RIGHT);
-		orderPriceLB.setBounds(257, 119, 79, 35);
+		orderPriceLB.setBounds(256, 110, 79, 35);
 		orderDetailPanel.add(orderPriceLB);
 		
 	}
@@ -221,23 +221,23 @@ public class OrderPanel extends JPanel {
 		orderDetailPanel.add(orderDetailImageLB);
 		
 		orderDetailTitleLB = new JLabel(orderTitle+"  외  "+(orderList.size()-1)+"건");
-		orderDetailTitleLB.setBounds(123, 10, 212, 35);
+		orderDetailTitleLB.setBounds(123, 23, 212, 54);
 		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderDetailTitleLB);
 		
 		JLabel orderPriceTitleLB = new JLabel("총 주문금액 :");
-		orderPriceTitleLB.setBounds(123, 119, 79, 35);
+		orderPriceTitleLB.setBounds(123, 110, 79, 35);
 		orderPriceTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderPriceTitleLB);
 		
 		JLabel orderDeliveryPriceLB = new JLabel("배송비 :                                    0원");
-		orderDeliveryPriceLB.setBounds(123, 55, 212, 35);
+		orderDeliveryPriceLB.setBounds(123, 71, 212, 35);
 		orderDeliveryPriceLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderDeliveryPriceLB);
 		
 		orderPriceLB = new JLabel(new DecimalFormat("#,###원").format(mainFrame.orderService.orderTotPrice(mainFrame.loginUser.getUserId())));
 		orderPriceLB.setHorizontalAlignment(SwingConstants.RIGHT);
-		orderPriceLB.setBounds(257, 119, 79, 35);
+		orderPriceLB.setBounds(256, 110, 79, 35);
 		orderPriceLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderPriceLB);
 		

@@ -52,6 +52,8 @@ public class OrderService {
 		}
 		if(oi_tot_qty==1) {
 			o_desc = orderItemList.get(0).getProduct().getP_title();
+		}else if(oi_tot_qty==0){
+			
 		}else {
 			o_desc = orderItemList.get(0).getProduct().getP_title()+" 총 "+oi_tot_qty+" 권";
 		}
