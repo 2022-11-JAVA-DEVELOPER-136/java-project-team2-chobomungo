@@ -28,6 +28,7 @@ import javax.swing.DefaultComboBoxModel;
 
 public class ProductDetailPanel extends JPanel {
 	
+	public ChobomungoMainFrame mainFrame;
 	
 	public JLabel productTitleLB;
 	public JLabel productImg;
@@ -37,7 +38,6 @@ public class ProductDetailPanel extends JPanel {
 	public JButton productOrderBtn;
 	public JTextArea productDescTA;
 
-	public ChobomungoMainFrame mainFrame;
 	private JPanel productDetailPanel;
 	private JScrollPane ProductDetailScrollPane;
 	private JButton productCartBtn_1;
@@ -117,7 +117,7 @@ public class ProductDetailPanel extends JPanel {
 
 	}
 	
-	
+	//상품 디스플레이 메쏘드
 	public void displayProductDetail(int p_no) throws Exception{
 		Product selectProduct;
 		selectProduct = mainFrame.productService.bookSearchNumber(p_no);
@@ -166,14 +166,17 @@ public class ProductDetailPanel extends JPanel {
 		productAmountCB.setBounds(254, 145, 66, 29);
 		productDetailPanel.add(productAmountCB);
 		
+		//장바구니 버튼액션시 메쏘드
 		final JButton productCartBtn = new JButton("장바구니");
 		productCartBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//로그인 된 상태일 경우  
 				try {
 					if(mainFrame.loginUser!=null) {
+						//수량 콤보박스 리터럴 저장
 						String cartQtyStr = (String)productAmountCB.getSelectedItem();
 						int cartQty = Integer.parseInt(cartQtyStr);
+						//카트테이블에 추가
 						mainFrame.cartService.addCart(cartQty, mainFrame.loginUser.getUserId(), p_no);
 						mainFrame.cartPannel.displayCartList(mainFrame.loginUser);
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
@@ -195,6 +198,7 @@ public class ProductDetailPanel extends JPanel {
 		productCartBtn.setBounds(219, 185, 100, 35);
 		productDetailPanel.add(productCartBtn);
 		
+		//구매하기 버튼 액션시
 		productOrderBtn = new JButton("구매하기");
 		productOrderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
