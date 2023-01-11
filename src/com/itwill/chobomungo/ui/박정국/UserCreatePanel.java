@@ -308,7 +308,7 @@ public class UserCreatePanel extends JPanel {
 		userPwTF.setText("******");
 		userPwTF.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지
+			public void mouseClicked(MouseEvent e) { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지.
 				if(countPw==0) {
 				userPwTF.setText("");
 				countPw++;
