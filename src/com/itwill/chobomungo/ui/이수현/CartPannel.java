@@ -112,7 +112,7 @@ public class CartPannel extends JPanel {
 		
 		// 카트 총액 
 	
-		cartTotalPriceLabel = new JLabel(" 원");
+		cartTotalPriceLabel = new JLabel("");
 		cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 		cartTotalPriceLabel.setBounds(220, 10, 128, 15);
@@ -202,6 +202,7 @@ public class CartPannel extends JPanel {
 		List<Cart> cartList = mainFrame.cartService.getCartListByUserId(mainFrame.loginUser.getUserId());
 		
 		for(Cart cart : cartList) {
+			
 			totPrice += cart.getCart_qty()*cart.getProduct().getP_price();
 			
 			// >>>>>>>>>> 카트 디테일 패널
@@ -262,7 +263,7 @@ public class CartPannel extends JPanel {
 								totPrice += cart.getCart_qty()*cart.getProduct().getP_price();
 							}
 							//int cartTotPrice=mainFrame.cartService.getCartTotPrice();
-							cartTotalPriceLabel.setText(totPrice+"");
+							cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -302,9 +303,12 @@ public class CartPannel extends JPanel {
 			
 		}
 		
-		/*
-	
-*/
+		cartTotalPriceLabel = new JLabel("");
+		cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+		cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+		cartTotalPricePanel.add(cartTotalPriceLabel);
+
 	}
 	
 	
