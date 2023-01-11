@@ -169,7 +169,6 @@ public class ProductDetailPanel extends JPanel {
 		final JButton productCartBtn = new JButton("장바구니");
 		productCartBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("df");
 				//로그인 된 상태일 경우  
 				try {
 					if(mainFrame.loginUser!=null) {
