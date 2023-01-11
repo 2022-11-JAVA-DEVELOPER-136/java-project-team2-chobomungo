@@ -164,12 +164,14 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productAmountLB);
 		
 		productAmountCB = new JComboBox();
+		productAmountCB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productAmountCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		productAmountCB.setBounds(254, 145, 66, 29);
 		productDetailPanel.add(productAmountCB);
 		
 		//장바구니 버튼액션시 메쏘드
 		final JButton productCartBtn = new JButton("장바구니");
+		productCartBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productCartBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//로그인 된 상태일 경우  
@@ -202,6 +204,7 @@ public class ProductDetailPanel extends JPanel {
 		
 		//구매하기 버튼 액션시
 		productOrderBtn = new JButton("구매하기");
+		productOrderBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productOrderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//로그인 된 상태일 경우  
