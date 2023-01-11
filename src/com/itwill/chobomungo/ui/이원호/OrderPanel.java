@@ -222,14 +222,17 @@ public class OrderPanel extends JPanel {
 		
 		orderDetailTitleLB = new JLabel(orderTitle+" 외\n"+(orderList.size()-1)+"건");
 		orderDetailTitleLB.setBounds(123, 10, 212, 35);
+		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderDetailTitleLB);
 		
 		JLabel orderPriceTitleLB = new JLabel("총 주문금액 :");
 		orderPriceTitleLB.setBounds(123, 119, 79, 35);
+		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderPriceTitleLB);
 		
 		JLabel orderDeliveryPriceLB = new JLabel("배송비 :                                    0원");
 		orderDeliveryPriceLB.setBounds(123, 55, 212, 35);
+		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderDeliveryPriceLB);
 		
 		orderPriceLB = new JLabel(new DecimalFormat("#,###원").format(mainFrame.orderService.orderTotPrice(mainFrame.loginUser.getUserId())));
