@@ -130,7 +130,7 @@ public class ProductDetailPanel extends JPanel {
 		productTitleLB.setBounds(30, 10, 295, 29);
 		productDetailPanel.add(productTitleLB);
 		
-		productImg = new JLabel("\\book.png");
+		productImg = new JLabel("");
 		productImg.setIcon(new ImageIcon(ProductDetailPanel.class.getResource("/product_image"+selectProduct.getP_image())));
 		productImg.setBounds(30, 58, 160, 200);
 		productDetailPanel.add(productImg);
