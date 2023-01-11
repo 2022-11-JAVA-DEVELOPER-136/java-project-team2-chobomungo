@@ -43,13 +43,18 @@ public class OrderService {
 		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		int o_price = 0;
 		int oi_tot_qty = 0;
+		String o_desc = null;
 		for (Cart cart : cartList) {
 			OrderItem orderItem = new OrderItem(0,cart.getCart_qty(),0,cart.getProduct());
 			orderItemList.add(orderItem);
 			oi_tot_qty += cart.getCart_qty();
 			o_price += cart.getCart_qty()*cart.getProduct().getP_price();
 		}
-		String o_desc = orderItemList.get(0).getProduct().getP_title()+"외 "+(oi_tot_qty-1)+" 권";
+		if(oi_tot_qty==1) {
+			o_desc = orderItemList.get(0).getProduct().getP_title();
+		}else {
+			o_desc = orderItemList.get(0).getProduct().getP_title()+" 총 "+oi_tot_qty+" 권";
+		}
 		Orders newOrder = new Orders(0,o_desc,o_price,null,userId);
 		newOrder.setOrderItemList(orderItemList);
 		orderDao.insert(newOrder);

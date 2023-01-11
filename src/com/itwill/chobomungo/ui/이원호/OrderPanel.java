@@ -217,27 +217,28 @@ public class OrderPanel extends JPanel {
 		orderDetailPanel.removeAll();
 		
 		orderDetailImageLB = new JLabel(new ImageIcon(OrderPanel.class.getResource("/product_Image"+tempOrder.getOrderItemList().get(0).getProduct().getP_image())));
-		orderDetailImageLB.setBounds(11, 27, 100, 110);
+		orderDetailImageLB.setBounds(11, 10, 100, 144);
 		orderDetailPanel.add(orderDetailImageLB);
 		
-		orderDetailTitleLB = new JLabel(orderTitle+" 외\n"+(orderList.size()-1)+"건");
+		orderDetailTitleLB = new JLabel(orderTitle+"  외  "+(orderList.size()-1)+"건");
 		orderDetailTitleLB.setBounds(123, 10, 212, 35);
 		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderDetailTitleLB);
 		
 		JLabel orderPriceTitleLB = new JLabel("총 주문금액 :");
 		orderPriceTitleLB.setBounds(123, 119, 79, 35);
-		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
+		orderPriceTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderPriceTitleLB);
 		
 		JLabel orderDeliveryPriceLB = new JLabel("배송비 :                                    0원");
 		orderDeliveryPriceLB.setBounds(123, 55, 212, 35);
-		orderDetailTitleLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
+		orderDeliveryPriceLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderDeliveryPriceLB);
 		
 		orderPriceLB = new JLabel(new DecimalFormat("#,###원").format(mainFrame.orderService.orderTotPrice(mainFrame.loginUser.getUserId())));
 		orderPriceLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderPriceLB.setBounds(257, 119, 79, 35);
+		orderPriceLB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		orderDetailPanel.add(orderPriceLB);
 		
 		orderDetailPanel = new JPanel();
