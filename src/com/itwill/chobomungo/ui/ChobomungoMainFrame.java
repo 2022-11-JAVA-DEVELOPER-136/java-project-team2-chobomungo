@@ -161,6 +161,7 @@ public class ChobomungoMainFrame extends JFrame {
 		globalHomeBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(0);
+				productTabbedPane.setSelectedIndex(0);
 			}
 		});
 		globalSouthPanel.add(globalHomeBTN);
