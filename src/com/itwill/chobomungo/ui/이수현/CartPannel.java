@@ -322,7 +322,9 @@ public class CartPannel extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					try {
 						mainFrame.orderService.create(cart.getCart_qty(),cart.getProduct().getP_no(),mainFrame.loginUser.getUserId());
+						mainFrame.cartService.removeCartItemByUserId(mainFrame.loginUser.getUserId());
 						mainFrame.orderPanel.displayOrderList();
+						mainFrame.cartPannel.displayCartList();
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(3);
 						
 					} catch (Exception e2) {
