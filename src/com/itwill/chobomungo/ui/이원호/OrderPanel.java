@@ -175,9 +175,9 @@ public class OrderPanel extends JPanel {
 		orderDetailPanel.add(orderDetailDeleteBTN);
 		
 	}
-	public void displayOrderList(User loginUser) throws Exception {
+	public void displayOrderList() throws Exception {
 		orderListPanel.removeAll();
-		List<Orders> orderList = mainFrame.orderService.orderList(loginUser.getUserId());
+		List<Orders> orderList = mainFrame.orderService.orderList(mainFrame.loginUser.getUserId());
 		//주문 리스트 하나에 담긴상품의 총금액
 		int totPrice = 0;
 		for(Orders order : orderList) {
@@ -203,9 +203,11 @@ public class OrderPanel extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					// 오더리스트 1개 삭제
 					try {
-						int deleteOrderListCount = mainFrame.orderService.deleteOrderNo(loginUser.getUserId(), o.getO_no());
+						int deleteOrderListCount = mainFrame.orderService.deleteOrderNo(mainFrame.loginUser.getUserId(), o.getO_no());
 						JOptionPane.showMessageDialog(null, deleteOrderListCount + "개의 주문이 삭제되었습니다.");
-						displayOrderList(loginUser);
+						displayOrderList();
+						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
+						mainFrame.chobomungoTabbedPane.setSelectedIndex(3);
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
