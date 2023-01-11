@@ -24,6 +24,7 @@ import com.itwill.chobomungo.user.UserService;
 
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
+import javax.swing.DefaultComboBoxModel;
 
 public class ProductDetailPanel extends JPanel {
 	
@@ -48,7 +49,7 @@ public class ProductDetailPanel extends JPanel {
 	 * @throws Exception 
 	 */
 	public ProductDetailPanel() throws Exception {
-		setPreferredSize(new Dimension(400, 620));
+		setPreferredSize(new Dimension(400, 500));
 		setLayout(new BorderLayout(0, 0));
 		
 		productService = new ProductService();
@@ -75,7 +76,7 @@ public class ProductDetailPanel extends JPanel {
 		ProductDetailPanel.add(productImg);
 		
 		JLabel productDescMainLB = new JLabel("상품상세정보");
-		productDescMainLB.setBounds(30, 291, 74, 21);
+		productDescMainLB.setBounds(30, 291, 100, 21);
 		ProductDetailPanel.add(productDescMainLB);
 		
 		productDescScrollPane = new JScrollPane();
@@ -96,12 +97,14 @@ public class ProductDetailPanel extends JPanel {
 		ProductDetailPanel.add(productPriceLB);
 		
 		/****************************************************/
+		displayProductDetail(6);
 		
 		JLabel productAmountLB = new JLabel("구매수량");
 		productAmountLB.setBounds(215, 125, 61, 16);
 		ProductDetailPanel.add(productAmountLB);
 		
 		productAmountCB = new JComboBox();
+		productAmountCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		productAmountCB.setBounds(254, 145, 66, 29);
 		ProductDetailPanel.add(productAmountCB);
 		
@@ -145,7 +148,7 @@ public class ProductDetailPanel extends JPanel {
 		
 		selectProduct = productService.bookSearchNumber(p_no);
 		productTitleLB.setText(selectProduct.getP_title());
-		productImg.setText(selectProduct.getP_image());
+		productImg.setIcon(new ImageIcon(ProductDetailPanel.class.getResource(selectProduct.getP_image())));
 		productDescTA.setText(selectProduct.getP_desc());
 		productPriceLB.setText(selectProduct.getP_price()+"원");
 		
