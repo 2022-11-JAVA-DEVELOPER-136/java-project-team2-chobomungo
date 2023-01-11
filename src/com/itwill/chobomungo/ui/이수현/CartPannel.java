@@ -336,6 +336,12 @@ public class CartPannel extends JPanel {
 						}
 
 						displayCartList();
+						cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
+						cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+						cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+						deleteCartBtn.setBounds(265, 46, 45, 23);
+						cartTotalPricePanel.add(cartTotalPriceLabel);
+						
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 					} catch(Exception e1) {
