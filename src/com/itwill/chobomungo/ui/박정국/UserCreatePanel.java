@@ -50,8 +50,15 @@ public class UserCreatePanel extends JPanel {
 	private JCheckBox pwVisibleBtn;
 	private JCheckBox pwCheckVisibleBtn;
 	
-	boolean b1=true;
-	boolean b2=true;
+	boolean b1=true; //비밀번호 텍스트필드 가시화/비가시화 전환용 변수
+	boolean b2=true; //비밀번호 확인 텍스트필드 가시화/비가시화 전환용 변수
+	int countID=0; //해당 텍스트필드 클릭 카운트
+	int countName=0;
+	int countPhone=0;
+	int countAddress=0;
+	int countEmail=0;
+	int countPw=0;
+	int countPwc=0;
 	
 	public UserCreatePanel() throws Exception {
 		setPreferredSize(new Dimension(400, 620));
@@ -72,11 +79,14 @@ public class UserCreatePanel extends JPanel {
 		userIDTF = new JTextField();
 		userIDTF.setFont(new Font("Dialog", Font.ITALIC, 12));
 		userIDTF.setText("2글자 이상 16글자 이하");
-		userIDTF.addMouseListener(new MouseAdapter() {
+		userIDTF.addMouseListener(new MouseAdapter() { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				userIDTF.setText("");
-				
+				if(countID==0) {
+					userIDTF.setText("");
+					countID++;
+				}else {
+				}
 			}
 		});
 		userIDTF.setBounds(95, 49, 192, 21);
@@ -87,10 +97,14 @@ public class UserCreatePanel extends JPanel {
 		userNameTF = new JTextField();
 		userNameTF.setFont(new Font("Dialog", Font.ITALIC, 12));
 		userNameTF.setText("홍길동");
-		userNameTF.addMouseListener(new MouseAdapter() {
+		userNameTF.addMouseListener(new MouseAdapter() { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				userNameTF.setText("");				
+				if(countName==0) {
+					userNameTF.setText("");
+					countName++;
+				}else {
+				}
 			}
 		});
 		userNameTF.setBounds(95, 177, 192, 21);
@@ -100,10 +114,14 @@ public class UserCreatePanel extends JPanel {
 		userPhoneTF = new JTextField();
 		userPhoneTF.setFont(new Font("Dialog", Font.ITALIC, 12));
 		userPhoneTF.setText("010-0000-0000");
-		userPhoneTF.addMouseListener(new MouseAdapter() {
+		userPhoneTF.addMouseListener(new MouseAdapter() { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				userPhoneTF.setText("");
+				if(countPhone==0) {
+					userPhoneTF.setText("");
+					countPhone++;
+				}else {
+				}
 			}
 		});
 		userPhoneTF.setBounds(95, 208, 192, 21);
@@ -113,10 +131,14 @@ public class UserCreatePanel extends JPanel {
 		userAddressTF = new JTextField();
 		userAddressTF.setFont(new Font("Dialog", Font.ITALIC, 12));
 		userAddressTF.setText("서울시 종로구 사직로 161");
-		userAddressTF.addMouseListener(new MouseAdapter() {
+		userAddressTF.addMouseListener(new MouseAdapter() { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				userAddressTF.setText("");
+				if(countAddress==0) {
+					userAddressTF.setText("");
+					countAddress++;
+				}else {
+				}
 			}
 		});
 		userAddressTF.setBounds(95, 239, 192, 21);
@@ -126,10 +148,14 @@ public class UserCreatePanel extends JPanel {
 		userEmailTF = new JTextField();
 		userEmailTF.setText("example@example.com");
 		userEmailTF.setFont(new Font("Dialog", Font.ITALIC, 12));
-		userEmailTF.addMouseListener(new MouseAdapter() {
+		userEmailTF.addMouseListener(new MouseAdapter() { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				userEmailTF.setText("");
+				if(countEmail==0) {
+					userEmailTF.setText("");
+					countEmail++;
+				}else {
+				}
 			}
 		});
 		userEmailTF.setBounds(95, 270, 192, 21);
@@ -138,7 +164,7 @@ public class UserCreatePanel extends JPanel {
 		
 		memberJoinBtn = new JButton("회원가입");
 		memberJoinBtn.setFont(new Font("Dialog", Font.PLAIN, 12));
-		memberJoinBtn.addActionListener(new ActionListener() {
+		memberJoinBtn.addActionListener(new ActionListener() { //회원가입
 			public void actionPerformed(ActionEvent e) {
 				/*********** 회원가입 ************/
 				try {
@@ -165,7 +191,7 @@ public class UserCreatePanel extends JPanel {
 		goMainBtn = new JButton("가입취소");
 		goMainBtn.setFont(new Font("Dialog", Font.PLAIN, 12));
 		goMainBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { //가입취소 클릭시 텍스트필드를 예시 글자로 채움
 				userIDTF.setText("2글자 이상 16글자 이하");
 				userPwTF.setText("******");
 				userPWCheckTF.setText("******");
@@ -189,17 +215,17 @@ public class UserCreatePanel extends JPanel {
 				boolean isAdd;
 				try {
 					isAdd = mainFrame.userService.idCheck(id);
-					if(id.equals("")) {
+					if(id.equals("")) { //아이디란이 비어있을 시 메세지 출력
 						JOptionPane.showMessageDialog(null, "아이디를 입력해주세요.");
 						userIDTF.requestFocus();
 						userIDTF.setSelectionStart(0);
 						userIDTF.setSelectionEnd(id.length());
-					} else if(isAdd==false) {
+					} else if(isAdd==false) { //기존 테이블에 같은 아이디가 없을 시 메세지 출력
 						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
 						userIDTF.requestFocus();
 						userIDTF.setSelectionStart(0);
 						userIDTF.setSelectionEnd(id.length());
-					} else {
+					} else { //기존 테이블에 같은 아이디가 있을 시 메세지 출력
 						JOptionPane.showMessageDialog(null, "이미 사용하고 있는 아이디입니다.");
 						userIDTF.requestFocus();
 						userIDTF.setSelectionStart(0);
@@ -220,19 +246,19 @@ public class UserCreatePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String password1=userPwTF.getText();
 				String password2=userPWCheckTF.getText();
-				boolean isAdd = password1.equals(password2);
-				if(password1.equals("")) {
+				boolean isAdd = password1.equals(password2); //비밀번호와 비밀번화 확인란의 문자열 비교
+				if(password1.equals("")) { //비밀번호란이 비어있을 시 메세지 출력
 					JOptionPane.showMessageDialog(null, "비밀번호를 입력하세요.");
 					userPwTF.requestFocus();
 					userPwTF.setSelectionStart(0);
 					userPwTF.setSelectionEnd(password1.length());
 				}
-				else if(isAdd) {
+				else if(isAdd) { //비밀번호와 비밀번화 확인란의 문자열이 일치하면 메세지 출력
 					JOptionPane.showMessageDialog(null, "비밀번호가 일치합니다.");
 					userPwTF.requestFocus();
 					userPwTF.setSelectionStart(0);
 					userPwTF.setSelectionEnd(password1.length());
-				}else {
+				}else { //비밀번호와 비밀번화 확인란의 문자열이 일치하지 않으면 메세지 출력
 					JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.");
 					userPwTF.requestFocus();
 					userPwTF.setSelectionStart(0);
@@ -282,10 +308,15 @@ public class UserCreatePanel extends JPanel {
 		userPwTF.setText("******");
 		userPwTF.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지
+				if(countPw==0) {
 				userPwTF.setText("");
+				countPw++;
+				}else {
+				}
 			}
 		});
+		userPwTF.setVisible(b1); //패스워드 필드 가시화
 		userPwTF.setBounds(95, 98, 192, 21);
 		panel.add(userPwTF);
 		
@@ -294,11 +325,15 @@ public class UserCreatePanel extends JPanel {
 		userPWCheckTF.setText("******");
 		userPWCheckTF.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				userPWCheckTF.setText("");
+			public void mouseClicked(MouseEvent e) { //처음 클릭하면 해당 칸을 비우고, 두 번째부터는 현상유지
+				if(countPwc==0) {
+					userPWCheckTF.setText("");
+					countPwc++;
+				}else {
+				}
 			}
 		});
-		userPWCheckTF.setVisible(b1);
+		userPWCheckTF.setVisible(b1); //패스워드 필드 가시화
 		userPWCheckTF.setBounds(95, 126, 192, 21);
 		panel.add(userPWCheckTF);
 		
@@ -307,15 +342,16 @@ public class UserCreatePanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if(b1==true) {
+				if(b1==true) { //패스워드 필드가 가시화인 경우 패스워드 필드(****)를 비가시화, 텍스트필드(1234)를 가시화하고 변수를 false값 입력
 					userPwTF.setVisible(false);
 					userPwVisibleTF.setVisible(true);
 					userPwVisibleTF.setText(userPwTF.getText());
 					b1=false;
 				}
-				else if(b1==false){
+				else if(b1==false){ //패스워드 필드가 비가시화인 경우 패스워드 필드(****)를 가시화, 텍스트필드(1234)를 비가시화하고 변수를 true값 입력
 					userPwTF.setVisible(true);
 					userPwVisibleTF.setVisible(false);
+					userPwTF.setText(userPwVisibleTF.getText());
 					b1=true;
 				}
 			}
@@ -326,22 +362,23 @@ public class UserCreatePanel extends JPanel {
 		userPwVisibleTF = new JTextField();
 		userPwVisibleTF.setBounds(95, 98, 192, 21);
 		panel.add(userPwVisibleTF);
-		userPwVisibleTF.setVisible(false);
+		userPwVisibleTF.setVisible(false); //텍스트 필드 비가시화
 		userPwVisibleTF.setColumns(10);
 		
 		pwCheckVisibleBtn = new JCheckBox("보이기");
 		pwCheckVisibleBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(b2==true) {
+				if(b2==true) { //패스워드 필드가 가시화인 경우 패스워드 필드(****)를 비가시화, 텍스트필드(1234)를 가시화하고 변수를 false값 입력
 					userPWCheckTF.setVisible(false);
 					userPWCheckVIsibleTF.setVisible(true);
 					userPWCheckVIsibleTF.setText(userPWCheckTF.getText());
 					b2=false;
 				}
-				else if(b2==false){
+				else if(b2==false){ //패스워드 필드가 비가시화인 경우 패스워드 필드(****)를 가시화, 텍스트필드(1234)를 비가시화하고 변수를 true값 입력
 					userPWCheckTF.setVisible(true);
 					userPWCheckVIsibleTF.setVisible(false);
+					userPWCheckTF.setText(userPWCheckVIsibleTF.getText());
 					b2=true;
 				}
 			}
@@ -352,7 +389,7 @@ public class UserCreatePanel extends JPanel {
 		userPWCheckVIsibleTF = new JTextField();
 		userPWCheckVIsibleTF.setBounds(95, 126, 192, 21);
 		panel.add(userPWCheckVIsibleTF);
-		userPWCheckVIsibleTF.setVisible(false);
+		userPWCheckVIsibleTF.setVisible(false); //텍스트 필드 비가시화
 		userPWCheckVIsibleTF.setColumns(10);
 		
 	/*****생성자 끝******/
