@@ -293,9 +293,10 @@ public class UserCreatePanel extends JPanel {
 		userPWCheckTF.setBounds(95, 126, 192, 21);
 		panel.add(userPWCheckTF);
 		
-	
+	/*****생성자 끝******/
 	}
 	
+	//회원가입시 유효성체크
 	public void joinValidation(User joinUser) throws Exception {
 		int isAdd = mainFrame.userService.create(joinUser);
 		if(isAdd==1) {

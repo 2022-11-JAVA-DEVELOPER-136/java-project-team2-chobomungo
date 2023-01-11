@@ -28,7 +28,6 @@ public class LoginPanel extends JPanel {
 	private JButton joinBtn;
 	private JButton searchIDPassword_LB;
 	private JLabel loginTitle_LB;
-	public User loginUser;
 	private ChobomungoMainFrame mainFrame;
 	/**
 	 * Create the panel.
@@ -122,7 +121,6 @@ public class LoginPanel extends JPanel {
 	}
 	/**************로그인성공시 호출할메쏘드***************/
 	private void loginProcess(String userId) throws Exception{
-		loginUser=null;
 		/***********로그인성공시 해야할일***********
 			 1.로그인성공한 멤버객체 멤버필드에저장
 			 2.UemberMainFrame타이틀변경

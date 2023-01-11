@@ -117,7 +117,8 @@ public class UserUpdatePanel extends JPanel {
 		updateLoc_TF.setColumns(10);
 		updateLoc_TF.setBounds(140, 190, 142, 21);
 		add(updateLoc_TF);
-
+		
+		//수정폼 버튼 액션시 text체크 후 updateFormEnable 활성화,불활성화
 		updateFormBtn = new JButton("수정폼");
 		updateFormBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -135,6 +136,7 @@ public class UserUpdatePanel extends JPanel {
 		updateBtn = new JButton("수정");
 		updateBtn.setBounds(190, 273, 102, 21);
 		add(updateBtn);
+		// 수정버튼 액션시 업데이트
 		updateBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -144,7 +146,7 @@ public class UserUpdatePanel extends JPanel {
 					String phoneNumber = updatePhone_TF.getText();
 					String loc = updateLoc_TF.getText();
 					String email = updateEmail_TF.getText();
-
+					//수정시 유효성 체크
 					userValidation(id,pw,name,phoneNumber,loc,email);
 					
 					mainFrame.loginUser = mainFrame.userService.findUser(id);
@@ -155,7 +157,6 @@ public class UserUpdatePanel extends JPanel {
 					updatePhone_TF.setEditable(false);
 					updateLoc_TF.setEditable(false);
 					updateEmail_TF.setEditable(false);
-					
 					
 					updateFormBtn.setText("수정폼");
 					updateTitle_LB.setText("회원정보");
@@ -187,8 +188,6 @@ public class UserUpdatePanel extends JPanel {
 	private void updateFormEnable(boolean b) {
 		if (b) {
 			// 활성화
-//			updateID_TF.setEditable(true);
-//			updateName_TF.setEditable(true);
 			updatePwTF.setEditable(true);
 			updatePhone_TF.setEditable(true);
 			updateLoc_TF.setEditable(true);
@@ -199,8 +198,6 @@ public class UserUpdatePanel extends JPanel {
 			updateBtn.setEnabled(true);
 		} else {
 			// 불활성화
-			updateID_TF.setEnabled(false);
-			updateName_TF.setEnabled(false);
 			updatePwTF.setEditable(false);
 			updatePhone_TF.setEditable(false);
 			updateLoc_TF.setEditable(false);
@@ -224,8 +221,12 @@ public class UserUpdatePanel extends JPanel {
 		updateEmail_TF.setText(user.getUserEmail());
 
 	}
-	
+	//유효성 체크 메쏘드
 	public void userValidation(String id,String pw, String name, String phoneNumber, String loc, String email) throws Exception {
+		User updateUser2 = new User(id, pw, name, phoneNumber, loc, email);
+		int updateCheck = 0;
+		updateCheck = mainFrame.userService.update(updateUser2);
+		
 		if (pw.equals("")) {
 			JOptionPane.showMessageDialog(null, "내용을 입력하세요.");
 			updateID_TF.requestFocus();
@@ -243,11 +244,6 @@ public class UserUpdatePanel extends JPanel {
 			updateEmail_TF.requestFocus();
 			return;
 		}
-		
-		User updateUser2 = new User(id, pw, name, phoneNumber, loc, email);
-		int updateCheck = 0;
-
-		updateCheck = mainFrame.userService.update(updateUser2);
 
 		if (updateCheck == -1) {
 			JOptionPane.showMessageDialog(null, "존재하지 않는 아이디 입니다");
@@ -264,7 +260,7 @@ public class UserUpdatePanel extends JPanel {
 			JOptionPane.showMessageDialog(null, "회원정보 수정완료");
 		}
 	}
-	
+	//로그아웃시 탭 불활성화 및 메인페이지로 이동
 	private void logoutProcess() {
 		/**********로그인성공시 해야할일***********
 		 1.로그인 성공한 맴버객체 초기화

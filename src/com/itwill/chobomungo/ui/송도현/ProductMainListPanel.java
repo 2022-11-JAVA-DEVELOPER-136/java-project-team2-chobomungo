@@ -110,7 +110,7 @@ public class ProductMainListPanel extends JPanel {
 		/*************product item end*************/
 		
 	}
-	
+	//상품리스트 메쏘드
 	public void productList() throws Exception{
 		
 		List<Product> productList= 
@@ -209,6 +209,7 @@ public class ProductMainListPanel extends JPanel {
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) throws Exception {
 		this.mainFrame = mainFrame;
+		// 프로그램 실행시 첫화면으로 상품리스트를 넣어주기 위해 메인프레임과 연결시점에 리스트 생성
 		productList();
 	}
 	
