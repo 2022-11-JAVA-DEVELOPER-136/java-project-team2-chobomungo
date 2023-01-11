@@ -149,8 +149,9 @@ public class ChobomungoMainFrame extends JFrame {
 		globalNorthPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(10, 8, 30, 30);
-		lblNewLabel.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/book30.png")));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setBounds(12, 0, 95, 50);
+		lblNewLabel.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/초보3.jpg")));
 		globalNorthPanel.add(lblNewLabel);
 		
 		globalSerchTF = new JTextField();
@@ -164,7 +165,7 @@ public class ChobomungoMainFrame extends JFrame {
 				}
 			}
 		});
-		globalSerchTF.setBounds(88, 14, 179, 24);
+		globalSerchTF.setBounds(107, 14, 179, 24);
 		globalSerchTF.setDisabledTextColor(Color.WHITE);
 		globalNorthPanel.add(globalSerchTF);
 		globalSerchTF.setColumns(10);
@@ -172,7 +173,7 @@ public class ChobomungoMainFrame extends JFrame {
 		JButton globalSerchBTN = new JButton("");
 		globalSerchBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		globalSerchBTN.setBackground(Color.WHITE);
-		globalSerchBTN.setBounds(272, 14, 21, 21);
+		globalSerchBTN.setBounds(298, 14, 21, 21);
 		globalSerchBTN.setBorder(null);
 		globalSerchBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/search20.png")));
 		globalSerchBTN.addActionListener(new ActionListener() {
@@ -223,9 +224,9 @@ public class ChobomungoMainFrame extends JFrame {
 		JButton globalOrderBTN = new JButton("");
 		globalOrderBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		globalOrderBTN.setBackground(Color.WHITE);
-		globalOrderBTN.setBounds(45, 9, 51, 51);
+		globalOrderBTN.setBounds(33, 9, 71, 51);
 		globalOrderBTN.setBorder(null);
-		globalOrderBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/buy_button50.png")));
+		globalOrderBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cartcheck(2).png")));
 		globalOrderBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(2);

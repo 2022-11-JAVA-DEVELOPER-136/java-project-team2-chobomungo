@@ -190,7 +190,7 @@ public class OrderPanel extends JPanel {
 			orderDetailLB.setBounds(12, 10, 250, 21);
 			orderDetailPanel.add(orderDetailLB);
 			
-			JLabel orderDetailPriceLB = new JLabel("가격 : "+new DecimalFormat("#,###원").format(order.getO_price()));
+			JLabel orderDetailPriceLB = new JLabel("가격 : "+new DecimalFormat("#,###원").format(totPrice));
 			orderDetailPriceLB.setBounds(12, 49, 250, 21);
 			orderDetailPanel.add(orderDetailPriceLB);
 			
@@ -229,6 +229,7 @@ public class OrderPanel extends JPanel {
 			orderListPanel.add(orderDetailPanel);
 			
 		}
+		
 	}
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {

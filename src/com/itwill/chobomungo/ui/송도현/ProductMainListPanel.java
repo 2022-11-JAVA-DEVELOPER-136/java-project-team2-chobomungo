@@ -173,12 +173,13 @@ public class ProductMainListPanel extends JPanel {
 							String cartQtyStr = (String)cartQtyComboBox.getSelectedItem();
 							int cartQty = Integer.parseInt(cartQtyStr);
 							mainFrame.cartService.addCart(cartQty, mainFrame.loginUser.getUserId(), product.getP_no());
+							cartQtyComboBox.setSelectedIndex(0);
 							mainFrame.cartPannel.displayCartList();
 							mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 							//메세지 출력
 							JOptionPane.showMessageDialog(null, "장바구니에 상품이 추가되었습니다.");
-							cartQtyComboBox.setSelectedIndex(0);
 						}else {
+							cartQtyComboBox.setSelectedIndex(0);
 							mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
 							mainFrame.userTabbedPane.setSelectedIndex(0);
 							JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");

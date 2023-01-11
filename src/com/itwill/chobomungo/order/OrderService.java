@@ -28,7 +28,7 @@ public class OrderService {
 		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		orderItemList.add(new OrderItem(0,oi_qty,p_no,product));
 		Orders newOrder = new Orders(0,
-				orderItemList.get(0).getProduct().getP_title()+(oi_qty)+"권",
+				orderItemList.get(0).getProduct().getP_title()+" "+(oi_qty)+"권",
 				product.getP_price(),
 				new Date(),
 				userId); 
@@ -46,10 +46,10 @@ public class OrderService {
 		for (Cart cart : cartList) {
 			OrderItem orderItem = new OrderItem(0,cart.getCart_qty(),0,cart.getProduct());
 			orderItemList.add(orderItem);
-			o_price += orderItem.getOi_qty()*orderItem.getProduct().getP_price();
-			oi_tot_qty += orderItem.getOi_qty();
+			oi_tot_qty += cart.getCart_qty();
+			o_price += cart.getCart_qty()*cart.getProduct().getP_price();
 		}
-		String o_desc = orderItemList.get(0).getProduct().getP_title()+"외 "+(oi_tot_qty-1)+" 개";
+		String o_desc = orderItemList.get(0).getProduct().getP_title()+"외 "+(oi_tot_qty-1)+" 권";
 		Orders newOrder = new Orders(0,o_desc,o_price,null,userId);
 		newOrder.setOrderItemList(orderItemList);
 		orderDao.insert(newOrder);
