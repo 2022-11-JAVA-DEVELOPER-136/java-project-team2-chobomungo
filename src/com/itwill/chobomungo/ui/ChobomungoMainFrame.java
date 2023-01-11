@@ -3,6 +3,7 @@ package com.itwill.chobomungo.ui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
@@ -110,6 +111,7 @@ public class ChobomungoMainFrame extends JFrame {
 		productTabbedPane.addTab("메인", null, productMainListPanel, null);
 		
 		productDetailPanel = new ProductDetailPanel();
+		productDetailPanel.setEnabled(false);
 		productTabbedPane.addTab("상품상세", null, productDetailPanel, null);
 		
 		userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -119,9 +121,11 @@ public class ChobomungoMainFrame extends JFrame {
 		userTabbedPane.addTab("로그인", null, loginPanel, null);
 		
 		cartPannel = new CartPannel();
+		cartPannel.setEnabled(false);
 		chobomungoTabbedPane.addTab("카트", null, cartPannel, null);
 		
 		orderPanel = new OrderPanel();
+		orderPanel.setEnabled(false);
 		chobomungoTabbedPane.addTab("주문", null, orderPanel, null);
 		
 		userCreatePanel = new UserCreatePanel();
@@ -153,6 +157,17 @@ public class ChobomungoMainFrame extends JFrame {
 		globalSerchBTN.setBounds(273, 13, 21, 21);
 		globalSerchBTN.setBorder(null);
 		globalSerchBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/search20.png")));
+		globalSerchBTN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					productService.bookSearchName(globalSerchTF.getText());
+					
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		globalNorthPanel.add(globalSerchBTN);
 		
 		JButton globalCartBTN = new JButton("");
@@ -163,7 +178,14 @@ public class ChobomungoMainFrame extends JFrame {
 		globalCartBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cart30.png")));
 		globalCartBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chobomungoTabbedPane.setSelectedIndex(3);
+				if(loginUser == null) {
+					chobomungoTabbedPane.setSelectedIndex(1);
+					userTabbedPane.setSelectedIndex(0);
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
+					loginPanel.loginIdTF.requestFocus();
+				} else {
+					chobomungoTabbedPane.setSelectedIndex(2);
+				}
 			}
 		});
 		globalNorthPanel.add(globalCartBTN);
@@ -237,5 +259,17 @@ public class ChobomungoMainFrame extends JFrame {
 		userCreatePanel.setMainFrame(this);
 		
 	//생성자끝	
+	}
+	
+	public void serchBook() throws Exception {
+		
+		List<Product> serchProduct = productService.bookSearchName(globalSerchTF.getText());
+		if(serchProduct.size()>=2) {
+			for(Product product : serchProduct) {
+				globalSerchTF.setText(product.getP_title()+"\n");
+				globalSerchTF.requestFocus();
+				
+			}
+		}
 	}
 }
