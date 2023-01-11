@@ -173,7 +173,13 @@ public class UserCreatePanel extends JPanel {
 				boolean isAdd;
 				try {
 					isAdd = mainFrame.userService.idCheck(id);
-					if(isAdd==false) {
+					if(id.equals("")) {
+						JOptionPane.showMessageDialog(null, "아이디를 입력해주세요.");
+						userIDTF.requestFocus();
+						userIDTF.setSelectionStart(0);
+						userIDTF.setSelectionEnd(id.length());
+					}
+					else if(isAdd==false) {
 						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
 						userIDTF.requestFocus();
 						userIDTF.setSelectionStart(0);
@@ -200,7 +206,13 @@ public class UserCreatePanel extends JPanel {
 				String password1=userPwTF.getText();
 				String password2=userPWCheckTF.getText();
 				boolean isAdd = password1.equals(password2);
-				if(isAdd) {
+				if(password1.equals("")) {
+					JOptionPane.showMessageDialog(null, "비밀번호를 입력하세요.");
+					userPwTF.requestFocus();
+					userPwTF.setSelectionStart(0);
+					userPwTF.setSelectionEnd(password1.length());
+				}
+				else if(isAdd) {
 					JOptionPane.showMessageDialog(null, "비밀번호가 일치합니다.");
 					userPwTF.requestFocus();
 					userPwTF.setSelectionStart(0);
