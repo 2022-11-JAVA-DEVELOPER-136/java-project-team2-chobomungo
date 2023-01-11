@@ -152,25 +152,27 @@ public class CartPannel extends JPanel {
 		cartDetailPanel.setBackground(new Color(255, 255, 255));
 		cartListpanel.add(cartDetailPanel);
 		cartDetailPanel.setLayout(null);
-		cartDetailPanel.setPreferredSize(new Dimension(320, 110));
+		cartDetailPanel.setPreferredSize(new Dimension(320, 120));
 		
 		//카트 상품 이미지
 		productImageLabel = new JLabel("이미지");
-		productImageLabel.setBounds(10, 26, 73, 84);
+		productImageLabel.setBounds(0, 0, 88, 97);
 		cartDetailPanel.add(productImageLabel);
 		
 		//카트 상품명 클릭 시 상세페이지 버튼
 		productDescBtn = new JButton("상품");
+		productDescBtn.setFont(new Font("D2Coding ligature", Font.PLAIN, 8));
 		productDescBtn.setBackground(new Color(221, 221, 221));
-		productDescBtn.setBounds(93, 65, 95, 45);
+		productDescBtn.setBounds(97, 46, 102, 23);
 		cartDetailPanel.add(productDescBtn);
 		
 		//카트 상품 수량 
 		cartCountcomboBox = new JComboBox();
+		cartCountcomboBox.setFont(new Font("D2Coding ligature", Font.PLAIN, 10));
 		
 		cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		cartCountcomboBox.setBackground(new Color(221, 221, 221));
-		cartCountcomboBox.setBounds(198, 65, 44, 45);
+		cartCountcomboBox.setBounds(220, 45, 35, 23);
 		cartDetailPanel.add(cartCountcomboBox);
 		
 		//카트 안에서? 상품 삭제
@@ -182,13 +184,8 @@ public class CartPannel extends JPanel {
 		});
 		deleteCartBtn.setBackground(new Color(221, 221, 221));
 		deleteCartBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
-		deleteCartBtn.setBounds(252, 65, 44, 45);
+		deleteCartBtn.setBounds(265, 46, 45, 23);
 		cartDetailPanel.add(deleteCartBtn);
-		
-		JLabel 상품명 = new JLabel("상품명");
-		상품명.setBounds(117, 25, 46, 15);
-		cartDetailPanel.add(상품명);
-		상품명.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
 		
 		
 		orderBtn = new JButton("주문하기");
@@ -244,10 +241,9 @@ public class CartPannel extends JPanel {
 			//카트 상품 이미지 가져오기
 			productImageLabel = new JLabel();
 			productImageLabel.setIcon(new ImageIcon(CartPannel.class.getResource("/product_image"+cart.getProduct().getP_image())));
-			productImageLabel.setBounds(37, 10, 40, 40);
+			productImageLabel.setBounds(0, 0, 88, 97);
 			cartDetailPanel.add(productImageLabel);
-			productImageLabel.setBounds(37, 10, 40, 40);
-			cartDetailPanel.add(productImageLabel);
+			
 
 			//카트 상품명 클릭 시 상세페이지 버튼
 			productDescBtn = new JButton("");
@@ -267,7 +263,7 @@ public class CartPannel extends JPanel {
 				}
 			});
 			productDescBtn.setBackground(new Color(221, 221, 221));
-			productDescBtn.setBounds(89, 14, 95, 23);
+			productDescBtn.setBounds(97, 46, 102, 23);
 			cartDetailPanel.add(productDescBtn);
 
 			//카트 상품 수량 수정 (콤보박스)
@@ -275,7 +271,7 @@ public class CartPannel extends JPanel {
 			cartCountcomboBox = new JComboBox();
 			cartCountcomboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 			cartCountcomboBox.setBackground(new Color(221, 221, 221));
-			cartCountcomboBox.setBounds(209, 14, 32, 23);
+			cartCountcomboBox.setBounds(220, 45, 35, 23);
 			//카트 상품 수량 수정 (콤보박스)
 			cartCountcomboBox.setSelectedItem(Integer.toString(cart.getCart_qty()));
 			cartCountcomboBox.addItemListener(new ItemListener() {
@@ -330,7 +326,7 @@ public class CartPannel extends JPanel {
 							cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
 							cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 							cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
-							cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+							deleteCartBtn.setBounds(265, 46, 45, 23);
 							cartTotalPricePanel.add(cartTotalPriceLabel);
 						}
 
@@ -344,7 +340,7 @@ public class CartPannel extends JPanel {
 			});
 			deleteCartBtn.setBackground(new Color(221, 221, 221));
 			deleteCartBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 12));
-			deleteCartBtn.setBounds(268, 14, 40, 23);
+			deleteCartBtn.setBounds(265, 46, 45, 23);
 			cartDetailPanel.add(deleteCartBtn);
 			cartListpanel.add(cartDetailPanel);
 			//카트 상세패널 끝
