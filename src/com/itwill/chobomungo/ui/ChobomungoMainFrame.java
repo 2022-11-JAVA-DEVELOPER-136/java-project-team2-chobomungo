@@ -204,13 +204,18 @@ public class ChobomungoMainFrame extends JFrame {
 		globalCartBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cart30.png")));
 		globalCartBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(loginUser == null) {
-					chobomungoTabbedPane.setSelectedIndex(1);
-					userTabbedPane.setSelectedIndex(0);
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					loginPanel.loginIdTF.requestFocus();
-				} else {
-					chobomungoTabbedPane.setSelectedIndex(2);
+				try {
+					orderService.deleteUserId(loginUser.getUserId());
+					if(loginUser == null) {
+						chobomungoTabbedPane.setSelectedIndex(1);
+						userTabbedPane.setSelectedIndex(0);
+						loginPanel.loginIdTF.requestFocus();
+					} else {
+						chobomungoTabbedPane.setSelectedIndex(2);
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -229,7 +234,7 @@ public class ChobomungoMainFrame extends JFrame {
 		globalOrderBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cartcheck(2).png")));
 		globalOrderBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chobomungoTabbedPane.setSelectedIndex(2);
+					chobomungoTabbedPane.setSelectedIndex(2);
 			}
 		});
 		globalSouthPanel.setLayout(null);
@@ -243,8 +248,9 @@ public class ChobomungoMainFrame extends JFrame {
 		globalHomeBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/home50.png")));
 		globalHomeBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chobomungoTabbedPane.setSelectedIndex(0);
-				productTabbedPane.setSelectedIndex(0);
+					chobomungoTabbedPane.setSelectedIndex(0);
+					productTabbedPane.setSelectedIndex(0);
+
 			}
 		});
 		globalSouthPanel.add(globalHomeBTN);
@@ -257,18 +263,19 @@ public class ChobomungoMainFrame extends JFrame {
 		globalUserBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/uuser50.png")));
 		globalUserBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(loginUser==null) {
-					chobomungoTabbedPane.setSelectedIndex(1);
-					userTabbedPane.setSelectedIndex(0);
-				}else {
-					userUpdatePanel.displayMemberInfo(loginUser); 
-					chobomungoTabbedPane.setSelectedIndex(1);
-					userTabbedPane.setSelectedIndex(2);
-				}
+					if(loginUser==null) {
+						chobomungoTabbedPane.setSelectedIndex(1);
+						userTabbedPane.setSelectedIndex(0);
+					}else {
+						userUpdatePanel.displayMemberInfo(loginUser); 
+						chobomungoTabbedPane.setSelectedIndex(1);
+						userTabbedPane.setSelectedIndex(2);
+					}
 			}
 		});
 		globalSouthPanel.add(globalUserBTN);
-		//실행시 로그인 전 불활성화 패널
+		
+		
 		
 		
 		/***********서비스객체 생성**************/
@@ -297,5 +304,7 @@ public class ChobomungoMainFrame extends JFrame {
 			}
 		}
 	}
+	
+	
 }
 

@@ -29,11 +29,11 @@ public class OrderService {
 		orderItemList.add(new OrderItem(0,oi_qty,p_no,product));
 		Orders newOrder = new Orders(0,
 				orderItemList.get(0).getProduct().getP_title()+" "+(oi_qty)+"권",
-				product.getP_price(),
+				oi_qty*product.getP_price(),
 				new Date(),
 				userId); 
 		newOrder.setOrderItemList(orderItemList);
-				
+		
 		return orderDao.insert(newOrder);
 	}
 	
@@ -98,9 +98,18 @@ public class OrderService {
 	}
 	
 	//오더 총액 계산
-	public int orderTotPrice(String userId, int o_no) throws Exception {
-		orderDao.findByOrderNo(userId, o_no).getO_price();
-		return 0;
+	public int orderTotPrice(String userId) throws Exception {
+		int totPrice = 0;
+		List<Orders> orderList = orderDao.findByUserID(userId);
+		for (Orders order : orderList) {
+			totPrice += order.getO_price();
+		}
+		return totPrice;
+	}
+	
+	public int orderNoPrice(String userId,int o_no) throws Exception {
+		Orders order = orderDao.findByOrderNo(userId, o_no);
+		return order.getO_price();
 	}
 
 }

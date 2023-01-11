@@ -82,7 +82,6 @@ public class LoginPanel extends JPanel {
 					int result = mainFrame.userService.login(userId, userPw);
 					if(result == 0) {
 						 //////로그인성공
-						JOptionPane.showMessageDialog(null, "로그인 성공");
 						loginProcess(userId);
 						loginIdTF.setText("");
 						loginpwTF.setText("");
@@ -129,13 +128,11 @@ public class LoginPanel extends JPanel {
 		mainFrame.productTabbedPane.setSelectedIndex(0);
 		// 카트와 오더 패널에 로그인 유저의 리스트 디스플레이
 		mainFrame.cartPannel.displayCartList();
-		mainFrame.orderPanel.displayOrderList();
 		//탭 활성화
 		mainFrame.userTabbedPane.setEnabledAt(0, false);
 		mainFrame.userTabbedPane.setEnabledAt(1, false);
 		mainFrame.userTabbedPane.setEnabledAt(2, true);
 		mainFrame.chobomungoTabbedPane.setEnabledAt(2,true);
-		mainFrame.chobomungoTabbedPane.setEnabledAt(3,true);
 	}
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {

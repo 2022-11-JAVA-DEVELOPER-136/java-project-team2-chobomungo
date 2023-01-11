@@ -217,6 +217,7 @@ public class ProductDetailPanel extends JPanel {
 						mainFrame.orderService.create(orderQty, p_no, mainFrame.loginUser.getUserId());
 						mainFrame.orderPanel.displayOrderList();
 						productAmountCB.setSelectedIndex(0);
+						mainFrame.chobomungoTabbedPane.setEnabledAt(3,true);
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(3);
 						//메세지 출력
 						JOptionPane.showMessageDialog(null, "주문목록에 상품이 추가되었습니다.");

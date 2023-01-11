@@ -17,7 +17,7 @@ public class OrderSQL {
 	public static final String ORDER_DELETE_ORDER_NO = "delete orders where user_id = ? and o_no = ?"; // user_id 주문목록 1개 삭제 
 	
 	// SQL 수정
-	public static final String ORDER_SELECT_USERID = "select * from orders o join userinfo u on o.user_id = u.user_id where o.user_id = ?";// user_id 전체 주문목록
+	public static final String ORDER_SELECT_USERID = "select * from orders o join userinfo u on o.user_id = u.user_id join order_item oi on o.o_no = oi.o_no where o.user_id = ?";// user_id 전체 주문목록
 	/*
 	 * o_no 의 주문상세, SQL 수정 
 	 */
