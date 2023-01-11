@@ -184,7 +184,7 @@ public class ProductDetailPanel extends JPanel {
 						int cartQty = Integer.parseInt(cartQtyStr);
 						//카트테이블에 추가
 						mainFrame.cartService.addCart(cartQty, mainFrame.loginUser.getUserId(), p_no);
-						mainFrame.cartPannel.displayCartList(mainFrame.loginUser);
+						mainFrame.cartPannel.displayCartList();
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 						//메세지 출력
 						JOptionPane.showMessageDialog(null, "장바구니에 상품이 추가되었습니다.");
@@ -214,6 +214,7 @@ public class ProductDetailPanel extends JPanel {
 					if(mainFrame.loginUser!=null) {
 						String orderQtyStr = (String)productAmountCB.getSelectedItem();
 						int orderQty = Integer.parseInt(orderQtyStr);
+						System.out.println(orderQty);
 						mainFrame.orderService.create(orderQty, p_no, mainFrame.loginUser.getUserId());
 						mainFrame.orderPanel.displayOrderList();
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(3);

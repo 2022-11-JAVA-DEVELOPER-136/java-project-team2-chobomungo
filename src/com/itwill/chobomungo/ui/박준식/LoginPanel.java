@@ -128,12 +128,13 @@ public class LoginPanel extends JPanel {
 		mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 		mainFrame.productTabbedPane.setSelectedIndex(0);
 		// 카트와 오더 패널에 로그인 유저의 리스트 디스플레이
-		mainFrame.cartPannel.displayCartList(mainFrame.loginUser);
+		mainFrame.cartPannel.displayCartList();
 		mainFrame.orderPanel.displayOrderList();
 		//탭 활성화
 		mainFrame.userTabbedPane.setEnabledAt(0, false);
 		mainFrame.userTabbedPane.setEnabledAt(1, false);
 		mainFrame.userTabbedPane.setEnabledAt(2, true);
+		mainFrame.userTabbedPane.setEnabledAt(3, true);
 		mainFrame.chobomungoTabbedPane.setEnabledAt(2,true);
 		mainFrame.chobomungoTabbedPane.setEnabledAt(3,true);
 	}

@@ -276,6 +276,7 @@ public class UserUpdatePanel extends JPanel {
 		mainFrame.userTabbedPane.setEnabledAt(1, true);
 		mainFrame.userTabbedPane.setEnabledAt(2, false);
 		mainFrame.chobomungoTabbedPane.setEnabledAt(2,false);
+		mainFrame.chobomungoTabbedPane.setEnabledAt(3,false);
 		mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 		mainFrame.productTabbedPane.setSelectedIndex(0);
 		
@@ -284,5 +285,6 @@ public class UserUpdatePanel extends JPanel {
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
+		logoutProcess();
 	}
 }
