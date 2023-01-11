@@ -158,6 +158,14 @@ public class UserCreatePanel extends JPanel {
 		goMainBtn.setFont(new Font("Dialog", Font.PLAIN, 12));
 		goMainBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				userIDTF.setText("2글자 이상 16글자 이하");
+				userPwTF.setText("******");
+				userPWCheckTF.setText("******");
+				userNameTF.setText("홍길동");
+				userPhoneTF.setText("010-0000-0000");
+				userAddressTF.setText("서울시 종로구 사직로 161");
+				userEmailTF.setText("example@example.com");
+				
 				mainFrame.chobomungoTabbedPane.setSelectedIndex(1);
 				mainFrame.userTabbedPane.setSelectedIndex(0);
 			}
