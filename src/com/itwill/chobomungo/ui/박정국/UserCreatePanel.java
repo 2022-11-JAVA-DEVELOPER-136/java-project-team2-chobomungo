@@ -193,18 +193,17 @@ public class UserCreatePanel extends JPanel {
 						userIDTF.requestFocus();
 						userIDTF.setSelectionStart(0);
 						userIDTF.setSelectionEnd(id.length());
-					}
-					else if(isAdd==false) {
+					} else if(isAdd==false) {
 						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
 						userIDTF.requestFocus();
 						userIDTF.setSelectionStart(0);
 						userIDTF.setSelectionEnd(id.length());
-				}else {
-					JOptionPane.showMessageDialog(null, "이미 사용하고 있는 아이디입니다.");
-					userIDTF.requestFocus();
-					userIDTF.setSelectionStart(0);
-					userIDTF.setSelectionEnd(id.length());
-				}
+					} else {
+						JOptionPane.showMessageDialog(null, "이미 사용하고 있는 아이디입니다.");
+						userIDTF.requestFocus();
+						userIDTF.setSelectionStart(0);
+						userIDTF.setSelectionEnd(id.length());
+					}
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

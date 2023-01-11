@@ -146,6 +146,7 @@ public class ProductMainListPanel extends JPanel {
 					try {
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 						mainFrame.productTabbedPane.setSelectedIndex(1);
+						mainFrame.productDetailPanel.setEnabled(true);
 						mainFrame.productDetailPanel.displayProductDetail(product.getP_no());
 						
 					} catch (Exception e2) {

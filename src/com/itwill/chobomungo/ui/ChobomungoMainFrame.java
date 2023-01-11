@@ -3,6 +3,7 @@ package com.itwill.chobomungo.ui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
@@ -28,6 +29,10 @@ import com.itwill.chobomungo.ui.박정국.UserCreatePanel;
 import com.itwill.chobomungo.ui.jihyun.ProductDetailPanel;
 import com.itwill.chobomungo.ui.송도현.ProductMainListPanel;
 import com.itwill.chobomungo.ui.이수현.CartPannel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Cursor;
 
 public class ChobomungoMainFrame extends JFrame {
 	/*
@@ -90,6 +95,7 @@ public class ChobomungoMainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 620);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -105,6 +111,7 @@ public class ChobomungoMainFrame extends JFrame {
 		productTabbedPane.addTab("메인", null, productMainListPanel, null);
 		
 		productDetailPanel = new ProductDetailPanel();
+		productDetailPanel.setEnabled(false);
 		productTabbedPane.addTab("상품상세", null, productDetailPanel, null);
 		
 		userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -114,50 +121,101 @@ public class ChobomungoMainFrame extends JFrame {
 		userTabbedPane.addTab("로그인", null, loginPanel, null);
 		
 		cartPannel = new CartPannel();
+		cartPannel.setEnabled(false);
 		chobomungoTabbedPane.addTab("카트", null, cartPannel, null);
 		
 		orderPanel = new OrderPanel();
+		orderPanel.setEnabled(false);
 		chobomungoTabbedPane.addTab("주문", null, orderPanel, null);
 		
 		userCreatePanel = new UserCreatePanel();
 		userTabbedPane.addTab("회원가입", null, userCreatePanel, null);
 		
 		userUpdatePanel = new UserUpdatePanel();
+		userUpdatePanel.setEnabled(false);
 		userTabbedPane.addTab("회원정보", null, userUpdatePanel, null);
 		
 		JPanel globalNorthPanel = new JPanel();
+		globalNorthPanel.setBackground(Color.WHITE);
 		globalNorthPanel.setPreferredSize(new Dimension(10, 50));
 		contentPane.add(globalNorthPanel, BorderLayout.NORTH);
+		globalNorthPanel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(10, 8, 30, 30);
+		lblNewLabel.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/book30.png")));
+		globalNorthPanel.add(lblNewLabel);
 		
 		globalSerchTF = new JTextField();
+		globalSerchTF.setBounds(89, 11, 179, 24);
 		globalSerchTF.setDisabledTextColor(Color.WHITE);
 		globalNorthPanel.add(globalSerchTF);
 		globalSerchTF.setColumns(10);
 		
-		JButton globalSerchBTN = new JButton("검색");
+		JButton globalSerchBTN = new JButton("");
+		globalSerchBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalSerchBTN.setBackground(Color.WHITE);
+		globalSerchBTN.setBounds(273, 13, 21, 21);
+		globalSerchBTN.setBorder(null);
+		globalSerchBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/search20.png")));
+		globalSerchBTN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					productService.bookSearchName(globalSerchTF.getText());
+					
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		globalNorthPanel.add(globalSerchBTN);
 		
-		JButton globalCartBTN = new JButton("카트");
+		JButton globalCartBTN = new JButton("");
+		globalCartBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalCartBTN.setBackground(Color.WHITE);
+		globalCartBTN.setBounds(331, 8, 31, 31);
+		globalCartBTN.setBorder(null);
+		globalCartBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cart30.png")));
 		globalCartBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chobomungoTabbedPane.setSelectedIndex(3);
+				if(loginUser == null) {
+					chobomungoTabbedPane.setSelectedIndex(1);
+					userTabbedPane.setSelectedIndex(0);
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
+					loginPanel.loginIdTF.requestFocus();
+				} else {
+					chobomungoTabbedPane.setSelectedIndex(2);
+				}
 			}
 		});
 		globalNorthPanel.add(globalCartBTN);
 		
 		JPanel globalSouthPanel = new JPanel();
+		globalSouthPanel.setBackground(Color.WHITE);
 		globalSouthPanel.setPreferredSize(new Dimension(10, 70));
 		contentPane.add(globalSouthPanel, BorderLayout.SOUTH);
 		
-		JButton globalOrderBTN = new JButton("주문");
+		JButton globalOrderBTN = new JButton("");
+		globalOrderBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalOrderBTN.setBackground(Color.WHITE);
+		globalOrderBTN.setBounds(45, 9, 51, 51);
+		globalOrderBTN.setBorder(null);
+		globalOrderBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/buy_button50.png")));
 		globalOrderBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(2);
 			}
 		});
+		globalSouthPanel.setLayout(null);
 		globalSouthPanel.add(globalOrderBTN);
 		
-		JButton globalHomeBTN = new JButton("홈");
+		JButton globalHomeBTN = new JButton("");
+		globalHomeBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalHomeBTN.setBackground(Color.WHITE);
+		globalHomeBTN.setBounds(155, 9, 51, 51);
+		globalHomeBTN.setBorder(null);
+		globalHomeBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/home50.png")));
 		globalHomeBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(0);
@@ -166,7 +224,12 @@ public class ChobomungoMainFrame extends JFrame {
 		});
 		globalSouthPanel.add(globalHomeBTN);
 		
-		JButton globalUserBTN = new JButton("유저");
+		JButton globalUserBTN = new JButton("");
+		globalUserBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalUserBTN.setBackground(Color.WHITE);
+		globalUserBTN.setBounds(270, 10, 51, 51);
+		globalUserBTN.setBorder(null);
+		globalUserBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/uuser50.png")));
 		globalUserBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(loginUser==null) {
@@ -180,6 +243,11 @@ public class ChobomungoMainFrame extends JFrame {
 			}
 		});
 		globalSouthPanel.add(globalUserBTN);
+		//실행시 로그인 전 불활성화 패널
+		cartPannel.setEnabled(false);
+		orderPanel.setEnabled(false);
+		userUpdatePanel.setEnabled(false);
+		productDetailPanel.setEnabled(false);
 		
 		/***********서비스객체 생성**************/
 		userService = new UserService();
@@ -197,5 +265,17 @@ public class ChobomungoMainFrame extends JFrame {
 		userCreatePanel.setMainFrame(this);
 		
 	//생성자끝	
+	}
+	
+	public void serchBook() throws Exception {
+		
+		List<Product> serchProduct = productService.bookSearchName(globalSerchTF.getText());
+		if(serchProduct.size()>=2) {
+			for(Product product : serchProduct) {
+				globalSerchTF.setText(product.getP_title()+"\n");
+				globalSerchTF.requestFocus();
+				
+			}
+		}
 	}
 }
