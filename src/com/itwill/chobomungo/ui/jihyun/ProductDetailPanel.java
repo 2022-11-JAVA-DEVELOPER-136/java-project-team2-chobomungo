@@ -214,7 +214,6 @@ public class ProductDetailPanel extends JPanel {
 					if(mainFrame.loginUser!=null) {
 						String orderQtyStr = (String)productAmountCB.getSelectedItem();
 						int orderQty = Integer.parseInt(orderQtyStr);
-						System.out.println(orderQty);
 						mainFrame.orderService.create(orderQty, p_no, mainFrame.loginUser.getUserId());
 						mainFrame.orderPanel.displayOrderList();
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(3);
