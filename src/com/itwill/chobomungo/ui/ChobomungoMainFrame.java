@@ -132,6 +132,7 @@ public class ChobomungoMainFrame extends JFrame {
 		userTabbedPane.addTab("회원가입", null, userCreatePanel, null);
 		
 		userUpdatePanel = new UserUpdatePanel();
+		userUpdatePanel.setEnabled(false);
 		userTabbedPane.addTab("회원정보", null, userUpdatePanel, null);
 		
 		JPanel globalNorthPanel = new JPanel();
@@ -242,6 +243,11 @@ public class ChobomungoMainFrame extends JFrame {
 			}
 		});
 		globalSouthPanel.add(globalUserBTN);
+		//실행시 로그인 전 불활성화 패널
+		cartPannel.setEnabled(false);
+		orderPanel.setEnabled(false);
+		userUpdatePanel.setEnabled(false);
+		productDetailPanel.setEnabled(false);
 		
 		/***********서비스객체 생성**************/
 		userService = new UserService();
