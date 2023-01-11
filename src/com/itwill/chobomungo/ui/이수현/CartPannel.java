@@ -169,13 +169,14 @@ public class CartPannel extends JPanel {
 		
 		//카트 안에서? 상품 삭제
 		deleteCartBtn = new JButton("");
+		deleteCartBtn.setBorder(null);
 		deleteCartBtn.setIcon(new ImageIcon(CartPannel.class.getResource("/image/close.png")));
 		deleteCartBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		deleteCartBtn.setBackground(new Color(221, 221, 221));
+		deleteCartBtn.setBackground(new Color(255, 255, 255));
 		deleteCartBtn.setFont(new Font("경기천년제목 Light", Font.BOLD, 12));
 		deleteCartBtn.setBounds(265, 46, 45, 23);
 		cartDetailPanel.add(deleteCartBtn);
@@ -342,6 +343,8 @@ public class CartPannel extends JPanel {
 					}
 				}
 			});
+			deleteCartBtn.setBorder(null);
+			deleteCartBtn.setIcon(new ImageIcon(CartPannel.class.getResource("/image/close.png")));
 			deleteCartBtn.setBackground(new Color(221, 221, 221));
 			deleteCartBtn.setFont(new Font("경기천년제목 Light", Font.BOLD, 12));
 			deleteCartBtn.setBounds(265, 46, 45, 23);
