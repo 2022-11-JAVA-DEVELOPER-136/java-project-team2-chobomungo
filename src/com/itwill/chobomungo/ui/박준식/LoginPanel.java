@@ -20,7 +20,7 @@ import java.awt.Color;
 //import java.awt.event.ComponentListener;
 
 public class LoginPanel extends JPanel {
-	private JTextField loginIdTF;
+	public JTextField loginIdTF;
 	private JPasswordField loginpwTF;
 	private JLabel idLB;
 	private JLabel pwLB;
@@ -119,24 +119,23 @@ public class LoginPanel extends JPanel {
 		
 		
 	}
-	/**************로그인성공시 호출할메쏘드***************/
+	/**************로그인성공시 호출 메쏘드***************/
 	private void loginProcess(String userId) throws Exception{
-		/***********로그인성공시 해야할일***********
-			 1.로그인성공한 멤버객체 멤버필드에저장
-			 2.UemberMainFrame타이틀변경
-			 3.로그인,회원가입탭 불활성화
-			   로그인,회원가입 메뉴아이템 불활성화
-			   로그아웃 메뉴아이템 활성화
-			 4.회원정보보기 화면전환
-	 ********************************************/
-	//1.로그인성공한 멤버객체 멤버필드에저장
-		mainFrame.loginUser = mainFrame.userService.findUser(userId); 
+		
+		//로그인성공한 멤버객체 멤버필드에저장
+		mainFrame.loginUser = mainFrame.userService.findUser(userId);
+		//탭변경
 		mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 		mainFrame.productTabbedPane.setSelectedIndex(0);
+		// 카트와 오더 패널에 로그인 유저의 리스트 디스플레이
+		mainFrame.cartPannel.displayCartList(mainFrame.loginUser);
+		mainFrame.orderPanel.displayOrderList(mainFrame.loginUser);
+		//탭 활성화
 		mainFrame.userTabbedPane.setEnabledAt(0, false);
 		mainFrame.userTabbedPane.setEnabledAt(1, false);
 		mainFrame.userTabbedPane.setEnabledAt(2, true);
 		mainFrame.chobomungoTabbedPane.setEnabledAt(2,true);
+		mainFrame.chobomungoTabbedPane.setEnabledAt(3,true);
 	}
 	
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
