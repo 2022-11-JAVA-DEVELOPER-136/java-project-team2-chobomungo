@@ -316,6 +316,8 @@ public class CartPannel extends JPanel {
 						cartTotalLabel.setBounds(12, 10, 99, 15);
 						cartTotalPricePanel.add(cartTotalLabel);
 						// 카트 총액 
+						
+						/*
 						if(cartList.size()==1) {
 							cartTotalPriceLabel.setText("0원");
 							cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -329,8 +331,15 @@ public class CartPannel extends JPanel {
 							deleteCartBtn.setBounds(265, 46, 45, 23);
 							cartTotalPricePanel.add(cartTotalPriceLabel);
 						}
+						*/
 
 						displayCartList();
+						cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
+						cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+						cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+						deleteCartBtn.setBounds(265, 46, 45, 23);
+						cartTotalPricePanel.add(cartTotalPriceLabel);
+						
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 						mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 					} catch(Exception e1) {
