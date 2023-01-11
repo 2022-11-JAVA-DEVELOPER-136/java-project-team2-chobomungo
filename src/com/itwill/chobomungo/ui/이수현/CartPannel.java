@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -206,8 +207,16 @@ public class CartPannel extends JPanel {
 			updateTopBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					
+					try {
+						mainFrame.cartService.addCart(cart.getCart_qty(),mainFrame.loginUser.getUserId(), cart.getProduct().getP_no());
+						displayCartList(mainFrame.loginUser);
+						JOptionPane.showMessageDialog(null, "상품이 수정 되었습니다.");
+						
+					} catch(Exception e1) {
+						e1.getMessage();
+					}
 				}
+					
 			});
 			updateTopBtn.setForeground(new Color(0, 0, 128));
 			updateTopBtn.setBackground(new Color(221, 221, 221));
@@ -219,6 +228,15 @@ public class CartPannel extends JPanel {
 			deleteTopBtn = new JButton("전체삭제");
 			deleteTopBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					
+					try {
+						mainFrame.cartService.removeCartItemByUserId(mainFrame.loginUser.getUserId());
+						displayCartList(mainFrame.loginUser);
+						JOptionPane.showMessageDialog(null, "전체 상품이 삭제되었습니다.");
+						
+					} catch(Exception e1) {
+						e1.getMessage();
+					}
 
 				}
 			});
@@ -286,10 +304,8 @@ public class CartPannel extends JPanel {
 					try {
 						//삭제메소드, userid 인자.
 						mainFrame.cartService.removeCartItemByCartNo(cart.getCart_no());
-						System.out.println(mainFrame.cartService.removeCartItemByCartNo(cart.getCart_no()));
-						
 						displayCartList(mainFrame.loginUser);
-						
+						JOptionPane.showMessageDialog(null, "상품이 삭제되었습니다.");
 						
 					} catch(Exception e1) {
 						e1.getMessage();
