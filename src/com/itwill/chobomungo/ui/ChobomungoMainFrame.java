@@ -214,7 +214,7 @@ public class ChobomungoMainFrame extends JFrame {
 		globalHomeBTN.setBackground(Color.WHITE);
 		globalHomeBTN.setBounds(155, 9, 51, 51);
 		globalHomeBTN.setBorder(null);
-		globalHomeBTN.setIcon(new ImageIcon("C:\\Users\\itwill\\Documents\\새 폴더\\home50.png"));
+		globalHomeBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/home50.png")));
 		globalHomeBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chobomungoTabbedPane.setSelectedIndex(0);
