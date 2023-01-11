@@ -50,33 +50,6 @@ public class UserCreatePanel extends JPanel {
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(userIDTF.getText()=="") {
-					userIDTF.setText("2글자 이상 16글자 이하");
-				}
-//				if(userPwTF.getText()=="") {
-//					userPwTF.setText("******");
-//				}
-//				if(userPWCheckTF.getText()=="") {
-//					userPWCheckTF.setText("******");
-//				}
-				if(userNameTF.getText()=="") {
-					userNameTF.setText("이름을 적어주세요");
-				}
-				if(userPhoneTF.getText()=="") {
-					userPhoneTF.setText("010-0000-0000");
-				}
-				if(userAddressTF.getText()=="") {
-					userAddressTF.setText("서울시 종로구 사직로 161");
-				}
-				if(userEmailTF.getText()=="") {
-					userEmailTF.setText("example@example.com");
-				}
-				
-			}
-		});
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 400, 620);
 		add(panel);
