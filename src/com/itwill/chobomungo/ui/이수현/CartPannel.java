@@ -74,12 +74,20 @@ public class CartPannel extends JPanel {
 		deleteTopBtn = new JButton("전체삭제");
 		deleteTopBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+			
 				try {
-					
 					mainFrame.cartService.removeCartItemByUserId(mainFrame.loginUser.getUserId());
-					displayCartList();
 					JOptionPane.showMessageDialog(null, "전체 상품이 삭제되었습니다.");
+					displayCartList();
+					cartTotalPricePanel.removeAll();
+					cartTotalPricePanel.setBackground(new Color(255, 255, 255));
+					cartTotalPricePanel.setBounds(12, 326, 348, 39);
+					cartPanel.add(cartTotalPricePanel);
+					cartTotalPricePanel.setLayout(null);
+					cartTotalLabel = new JLabel("장바구니 총 액");
+					cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+					cartTotalLabel.setBounds(12, 10, 99, 15);
+					cartTotalPricePanel.add(cartTotalLabel);
 					mainFrame.chobomungoTabbedPane.setSelectedIndex(0);
 					mainFrame.chobomungoTabbedPane.setSelectedIndex(2);
 					
@@ -87,8 +95,8 @@ public class CartPannel extends JPanel {
 					e1.getMessage();
 				}
 
-			}
-		});
+			} 
+ 		});
 		deleteTopBtn.setForeground(new Color(0, 0, 128));
 		deleteTopBtn.setBackground(new Color(255, 255, 255));
 		deleteTopBtn.setFont(new Font("D2Coding ligature", Font.BOLD, 13));
@@ -118,7 +126,7 @@ public class CartPannel extends JPanel {
 		
 		// 카트 총액 
 	
-		cartTotalPriceLabel = new JLabel("");
+		cartTotalPriceLabel = new JLabel("123,456");
 		cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 		cartTotalPriceLabel.setBounds(220, 10, 128, 15);
@@ -209,10 +217,10 @@ public class CartPannel extends JPanel {
 		
 		cartListpanel.removeAll();
 		List<Cart> cartList = mainFrame.cartService.getCartListByUserId(mainFrame.loginUser.getUserId());
+		totPrice = 0;
 
 		for(Cart cart : cartList) {
-
-			/*
+			
 			totPrice += cart.getCart_qty()*cart.getProduct().getP_price();
 			cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
 			cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -220,8 +228,7 @@ public class CartPannel extends JPanel {
 			cartTotalPriceLabel.setBounds(220, 10, 128, 15);
 			cartTotalPricePanel.add(cartTotalPriceLabel);
 			
-			>>>>>>>>> 다시보기 자꾸 덮어짐. . . . ㅠ 
-			 */
+			// >>>>>>>>> 다시보기 자꾸 덮어짐. . . . ㅠ 
 			// >>>>>>>>>> 카트 디테일 패널
 
 			cartDetailPanel = new JPanel();
@@ -303,15 +310,16 @@ public class CartPannel extends JPanel {
 						mainFrame.cartService.removeCartItemByCartNo(cart.getCart_no());
 
 						cartTotalPricePanel.removeAll();
-						cartTotalPricePanel.setBackground(new Color(255, 255, 255));
-						cartTotalPricePanel.setBounds(12, 326, 348, 39);
-						cartPanel.add(cartTotalPricePanel);
-						cartTotalPricePanel.setLayout(null);
-
 						cartTotalLabel = new JLabel("장바구니 총 액");
 						cartTotalLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
 						cartTotalLabel.setBounds(12, 10, 99, 15);
 						cartTotalPricePanel.add(cartTotalLabel);
+						// 카트 총액 
+						cartTotalPriceLabel.setText(new DecimalFormat("#,###원").format(totPrice));
+						cartTotalPriceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+						cartTotalPriceLabel.setFont(new Font("D2Coding ligature", Font.BOLD, 14));
+						cartTotalPriceLabel.setBounds(220, 10, 128, 15);
+						cartTotalPricePanel.add(cartTotalPriceLabel);
 
 						displayCartList();
 						JOptionPane.showMessageDialog(null, "상품이 삭제되었습니다.");
@@ -330,9 +338,10 @@ public class CartPannel extends JPanel {
 			//카트 상세패널 끝
 
 		}
-
+		
 	}
 	
+
 	public void setMainFrame(ChobomungoMainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 	}
