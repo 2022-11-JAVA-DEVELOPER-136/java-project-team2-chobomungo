@@ -51,8 +51,8 @@ public class UserUpdatePanel extends JPanel {
 		add(updateTitle_LB);
 
 		JLabel updateID_LB = new JLabel("아이디");
-		updateID_LB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
-		updateID_LB.setBounds(55, 70, 38, 15);
+		updateID_LB.setFont(new Font("경기천년제목L Light", Font.PLAIN, 14));
+		updateID_LB.setBounds(55, 70, 57, 15);
 		add(updateID_LB);
 
 		updateID_TF = new JTextField();
@@ -64,12 +64,12 @@ public class UserUpdatePanel extends JPanel {
 		add(updateID_TF);
 
 		JLabel updatePassword_LB = new JLabel("비밀번호변경");
-		updatePassword_LB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
-		updatePassword_LB.setBounds(55, 100, 78, 15);
+		updatePassword_LB.setFont(new Font("경기천년제목L Light", Font.PLAIN, 14));
+		updatePassword_LB.setBounds(55, 100, 91, 15);
 		add(updatePassword_LB);
 
 		JLabel updatePhone_LB = new JLabel("핸드폰");
-		updatePhone_LB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
+		updatePhone_LB.setFont(new Font("경기천년제목L Light", Font.PLAIN, 14));
 		updatePhone_LB.setBounds(55, 160, 57, 15);
 		add(updatePhone_LB);
 
@@ -82,7 +82,7 @@ public class UserUpdatePanel extends JPanel {
 		add(updatePhone_TF);
 
 		JLabel updateEmail_LB = new JLabel("이메일");
-		updateEmail_LB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
+		updateEmail_LB.setFont(new Font("경기천년제목L Light", Font.PLAIN, 14));
 		updateEmail_LB.setBounds(55, 220, 57, 15);
 		add(updateEmail_LB);
 
@@ -95,7 +95,7 @@ public class UserUpdatePanel extends JPanel {
 		add(updateEmail_TF);
 
 		JLabel updateName_LB = new JLabel("이름");
-		updateName_LB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
+		updateName_LB.setFont(new Font("경기천년제목L Light", Font.PLAIN, 14));
 		updateName_LB.setBounds(55, 130, 57, 15);
 		add(updateName_LB);
 
@@ -108,7 +108,7 @@ public class UserUpdatePanel extends JPanel {
 		add(updateName_TF);
 
 		JLabel updateLoc_LB = new JLabel("주소");
-		updateLoc_LB.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
+		updateLoc_LB.setFont(new Font("경기천년제목L Light", Font.PLAIN, 14));
 		updateLoc_LB.setBounds(55, 190, 57, 15);
 		add(updateLoc_LB);
 
@@ -122,7 +122,7 @@ public class UserUpdatePanel extends JPanel {
 		
 		//수정폼 버튼 액션시 text체크 후 updateFormEnable 활성화,불활성화
 		updateFormBtn = new JButton("수정폼");
-		updateFormBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
+		updateFormBtn.setFont(new Font("경기천년제목L Light", Font.PLAIN, 14));
 		updateFormBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String btnText = updateFormBtn.getText();
@@ -137,7 +137,7 @@ public class UserUpdatePanel extends JPanel {
 		});
 
 		updateBtn = new JButton("수정");
-		updateBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 14));
+		updateBtn.setFont(new Font("경기천년제목L Light", Font.PLAIN, 14));
 		updateBtn.setBounds(190, 273, 102, 21);
 		add(updateBtn);
 		// 수정버튼 액션시 업데이트

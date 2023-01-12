@@ -103,7 +103,7 @@ public class CartPannel extends JPanel {
 		cartTopUpdateDeletePanel.add(carImageLabel);
 		
 		JLabel textLabel = new JLabel("장바구니");
-		textLabel.setFont(new Font("경기천년제목 Light", Font.PLAIN, 16));
+		textLabel.setFont(new Font("경기천년제목L Light", Font.PLAIN, 16));
 		textLabel.setBounds(63, 10, 79, 15);
 		cartTopUpdateDeletePanel.add(textLabel);
 		
@@ -114,7 +114,7 @@ public class CartPannel extends JPanel {
 		cartTotalPricePanel.setLayout(null);
 		
 		cartTotalLabel = new JLabel("장바구니 총 액");
-		cartTotalLabel.setFont(new Font("경기천년제목 Light", Font.PLAIN, 16));
+		cartTotalLabel.setFont(new Font("경기천년제목L Light", Font.PLAIN, 16));
 		cartTotalLabel.setBounds(12, 10, 99, 15);
 		cartTotalPricePanel.add(cartTotalLabel);
 		
@@ -152,7 +152,7 @@ public class CartPannel extends JPanel {
 		//카트 상품명 클릭 시 상세페이지 버튼
 		productDescBtn = new JButton("상품");
 		productDescBtn.setHorizontalAlignment(SwingConstants.LEFT);
-		productDescBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 10));
+		productDescBtn.setFont(new Font("경기천년제목L Light", Font.PLAIN, 12));
 		productDescBtn.setBackground(new Color(245, 245, 245));
 		productDescBtn.setBounds(106, 46, 134, 23);
 		cartDetailPanel.add(productDescBtn);
@@ -199,7 +199,7 @@ public class CartPannel extends JPanel {
 		});
 	
 		orderBtn.setBackground(new Color(255, 255, 255));
-		orderBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 16));
+		orderBtn.setFont(new Font("경기천년제목L Light", Font.PLAIN, 16));
 		orderBtn.setBounds(52, 379, 277, 31);
 		cartPanel.add(orderBtn);
 		
@@ -265,7 +265,7 @@ public class CartPannel extends JPanel {
 				}
 			});
 			productDescBtn.setHorizontalAlignment(SwingConstants.LEFT);
-			productDescBtn.setFont(new Font("경기천년제목 Light", Font.PLAIN, 10));
+			productDescBtn.setFont(new Font("경기천년제목L Light", Font.PLAIN, 12));
 			productDescBtn.setBackground(new Color(245, 245, 245));
 			productDescBtn.setBounds(106, 46, 134, 23);
 			cartDetailPanel.add(productDescBtn);
