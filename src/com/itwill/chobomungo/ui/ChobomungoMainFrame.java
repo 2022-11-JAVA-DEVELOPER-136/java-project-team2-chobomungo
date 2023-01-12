@@ -209,11 +209,9 @@ public class ChobomungoMainFrame extends JFrame {
 		globalCartBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					orderService.deleteUserId(loginUser.getUserId());
 					if(loginUser == null) {
 						chobomungoTabbedPane.setSelectedIndex(1);
 						userTabbedPane.setSelectedIndex(0);
-						loginPanel.loginIdTF.requestFocus();
 					} else {
 						chobomungoTabbedPane.setSelectedIndex(2);
 					}
@@ -238,7 +236,17 @@ public class ChobomungoMainFrame extends JFrame {
 		globalOrderBTN.setIcon(new ImageIcon(ChobomungoMainFrame.class.getResource("/image/cartcheck(2).png")));
 		globalOrderBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					chobomungoTabbedPane.setSelectedIndex(2);
+				try {
+					if(loginUser == null) {
+						chobomungoTabbedPane.setSelectedIndex(1);
+						userTabbedPane.setSelectedIndex(0);
+					} else {
+						chobomungoTabbedPane.setSelectedIndex(2);
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		globalSouthPanel.setLayout(null);
