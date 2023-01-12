@@ -39,7 +39,7 @@ public class ProductMainListPanel extends JPanel {
 	 * @throws Exception 
 	 */
 	public ProductMainListPanel() throws Exception {
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(Color.WHITE);
 		setLayout(null);
 		
 		JScrollPane productListScrollPane = new JScrollPane();

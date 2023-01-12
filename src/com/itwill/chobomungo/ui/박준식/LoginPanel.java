@@ -44,6 +44,7 @@ public class LoginPanel extends JPanel {
 	/******************************************************************/
 	
 	public LoginPanel() throws Exception{
+		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(400, 620));
 		setLayout(null);
 		
