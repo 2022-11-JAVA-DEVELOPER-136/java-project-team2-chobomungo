@@ -26,6 +26,10 @@ import com.itwill.chobomungo.user.User;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.border.LineBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
 
 public class ProductMainListPanel extends JPanel {
 	
@@ -47,6 +51,7 @@ public class ProductMainListPanel extends JPanel {
 		add(productListScrollPane);
 		
 		productItemListPanel = new JPanel();
+		productItemListPanel.setBackground(Color.WHITE);
 		productItemListPanel.setFont(new Font("경기천년제목 Light", Font.PLAIN, 12));
 		FlowLayout fl_productItemListPanel = (FlowLayout) productItemListPanel.getLayout();
 		fl_productItemListPanel.setAlignment(FlowLayout.LEFT);
@@ -63,7 +68,7 @@ public class ProductMainListPanel extends JPanel {
 		productPanel.setMinimumSize(new Dimension(150, 150));
 		productPanel.setMaximumSize(new Dimension(200, 200));
 		productPanel.setBounds(new Rectangle(0, 0, 120, 120));
-		productPanel.setBorder(null);
+		productPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		productPanel.setBackground(Color.WHITE);
 		productPanel.setAlignmentY(1.0f);
 		productPanel.setAlignmentX(1.0f);
@@ -131,7 +136,7 @@ public class ProductMainListPanel extends JPanel {
 			productPanel.setMinimumSize(new Dimension(150, 150));
 			productPanel.setMaximumSize(new Dimension(200, 200));
 			productPanel.setBounds(new Rectangle(0, 0, 120, 120));
-			productPanel.setBorder(null);
+			productPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 			productPanel.setBackground(Color.WHITE);
 			productPanel.setAlignmentY(1.0f);
 			productPanel.setAlignmentX(1.0f);
