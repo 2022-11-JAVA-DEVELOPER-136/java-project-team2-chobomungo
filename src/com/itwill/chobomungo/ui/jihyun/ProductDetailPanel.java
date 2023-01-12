@@ -70,7 +70,7 @@ public class ProductDetailPanel extends JPanel {
 		productDetailPanel.add(productTitleLB);
 		
 		productImg = new JLabel("\\book.png");
-		productImg.setIcon(new ImageIcon(ProductDetailPanel.class.getResource("/com/itwill/chobomungo/ui/jihyun/sample.png")));
+		productImg.setIcon(new ImageIcon(ProductDetailPanel.class.getResource("/image/sample.png")));
 		productImg.setBounds(30, 58, 160, 200);
 		productDetailPanel.add(productImg);
 		
